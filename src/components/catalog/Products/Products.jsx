@@ -2,8 +2,16 @@ import { useState } from 'react';
 import ProductCard from '../ProductCard/ProductCard';
 import styles from './Products.module.css';
 import ProductsControls from '../ProductsControls/ProductsControls';
+import Pagination from '../Pagination/Pagination';
 
-function Products({ products, currentCategoryId, setProducts }) {
+function Products({
+  products,
+  currentCategoryId,
+  currentProductsPage,
+  pagesCount,
+  setcurrentProductsPage,
+  setSearchText,
+}) {
   const [sortOrder, setSortOrder] = useState('asc');
 
   const sortedProducts =
@@ -16,7 +24,7 @@ function Products({ products, currentCategoryId, setProducts }) {
       <ProductsControls
         setSortOrder={setSortOrder}
         currentCategoryId={currentCategoryId}
-        setProducts={setProducts}
+        setSearchText={setSearchText}
       />
 
       <ul className={styles.products}>
@@ -27,6 +35,12 @@ function Products({ products, currentCategoryId, setProducts }) {
           />
         ))}
       </ul>
+
+      <Pagination
+        currentProductsPage={currentProductsPage}
+        pagesCount={pagesCount}
+        setcurrentProductsPage={setcurrentProductsPage}
+      />
     </div>
   );
 }

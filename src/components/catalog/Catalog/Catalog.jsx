@@ -6,7 +6,11 @@ export default function Catalog({
   categories,
   products,
   currentCategoryId,
+  currentProductsPage,
+  pagesCount,
   setProducts,
+  setcurrentProductsPage,
+  setSearchText,
   handleSelectCategory,
 }) {
   return (
@@ -18,8 +22,12 @@ export default function Catalog({
       />
       <Products
         products={products}
-        setProducts={setProducts}
         currentCategoryId={currentCategoryId}
+        currentProductsPage={currentProductsPage}
+        pagesCount={pagesCount}
+        setProducts={setProducts}
+        setcurrentProductsPage={setcurrentProductsPage}
+        setSearchText={setSearchText}
       />
     </div>
   );

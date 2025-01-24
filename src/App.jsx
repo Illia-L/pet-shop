@@ -9,7 +9,7 @@ const CatalogPage = lazy (() => import('./pages/CatalogPage/CatalogPage'));
 function App() {
   return (
     <Layout>
-      <Suspense fallback={<div>Please wait, page is making...</div>}>
+      {/* <Suspense fallback={<div>Please wait, page is making...</div>}> */}
         <Routes>
           <Route path="/" element={<div>Page</div>}/>
           <Route path="/about" element={<div>About</div>}/>
@@ -18,7 +18,7 @@ function App() {
           <Route path="/checkout" element={<div>Checkout</div>}/>
           <Route path="/basket" element={<div>Basket</div>}/>
         </Routes>
-      </Suspense>
+      {/* </Suspense> */}
     </Layout>
   )
 }

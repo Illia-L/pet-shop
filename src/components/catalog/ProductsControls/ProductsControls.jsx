@@ -2,29 +2,19 @@ import styles from './ProductsControls.module.css';
 import { products as initialProducts } from '../../../fake-data';
 import { useRef } from 'react';
 
-function ProductsControls({ currentCategoryId, setProducts, setSortOrder }) {
+function ProductsControls({ setSortOrder, setSearchText }) {
   const searchFieldRef = useRef(null);
 
-  function searchProducts() {
+  function onSearch() {
     const searchText = searchFieldRef.current.value.toLowerCase();
 
-    const filteredProducts = initialProducts.filter(
-      p =>
-        p.categoryId === currentCategoryId &&
-        p.title.toLowerCase().includes(searchText)
-    );
-
-    setProducts(filteredProducts);
+    setSearchText(searchText)
   }
 
-  function clearProducts() {
-    searchFieldRef.current.value = '';
+  function onClearSearch() {
+    searchFieldRef.current.value = ''
 
-    const filteredProducts = initialProducts.filter(
-      p => p.categoryId === currentCategoryId
-    );
-
-    setProducts(filteredProducts);
+    setSearchText('')
   }
 
   return (
@@ -38,13 +28,13 @@ function ProductsControls({ currentCategoryId, setProducts, setSortOrder }) {
         />
         <button
           className={styles.button}
-          onClick={searchProducts}
+          onClick={onSearch}
         >
           Шукати
         </button>
         <button
           className={styles.button}
-          onClick={clearProducts}
+          onClick={onClearSearch}
         >
           Очистити
         </button>
