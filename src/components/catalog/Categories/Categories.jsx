@@ -1,6 +1,6 @@
 import styles from './Categories.module.css';
 
-function Categories({ categories, handleSelectCategory }) {
+function Categories({ categories, selectCategory }) {
   return (
     <ul className={styles.categories}>
       <li
@@ -9,7 +9,7 @@ function Categories({ categories, handleSelectCategory }) {
       >
         <button
           className={styles.button}
-          onClick={() => handleSelectCategory(null)}
+          onClick={() => selectCategory(null)}
         >
           Всі категорії
         </button>
@@ -21,7 +21,7 @@ function Categories({ categories, handleSelectCategory }) {
         >
           <button
             className={styles.button}
-            onClick={() => handleSelectCategory(cat.id)}
+            onClick={() => selectCategory(cat.id)}
           >
             {cat.title}
           </button>

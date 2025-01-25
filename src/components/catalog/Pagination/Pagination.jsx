@@ -10,11 +10,6 @@ const displayedPagesToBeCut = Array.from(
 function Pagination({ currentProductsPage, pagesCount, setcurrentProductsPage }) {
   const [displayedPageNumbers, setDisplayedPageNumbers] = useState([]);
 
-  console.log('---------------------------');
-  console.log('displayedPagesToBeCut:', displayedPagesToBeCut);
-  console.log('pagesCount:', pagesCount);
-  console.log('displayedPageNumbers:', displayedPageNumbers);
-
   // const isDotsVisible =
   //   currentProductsPage >= 5 && currentProductsPage < pagesCount - 1;
   const isPreviousDisabled = currentProductsPage === 1;

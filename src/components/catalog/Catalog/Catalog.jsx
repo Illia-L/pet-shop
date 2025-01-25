@@ -10,24 +10,23 @@ export default function Catalog({
   pagesCount,
   setProducts,
   setcurrentProductsPage,
-  setSearchText,
-  handleSelectCategory,
+  searchText,
+  selectCategory,
 }) {
   return (
     <div className={styles.catalog}>
       <Categories
         categories={categories}
         currentCategoryId={currentCategoryId}
-        handleSelectCategory={handleSelectCategory}
+        selectCategory={selectCategory}
       />
       <Products
         products={products}
-        currentCategoryId={currentCategoryId}
         currentProductsPage={currentProductsPage}
         pagesCount={pagesCount}
         setProducts={setProducts}
         setcurrentProductsPage={setcurrentProductsPage}
-        setSearchText={setSearchText}
+        searchText={searchText}
       />
     </div>
   );

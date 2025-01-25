@@ -2,19 +2,19 @@ import styles from './ProductsControls.module.css';
 import { products as initialProducts } from '../../../fake-data';
 import { useRef } from 'react';
 
-function ProductsControls({ setSortOrder, setSearchText }) {
+function ProductsControls({ setSortOrder, searchText }) {
   const searchFieldRef = useRef(null);
 
   function onSearch() {
-    const searchText = searchFieldRef.current.value.toLowerCase();
+    const text = searchFieldRef.current.value.toLowerCase();
 
-    setSearchText(searchText)
+    searchText(text)
   }
 
   function onClearSearch() {
     searchFieldRef.current.value = ''
 
-    setSearchText('')
+    searchText('')
   }
 
   return (

@@ -6,11 +6,10 @@ import Pagination from '../Pagination/Pagination';
 
 function Products({
   products,
-  currentCategoryId,
   currentProductsPage,
   pagesCount,
   setcurrentProductsPage,
-  setSearchText,
+  searchText,
 }) {
   const [sortOrder, setSortOrder] = useState('asc');
 
@@ -23,8 +22,7 @@ function Products({
     <div className={styles.container}>
       <ProductsControls
         setSortOrder={setSortOrder}
-        currentCategoryId={currentCategoryId}
-        setSearchText={setSearchText}
+        searchText={searchText}
       />
 
       <ul className={styles.products}>
