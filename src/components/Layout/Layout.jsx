@@ -8,7 +8,7 @@ export default function Layout ({ children }) {
       <div className={css.container}>
           <Header />
           <main>
-            <Suspense fallback={<div></div>}>{children}</Suspense>
+            {children}
           </main>
           {/* <Footer /> */}
       </div>

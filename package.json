@@ -1,8 +1,9 @@
 {
-  "name": "woofmeow-1378-team",
-  "private": true,
+  "name": "pet-shop",
+  "private": false,
   "version": "0.0.0",
   "type": "module",
+  "homepage": "https://illia-l.github.io/pet-shop",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

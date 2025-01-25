@@ -12,19 +12,19 @@ export default function Navigation () {
         <NavLink to="/" className={getNavLinkClass}>
           Home
         </NavLink>
-        <NavLink to="/about" className={getNavLinkClass}>
+        <NavLink to="about" className={getNavLinkClass}>
           About
         </NavLink>
-        <NavLink to="/catalog" className={getNavLinkClass}>
+        <NavLink to="catalog" className={getNavLinkClass}>
           Catalog
         </NavLink>
-        <NavLink to="/profile" className={getNavLinkClass}>
+        <NavLink to="profile" className={getNavLinkClass}>
           Profile
         </NavLink>
-        <NavLink to="/checkout" className={getNavLinkClass}>
+        <NavLink to="checkout" className={getNavLinkClass}>
           Checkout
         </NavLink>
-        <NavLink to="/basket" className={getNavLinkClass}>
+        <NavLink to="basket" className={getNavLinkClass}>
           Basket
         </NavLink>
     </nav>

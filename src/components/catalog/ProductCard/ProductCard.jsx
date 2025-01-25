@@ -6,7 +6,7 @@ function ProductCard({product}) {
       <div className={styles.imageRelativeBox}>
         <div className={styles.imageAbsoluteBox}>
           <img
-            src={product.image}
+            src={'/pet-shop' + product.image}
             alt={product.title}
             className={styles.image}
           />
