@@ -10,15 +10,11 @@ function App() {
       <Routes>
         <Route
           path=''
-          element={<div>Page</div>}
+          element={<CatalogPage />}
         />
         <Route
           path='about'
           element={<div>About</div>}
-        />
-        <Route
-          path='catalog'
-          element={<CatalogPage />}
         />
         <Route
           path='profile'

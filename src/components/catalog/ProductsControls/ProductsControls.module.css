@@ -55,7 +55,11 @@
       flex-direction: column; /* Stack fields vertically on mobile */
   }
 
-  .searchContainer,
+  .searchContainer {
+    flex: 1 1 100%;
+    flex-direction: column;
+  }
+
   .sort {
       flex: 1 1 100%; /* Full width for both fields */
   }

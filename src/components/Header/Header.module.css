@@ -1,16 +1,180 @@
 .header {
-    background-color: #767474;
-    position: sticky;
-    top: 0px;
-    z-index: 999;
-  }
-    
-.container {
   display: flex;
   justify-content: space-between;
-  min-width: 320px;
-  max-width: 375px;
-  padding: 5px 10px;
-  margin-left: auto;
-  margin-right: auto;
+  align-items: center;
+  border-bottom: 2px solid #aaa;
+  padding: 0 24px;
+  line-height: 48px;
+  background-color: #555;
 }
+
+.logoLink {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #f5f5f5;
+  text-decoration: none;
+}
+
+.logoLink:hover {
+  color: #00bcd4;
+}
+
+.menu {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 80%;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #555; /* Dark background */
+  color: #fff; /* Light text */
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5); /* Subtle shadow for depth */
+  z-index: 1000; /* Ensure it's above other content */
+  overflow-y: auto; /* Allow scrolling if content overflows */
+  transition: right 0.3s ease; /* Smooth slide-in effect */
+  display: flex;
+  flex-direction: column;
+  padding: 0 20px 20px;
+}
+
+/* Open state */
+.menu.open {
+  right: 0; /* Slide into view */
+}
+
+.btn {
+  all: unset;
+  color: #fff;
+  font: inherit;
+  cursor: pointer;
+  line-height: 48px;
+}
+
+.btnClose {
+  text-align: right;
+}
+
+/* Address styles */
+.address {
+  margin-top: auto; /* Push to the bottom */
+  border-top: 1px solid #333; /* Separator */
+  padding-top: 20px;
+  font-style: normal;
+}
+
+.addressList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.addressLink {
+  font-size: 1rem;
+  text-decoration: none;
+  /* color: #00bcd4; */
+  transition: color 0.3s ease;
+}
+
+.addressLink:hover,
+.addressLink:focus {
+  color: #f5f5f5;
+}
+
+/* *************************************************************************************************** */
+
+@media (min-width: 768px) {
+  .menu {
+    position: static;
+    flex-basis: 85%;
+    flex-direction: row;
+    align-items: center;
+    gap: 48px;
+    box-shadow: none;
+    padding: 0;
+  }
+
+  .btn {
+    display: none;
+  }
+
+  .address {
+    padding-top: 0;
+  }
+
+  .addressList {
+    flex-direction: row;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 992px) {
+  .secondNumberItem {
+    display: none;
+  }
+}
+
+@media (min-width: 1200px) {
+  .menu {
+    flex-basis: 75%;
+  }
+}
+/* .header address {
+  font-style: normal;
+  margin: 0;
+  padding: 0;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #333;
+  padding: 0 40px;
+  line-height: 48px;
+  background-color: #555;
+}
+
+.header a {
+  display: inline-block;
+  line-height: inherit;
+  text-decoration: none;
+}
+
+
+.menu {
+  flex-basis: 75%;
+  display: flex;
+  align-items: center;
+  gap: 48px;
+}
+
+.address {
+  margin-left: auto;
+}
+
+.addressList {
+  list-style: none;
+  display: flex;
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+}
+
+.addressLink {
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.3s;
+}
+
+.addressLink:hover,
+.addressLink:focus {
+  color: #f5f5f5;
+}
+
+.btnMenu {
+  display: none;
+} */
