@@ -1,13 +1,31 @@
 .catalog {
   display: flex;
   gap: 20px;
-  justify-content: space-between;
+  flex-direction: column;
+  /* justify-content: space-between; */
+  margin-inline: auto;
+  max-width: 1600px;
   padding: 20px;
-  background-color: #f9f9f9; /* Mild background for main */
+  font-size: 14px;
+  /* background-color: #f9f9f9; */
 }
 
-@media (max-width: 767px) {
+@media (min-width: 576px) {
   .catalog {
-    flex-direction: column;
+    font-size: 15px;
+  }
+}
+
+@media (min-width: 768px) {
+  .catalog {
+    flex-direction: row;
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 992px) {
+  .catalog {
+    flex-direction: row;
+    font-size: 17px;
   }
 }

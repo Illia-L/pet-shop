@@ -1,9 +1,9 @@
 .categories {
-  background-color: #eaf7ff;
-  flex: 0 0 20%;
+  /* background-color: #eaf7ff; */
+  flex: 0 0 200px;
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  /* gap: 16px; */
   align-self: start;
   padding: 10px;
   list-style: none; /* Remove default list styling */
@@ -15,25 +15,44 @@
 }
 
 /* Category Button */
-.button {
-  width: 100%; /* Button fills the list item's width */
+/* .button {
+  width: 100%;
   padding: 10px 15px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  background-color: #f5f5f5; /* Light gray background */
+  background-color: #f5f5f5;
   font-size: 1em;
   cursor: pointer;
   text-align: center;
   transition: background-color 0.3s ease;
+} */
+
+.button {
+  border: none;
+  width: 100%;
+  padding: 8px;
+  font: inherit;
+  line-height: 1.2;
+  text-align: left;
+  color: inherit;
+  background: none;
+  cursor: pointer;
 }
 
-.button:hover {
-  background-color: #ddd; /* Slightly darker on hover */
+.button:hover,
+.current {
+  background-color: #eee; /* Slightly darker on hover */
 }
 
 /* Desktop and Tablet Layout (768px and above) */
 @media (min-width: 768px) {
   .item {
     flex: 1 1 100%; /* Flexible width for list items */
+  }
+}
+
+@media (min-width: 1200px) {
+  .categories {
+    flex-basis: 250px; /* Flexible width for list items */
   }
 }

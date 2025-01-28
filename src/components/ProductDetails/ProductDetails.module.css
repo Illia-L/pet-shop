@@ -1,0 +1,146 @@
+/* General Reset */
+.container {
+  margin: 40px auto;
+  max-width: 800px;
+  padding-inline: 20px;
+}
+
+.container * {
+  box-sizing: border-box;
+}
+
+/* General Styling */
+.box {
+  display: flex;
+  flex-direction: column; /* Stack fotos and details vertically on mobile */
+  align-items: stretch;
+  gap: 20px;
+}
+
+.fotos {
+  width: 100%;
+}
+
+/* Title */
+.title {
+  font-size: 1.5em; /* Prominent font size */
+  font-weight: bold;
+  color: #333; /* Dark text color */
+  margin: 0;
+}
+
+/* Price */
+.price {
+  margin-top: 24px;
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #007bff; /* Accent color for price */
+  text-align: right;
+}
+
+/* Order Form Container */
+.order {
+  margin-top: 40px;
+  display: flex;
+  gap: 20px;
+  justify-content: flex-end;
+}
+
+.inputWrapper {
+  position: relative;
+}
+
+.inputQuantity {
+  box-sizing: border-box; /* Ensure padding is included in width */
+  display: block;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  width: 80px; /* Full width on mobile */
+  padding: 10px;
+  font-size: 1em;
+  text-align: right;
+}
+
+.inputWrapper::before {
+  content: 'Кількість';
+  position: absolute;
+  top: -20px;
+  left: 0;
+  display: block;
+  height: 20px;
+  font-size: 0.8em;
+  color: #333;
+}
+
+/* Button */
+.toCart {
+  display: block;
+  border-radius: 5px;
+  border: none;
+  padding: 10px;
+  font-size: 1em;
+  text-align: center;
+  color: #fff; /* White text */
+  background-color: #007bff; /* Blue background */
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* Button Hover State */
+.toCart:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+.desc {
+  margin-top: 40px;
+}
+
+/* Tablet and Desktop Styles (768px and above) */
+@media (min-width: 768px) {
+  .order {
+    flex-direction: row; /* Align elements horizontally */
+    align-items: center;
+    gap: 20px; /* Increased gap for larger screens */
+  }
+
+  .toCart {
+    flex-shrink: 0; /* Prevent button from shrinking */
+  }
+}
+
+/* Tablet View (768px and above) */
+@media (min-width: 768px) {
+  .box {
+    flex-direction: row; /* Arrange fotos and details side-by-side */
+    gap: 40px;
+  }
+
+  .fotos {
+    flex: 1 1 50%; /* Fotos take half the container width */
+  }
+
+  .details {
+    flex: 1 1 50%; /* Details take the other half */
+  }
+
+  .order {
+    flex-direction: row; /* Input and button side-by-side on larger screens */
+    align-items: center; /* Center align vertically */
+  }
+
+  .desc {
+    margin: 40px;
+  }
+}
+
+/* Desktop View (1024px and above) */
+@media (min-width: 1024px) {
+  .box {
+    margin: 0 auto;
+    gap: 60px;
+  }
+
+  .desc {
+    margin-top: 40px;
+  }
+}

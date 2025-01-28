@@ -1,6 +1,8 @@
 import styles from './Categories.module.css';
 
-function Categories({ categories, selectCategory }) {
+function Categories({ categories, currentCategoryId, selectCategory }) {
+  const getButtonStyles = categoryId => styles.button + ' ' + (`${categoryId}` === `${currentCategoryId}` ? styles.current : '')
+
   return (
     <ul className={styles.categories}>
       <li
@@ -8,7 +10,7 @@ function Categories({ categories, selectCategory }) {
         key={'category-all'}
       >
         <button
-          className={styles.button}
+          className={getButtonStyles('')}
           onClick={() => selectCategory(null)}
         >
           Всі категорії
@@ -20,7 +22,7 @@ function Categories({ categories, selectCategory }) {
           key={'category-' + cat.id}
         >
           <button
-            className={styles.button}
+            className={getButtonStyles(cat.id)}
             onClick={() => selectCategory(cat.id)}
           >
             {cat.title}

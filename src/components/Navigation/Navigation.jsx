@@ -8,8 +8,6 @@ export default function Navigation({setIsMenuOpen}) {
   const getLinkStyle = path => {
     const isCurrent = path === location.pathname
 
-    console.log(isCurrent);
-
     return `${styles.link} ${isCurrent ? styles.current : ''}`
   }
 

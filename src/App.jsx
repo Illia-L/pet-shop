@@ -3,6 +3,7 @@ import Layout from './components/Layout/Layout';
 
 import { Route, Routes } from 'react-router-dom';
 import CatalogPage from './pages/CatalogPage/CatalogPage';
+import ProductDetails from './components/ProductDetails/ProductDetails';
 
 function App() {
   return (
@@ -27,6 +28,10 @@ function App() {
         <Route
           path='basket'
           element={<div>Basket</div>}
+        />
+        <Route
+          path='products/:id'
+          element={<ProductDetails/>}
         />
       </Routes>
     </Layout>
