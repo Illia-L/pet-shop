@@ -4,6 +4,7 @@ import Layout from './components/Layout/Layout';
 import { Route, Routes } from 'react-router-dom';
 import CatalogPage from './pages/CatalogPage/CatalogPage';
 import ProductDetails from './components/ProductDetails/ProductDetails';
+import BasketPage from './pages/BasketPage/BasketPage';
 
 function App() {
   return (
@@ -27,7 +28,7 @@ function App() {
         />
         <Route
           path='basket'
-          element={<div>Basket</div>}
+          element={<BasketPage />}
         />
         <Route
           path='products/:id'
