@@ -42,7 +42,7 @@ function ProductDetails() {
                 onChange={e => setQuantity(e.target.value)}
               />
             </div>
-            <button className={styles.toCart} onClick={addToCart}>Додати до Кошика</button>
+            <button type='button' className={styles.toCart} onClick={addToCart}>Додати до Кошика</button>
           </form>
         </div>
       </div>
