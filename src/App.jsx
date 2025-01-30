@@ -5,6 +5,8 @@ import { Route, Routes } from 'react-router-dom';
 import CatalogPage from './pages/CatalogPage/CatalogPage';
 import ProductDetails from './components/ProductDetails/ProductDetails';
 import BasketPage from './pages/BasketPage/BasketPage';
+import Cabinet from './components/cabinet/Cabinet/Cabinet';
+import Signup from './components/cabinet/Signup/Signup';
 
 function App() {
   return (
@@ -19,10 +21,6 @@ function App() {
           element={<div>About</div>}
         />
         <Route
-          path='profile'
-          element={<div>Profile</div>}
-        />
-        <Route
           path='checkout'
           element={<div>Checkout</div>}
         />
@@ -34,6 +32,17 @@ function App() {
           path='products/:id'
           element={<ProductDetails/>}
         />
+        <Route
+          path='cabinet'
+          element={<Cabinet/>}
+        >
+          <Route path='login' element={<p>Login</p>}/>
+          <Route path='logout' element={<p>Logout</p>}/>
+          <Route path='signup' element={<Signup/>}/>
+          <Route path='orders' element={<p>Orders</p>}/>
+          <Route path='profile' element={<p>Profile</p>}/>
+          <Route path='edit-profile' element={<p>Edit Profile</p>}/>
+        </Route>
       </Routes>
     </Layout>
   );
