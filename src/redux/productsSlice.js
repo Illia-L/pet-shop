@@ -1,6 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { products } from "../fake-data";
-import { createAction } from "@reduxjs/toolkit";
 
 const slice = createSlice({
   name: 'products',

@@ -1,4 +1,4 @@
-import BasketList from "./BasketList/BasketList"
+import BasketList from "./BasketList/BasketList";
 
 export default function Basket () {
 
