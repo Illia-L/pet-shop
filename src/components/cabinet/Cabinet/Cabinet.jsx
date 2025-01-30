@@ -2,8 +2,8 @@ import { NavLink, Outlet, useLocation } from 'react-router-dom';
 import styles from './Cabinet.module.css';
 import Signup from '../Signup/Signup';
 
-// const user = null;
-const user = { name: 'Петро' };
+const user = null;
+// const user = { name: 'Петро' };
 
 function Cabinet() {
   const { pathname } = useLocation();
