@@ -8,6 +8,12 @@ function ProductDetails() {
   const [quantity, setQuantity] = useState(1);
   const { id } = useParams();
 
+  function addToCart() {
+    const newItem = {id, quantity}
+
+    console.log(newItem);
+  }
+
   useEffect(() => {
     const fetchedProduct = initialProducts.find(p => `${p.id}` === `${id}`);
 
@@ -36,7 +42,7 @@ function ProductDetails() {
                 onChange={e => setQuantity(e.target.value)}
               />
             </div>
-            <button className={styles.toCart}>Додати до Кошика</button>
+            <button className={styles.toCart} onClick={addToCart}>Додати до Кошика</button>
           </form>
         </div>
       </div>
