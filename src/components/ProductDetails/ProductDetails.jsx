@@ -8,8 +8,7 @@ function ProductDetails() {
   const [quantity, setQuantity] = useState(1);
   const { id } = useParams();
 
-  function addToCart(e) {
-    e.preventDefault()
+  function addToCart() {
     const newItem = {id, quantity}
 
     console.log(newItem);
@@ -33,7 +32,7 @@ function ProductDetails() {
         <div className={styles.details}>
           <h1 className={styles.title}>{product.title}</h1>
           <p className={styles.price}>{product.price}</p>
-          <form className={styles.order}>
+          <div className={styles.order}>
             <div className={styles.inputWrapper}>
               <input
                 className={styles.inputQuantity}
@@ -44,7 +43,7 @@ function ProductDetails() {
               />
             </div>
             <button type='button' className={styles.toCart} onClick={addToCart}>Додати до Кошика</button>
-          </form>
+          </div>
         </div>
       </div>
       <div className={styles.desc}>{product.description}</div>
