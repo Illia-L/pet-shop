@@ -8,7 +8,8 @@ function ProductDetails() {
   const [quantity, setQuantity] = useState(1);
   const { id } = useParams();
 
-  function addToCart() {
+  function addToCart(e) {
+    e.preventDefault()
     const newItem = {id, quantity}
 
     console.log(newItem);
