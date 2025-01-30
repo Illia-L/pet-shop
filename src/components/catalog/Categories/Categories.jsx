@@ -1,7 +1,10 @@
 import styles from './Categories.module.css';
 
 function Categories({ categories, currentCategoryId, selectCategory }) {
-  const getButtonStyles = categoryId => styles.button + ' ' + (`${categoryId}` === `${currentCategoryId}` ? styles.current : '')
+  const getButtonStyles = categoryId =>
+    styles.button +
+    ' ' +
+    (`${categoryId}` === `${currentCategoryId}` ? styles.current : '');
 
   return (
     <ul className={styles.categories}>

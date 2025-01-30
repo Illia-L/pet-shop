@@ -4,9 +4,11 @@ import styles from './Navigation.module.css';
 export default function Navigation({setIsMenuOpen}) {
   const location = useLocation()
 
+  console.log(location.pathname);
+
   
   const getLinkStyle = path => {
-    const isCurrent = path === location.pathname
+    const isCurrent = path === location.pathname.split('/')[1]
 
     return `${styles.link} ${isCurrent ? styles.current : ''}`
   }
@@ -17,7 +19,7 @@ export default function Navigation({setIsMenuOpen}) {
         <li>
           <NavLink
             to='/'
-            className={getLinkStyle('/')}
+            className={getLinkStyle('')}
             onClick={() => setIsMenuOpen(false)}
           >
             Каталог
@@ -26,7 +28,7 @@ export default function Navigation({setIsMenuOpen}) {
         <li>
           <NavLink
             to='about'
-            className={getLinkStyle('/about')}
+            className={getLinkStyle('about')}
             onClick={() => setIsMenuOpen(false)}
           >
             Про нас
@@ -35,7 +37,7 @@ export default function Navigation({setIsMenuOpen}) {
         <li>
           <NavLink
             to='contacts'
-            className={getLinkStyle('/contacts')}
+            className={getLinkStyle('contacts')}
             onClick={() => setIsMenuOpen(false)}
           >
             Контакти
@@ -44,7 +46,7 @@ export default function Navigation({setIsMenuOpen}) {
         <li>
           <NavLink
             to='basket'
-            className={getLinkStyle('/basket')}
+            className={getLinkStyle('basket')}
             onClick={() => setIsMenuOpen(false)}
           >
             Кошик
@@ -52,8 +54,8 @@ export default function Navigation({setIsMenuOpen}) {
         </li>
         <li>
           <NavLink
-            to='profile'
-            className={getLinkStyle('/profile')}
+            to='cabinet'
+            className={getLinkStyle('cabinet')}
             onClick={() => setIsMenuOpen(false)}
           >
             Кабінет
