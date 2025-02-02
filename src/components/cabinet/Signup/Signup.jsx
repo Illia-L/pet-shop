@@ -1,14 +1,17 @@
 import { useForm } from 'react-hook-form';
 import styles from './Signup.module.css';
-import { useState } from 'react';
+import { signup } from '../../../redux/userSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
 
 const required = { value: true, message: "Це поле обов'язкове для заповнення" };
 
 function Signup() {
-  const [isComplete, setIsComplete] = useState(false)
+  const dispatch = useDispatch();
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm({
     defaultValues: {
@@ -19,13 +22,23 @@ function Signup() {
       remember: true,
     },
   });
+  const { id } = useSelector(state => state.user);
 
-  if (isComplete) return <p className={styles.success}>Ви успішно зареєстровані</p>
+  useEffect(() => {
+    reset();
+  }, [id]);
+
+  if (id) return <p>Ви вже зареєстровані</p>;
+
+  async function checkIfEmailAvaillable() {
+    // fetch email from server
+    const isAvaillable = true;
+
+    return isAvaillable || 'Користувач із такою поштою вже зареєстрований';
+  }
 
   function onSubmit(data) {
-    console.log(data);
-
-    setIsComplete(true)
+    dispatch(signup(data));
   }
 
   return (
@@ -69,11 +82,12 @@ function Signup() {
               value: /^[\d\w.-]+@[a-zA-Z\d.-]+\.[a-zA-Z]{2,}$/,
               message: 'Введіть дійсну електронну пошту',
             },
+            validate: checkIfEmailAvaillable,
           })}
           required
           placeholder='example@domain.com'
         />
-        <p className={styles.error}>{errors.email?.message}</p>
+        <p className={styles.fail}>{errors.email?.message}</p>
       </div>
       <div className={styles.group}>
         <label
@@ -96,7 +110,7 @@ function Signup() {
           required
           placeholder='Введіть пароль'
         />
-        <p className={styles.error}>{errors.password?.message}</p>
+        <p className={styles.fail}>{errors.password?.message}</p>
       </div>
       <div className={styles.group}>
         <label
@@ -121,7 +135,7 @@ function Signup() {
           required
           placeholder='Введіть пароль ще раз'
         />
-        <p className={styles.error}>{errors.passwordConfirm?.message}</p>
+        <p className={styles.fail}>{errors.passwordConfirm?.message}</p>
       </div>
       <div className={styles.group + ' ' + styles.rememberGroup}>
         <input

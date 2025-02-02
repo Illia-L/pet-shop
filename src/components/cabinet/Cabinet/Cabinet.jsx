@@ -1,20 +1,27 @@
 import { NavLink, Outlet, useLocation } from 'react-router-dom';
 import styles from './Cabinet.module.css';
 import Signup from '../Signup/Signup';
-
-const user = null;
-// const user = { name: 'Петро' };
+import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import Login from '../Login/Login';
+import { logout } from '../../../redux/userSlice';
 
 function Cabinet() {
+  // const [user, setUser] = useState(null);
+  const dispatch = useDispatch()
   const { pathname } = useLocation();
   const tab = pathname.split('/').at(-1);
+
+  const user = useSelector(state => state.user)
+
+  const canLoadTab = user.id || tab === 'login' || tab === 'signup';
 
   const getButtonStyles = tabName =>
     styles.link + ' ' + (tabName === tab ? styles.current : '');
 
   return (
     <div className={styles.container}>
-      {!user && (
+      {!user.id && (
         <ul className={styles.menu}>
           <li>
             <NavLink
@@ -64,9 +71,11 @@ function Cabinet() {
         </ul>
       )}
 
-      {user && (
+      {user.id && (
         <ul className={styles.menu}>
-          <li><p className={styles.greeting}>Ви увійшли, як {user.name}</p></li>
+          <li>
+            <p className={styles.greeting}>Ви увійшли, як {user.name}</p>
+          </li>
           <li>
             <NavLink
               to='orders'
@@ -92,18 +101,19 @@ function Cabinet() {
             </NavLink>
           </li>
           <li>
-            <NavLink
+            <button
               to='logout'
-              className={getButtonStyles('logout')}
+              className={styles.button}
+              onClick={() => dispatch(logout())}
             >
               Вийти
-            </NavLink>
+            </button>
           </li>
         </ul>
       )}
       <div className={styles.content}>
-        {user && <Outlet />}
-        {!user && <Signup />}
+        {canLoadTab && <Outlet />}
+        {!canLoadTab && <Login/>}
       </div>
     </div>
   );
