@@ -31,6 +31,17 @@
   text-decoration: none;
 }
 
+.button {
+  all:unset;
+  display: block;
+  width: 100%;
+  padding: 8px;
+  font: inherit;
+  color: inherit;
+  background: none;
+  cursor: pointer;
+}
+
 .link:hover,
 .current {
   background-color: #eee; /* Slightly darker on hover */
