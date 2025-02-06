@@ -37,7 +37,10 @@ function Signup() {
     return isAvaillable || 'Користувач із такою поштою вже зареєстрований';
   }
 
-  function onSubmit(data) {
+  function onSubmit(formData) {
+    const {name, email, password} = formData
+    const data = {name, email, password, remember}
+
     dispatch(signup(data));
   }
 

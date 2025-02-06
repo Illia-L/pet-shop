@@ -1,15 +1,11 @@
 import { useEffect, useState } from 'react';
 import styles from './Pagination.module.css';
 
-const defaultDisplayedNumberOfPages = 5;
-const displayedPagesToBeCut = Array.from(
-  { length: defaultDisplayedNumberOfPages },
-  (_, i) => i + 1
-);
-
-function Pagination({ currentProductsPage, pagesCount, setcurrentProductsPage }) {
-  const [displayedPageNumbers, setDisplayedPageNumbers] = useState([]);
-
+function Pagination({
+  currentProductsPage,
+  pagesCount,
+  setcurrentProductsPage,
+}) {
   // const isDotsVisible =
   //   currentProductsPage >= 5 && currentProductsPage < pagesCount - 1;
   const isPreviousDisabled = currentProductsPage === 1;
@@ -19,20 +15,16 @@ function Pagination({ currentProductsPage, pagesCount, setcurrentProductsPage })
     styles.button + ' ' + (page === currentProductsPage ? styles.current : '');
 
   function selectPage(pageNum) {
-    setcurrentProductsPage(pageNum)
+    setcurrentProductsPage(pageNum);
   }
 
   function selectNext() {
-    setcurrentProductsPage(p => p + 1)
+    setcurrentProductsPage(p => p + 1);
   }
 
   function selectPrevious() {
-    setcurrentProductsPage(p => p - 1)
+    setcurrentProductsPage(p => p - 1);
   }
-
-  useEffect(() => {
-    setDisplayedPageNumbers(displayedPagesToBeCut.slice(0, pagesCount));
-  }, [pagesCount]);
 
   // States: currentProductsPage, pagesCount
   // Layout options:
@@ -53,58 +45,48 @@ function Pagination({ currentProductsPage, pagesCount, setcurrentProductsPage })
       className={styles.pagination}
       aria-label='Pagination'
     >
-      <ul className={styles.paginationList}>
-        <li>
-          <button
-            className={styles.button}
-            aria-label='Previous Page'
-            disabled={isPreviousDisabled}
-            onClick={selectPrevious}
-          >
-            &lt;
-          </button>
-        </li>
-        {displayedPageNumbers.map(pageNum => (
-          <li>
-            <button
-              className={getButtonStyle(pageNum)}
-              aria-label={'Page ' + pageNum}
-              onClick={() => selectPage(pageNum)}
-            >
-              {pageNum}
-            </button>
-          </li>
-        ))}
-
-        {/* {isDotsVisible && (
-          <li>
-            <span
-              className={styles.dots}
-              aria-hidden='true'
-            >
-              ...
-            </span>
-          </li>
-        )}
-        <li>
-          <button
-            className={getButtonStyle(pagesCount)}
-            aria-label={'Page ' + pagesCount}
-          >
-            {pagesCount}
-          </button>
-        </li> */}
-        <li>
-          <button
-            className={styles.button}
-            aria-label='Next Page'
-            disabled={isNextDisabled}
-            onClick={selectNext}
-          >
-            &gt;
-          </button>
-        </li>
-      </ul>
+      <button
+        type='button'
+        aria-label='Go to first page'
+        className={styles.btn}
+        disabled={currentProductsPage === 1}
+        onClick={() => setcurrentProductsPage(1)}
+      >
+        &laquo;
+      </button>
+      <button
+        type='button'
+        aria-label='Go to previous page'
+        className={styles.btn}
+        disabled={currentProductsPage === 1}
+        onClick={() => setcurrentProductsPage(p => p - 1)}
+      >
+        &lsaquo;
+      </button>
+      <span
+        className={styles.decs}
+        aria-live='polite'
+      >
+        {currentProductsPage} of {pagesCount}
+      </span>
+      <button
+        type='button'
+        aria-label='Go to next page'
+        className={styles.btn}
+        disabled={currentProductsPage === pagesCount}
+        onClick={() => setcurrentProductsPage(p => p + 1)}
+      >
+        &rsaquo;
+      </button>
+      <button
+        type='button'
+        aria-label='Go to last page'
+        className={styles.btn}
+        disabled={currentProductsPage === pagesCount}
+        onClick={() => setcurrentProductsPage(pagesCount)}
+      >
+        &raquo;
+      </button>
     </nav>
   );
 }
