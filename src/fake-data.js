@@ -77,6 +77,7 @@ export const products = [
     image: '/img/products/1.jpg',
     unit: 'шт',
     price: 250,
+    quantity: 1,
   },
   {
     id: 2,
@@ -87,6 +88,7 @@ export const products = [
     image: '/img/products/2.jpg',
     unit: 'шт',
     price: 450,
+    quantity: 1,
   },
   {
     id: 3,
@@ -96,6 +98,7 @@ export const products = [
     image: '/img/products/3.jpeg',
     unit: 'шт',
     price: 350,
+    quantity: 1,
   },
   {
     id: 4,
@@ -106,6 +109,7 @@ export const products = [
     image: '/img/products/4.jpg',
     unit: 'шт',
     price: 700,
+    quantity: 1,
   },
   {
     id: 5,
@@ -116,6 +120,7 @@ export const products = [
     image: '/img/products/5.jpg',
     unit: 'шт',
     price: 300,
+    quantity: 1,
   },
   {
     id: 6,
@@ -125,6 +130,7 @@ export const products = [
     image: '/img/products/6.jpg',
     unit: 'шт',
     price: 500,
+    quantity: 1,
   },
   {
     id: 7,
@@ -135,6 +141,7 @@ export const products = [
     image: '/img/products/7.webp',
     unit: 'шт',
     price: 450,
+    quantity: 1,
   },
   {
     id: 8,
@@ -145,6 +152,7 @@ export const products = [
     image: '/img/products/8.webp',
     unit: 'шт',
     price: 520,
+    quantity: 1,
   },
   {
     id: 9,
@@ -154,6 +162,7 @@ export const products = [
     image: '/img/products/9.png',
     unit: 'шт',
     price: 350,
+    quantity: 1,
   },
   {
     id: 10,
@@ -163,6 +172,7 @@ export const products = [
     image: '/img/products/10.jpg',
     unit: 'шт',
     price: 620,
+    quantity: 1,
   },
   {
     id: 11,
@@ -173,6 +183,7 @@ export const products = [
     image: '/img/products/11.webp',
     unit: 'шт',
     price: 680,
+    quantity: 1,
   },
   {
     id: 12,
@@ -182,6 +193,7 @@ export const products = [
     image: '/img/products/12.jpg',
     unit: 'шт',
     price: 300,
+    quantity: 1,
   },
   {
     id: 13,
@@ -192,6 +204,7 @@ export const products = [
     image: '/img/products/13.jpg',
     unit: 'шт',
     price: 420,
+    quantity: 1,
   },
   {
     id: 14,
@@ -202,6 +215,7 @@ export const products = [
     image: '/img/products/14.png',
     unit: 'шт',
     price: 280,
+    quantity: 1,
   },
   {
     id: 15,
@@ -211,6 +225,7 @@ export const products = [
     image: '/img/products/15.webp',
     unit: 'шт',
     price: 350,
+    quantity: 1,
   },
   {
     id: 16,
@@ -221,6 +236,7 @@ export const products = [
     image: '/img/products/16.jpg',
     unit: 'шт',
     price: 400,
+    quantity: 1,
   },
   {
     id: 17,
@@ -231,6 +247,7 @@ export const products = [
     image: '/img/products/17.avif',
     unit: 'шт',
     price: 500,
+    quantity: 1,
   },
   {
     id: 18,
@@ -240,6 +257,7 @@ export const products = [
     image: '/img/products/18.webp',
     unit: 'шт',
     price: 250,
+    quantity: 1,
   },
   {
     id: 19,
@@ -249,6 +267,7 @@ export const products = [
     image: '/img/products/19.jpg',
     unit: 'шт',
     price: 400,
+    quantity: 1,
   },
   {
     id: 20,
@@ -258,6 +277,7 @@ export const products = [
     image: '/img/products/20.jpg',
     unit: 'шт',
     price: 320,
+    quantity: 1,
   },
   {
     id: 21,
@@ -267,6 +287,7 @@ export const products = [
     image: '/img/products/21.jpg',
     unit: 'шт',
     price: 200,
+    quantity: 1,
   },
   {
     id: 22,
@@ -277,6 +298,7 @@ export const products = [
     image: '/img/products/22.jpg',
     unit: 'шт',
     price: 300,
+    quantity: 1,
   },
   {
     id: 23,
@@ -287,6 +309,7 @@ export const products = [
     image: '/img/products/23.jpg',
     unit: 'шт',
     price: 450,
+    quantity: 1,
   },
   {
     id: 24,
@@ -297,6 +320,7 @@ export const products = [
     image: '/img/products/24.webp',
     unit: 'шт',
     price: 320,
+    quantity: 1,
   },
   {
     id: 25,
@@ -307,6 +331,7 @@ export const products = [
     image: '/img/products/25.jpg',
     unit: 'шт',
     price: 450,
+    quantity: 1,
   },
   {
     id: 26,
@@ -317,6 +342,7 @@ export const products = [
     image: '/img/products/26.webp',
     unit: 'шт',
     price: 370,
+    quantity: 1,
   },
   {
     id: 27,
@@ -326,6 +352,7 @@ export const products = [
     image: '/img/products/27.webp',
     unit: 'шт',
     price: 290,
+    quantity: 1,
   },
   {
     id: 28,
@@ -336,6 +363,7 @@ export const products = [
     image: '/img/products/28.avif',
     unit: 'шт',
     price: 410,
+    quantity: 1,
   },
   {
     id: 29,
@@ -346,6 +374,7 @@ export const products = [
     image: '/img/products/29.webp',
     unit: 'шт',
     price: 340,
+    quantity: 1,
   },
   {
     id: 30,
@@ -356,6 +385,7 @@ export const products = [
     image: '/img/products/30.jpeg',
     unit: 'шт',
     price: 500,
+    quantity: 1,
   },
   {
     id: 31,
@@ -366,6 +396,7 @@ export const products = [
     image: '/img/products/31.webp',
     unit: 'шт',
     price: 200,
+    quantity: 1,
   },
   {
     id: 32,
@@ -375,6 +406,7 @@ export const products = [
     image: '/img/products/32.webp',
     unit: 'шт',
     price: 250,
+    quantity: 1,
   },
   {
     id: 33,
@@ -384,6 +416,7 @@ export const products = [
     image: '/img/products/33.webp',
     unit: 'шт',
     price: 300,
+    quantity: 1,
   },
   {
     id: 34,
@@ -394,6 +427,7 @@ export const products = [
     image: '/img/products/34.jpg',
     unit: 'шт',
     price: 350,
+    quantity: 1,
   },
   {
     id: 35,
@@ -404,6 +438,7 @@ export const products = [
     image: '/img/products/35.webp',
     unit: 'шт',
     price: 180,
+    quantity: 1,
   },
   {
     id: 36,
@@ -413,6 +448,7 @@ export const products = [
     image: '/img/products/36.jpg',
     unit: 'шт',
     price: 400,
+    quantity: 1,
   },
   {
     id: 37,
@@ -423,6 +459,7 @@ export const products = [
     image: '/img/products/37.webp',
     unit: 'шт',
     price: 300,
+    quantity: 1,
   },
   {
     id: 38,
@@ -433,6 +470,7 @@ export const products = [
     image: '/img/products/38.jpg',
     unit: 'шт',
     price: 220,
+    quantity: 1,
   },
   {
     id: 39,
@@ -443,6 +481,7 @@ export const products = [
     image: '/img/products/39.jpg',
     unit: 'шт',
     price: 280,
+    quantity: 1,
   },
   {
     id: 40,
@@ -452,6 +491,7 @@ export const products = [
     image: '/img/products/40.jpg',
     unit: 'шт',
     price: 350,
+    quantity: 1,
   },
   {
     id: 41,
@@ -461,6 +501,7 @@ export const products = [
     image: '/img/products/41.webp',
     unit: 'шт',
     price: 250,
+    quantity: 1,
   },
   {
     id: 42,
@@ -470,5 +511,6 @@ export const products = [
     image: '/img/products/42.jpg',
     unit: 'шт',
     price: 320,
+    quantity: 1,
   },
 ];
