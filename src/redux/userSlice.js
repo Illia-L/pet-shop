@@ -30,10 +30,10 @@ export const login = createAsyncThunk(
 
       if (isCorrect) {
         const updatedUser = { ...user, remember: formdata.remember };
-        const updatedStringifiedUser = JSON.stringify(updatedUser)
+        const updatedStringifiedUser = JSON.stringify(updatedUser);
 
-        localStorage.setItem('user', updatedStringifiedUser)
-        
+        localStorage.setItem('user', updatedStringifiedUser);
+
         return user;
       } else {
         return rejectWithValue('Невірна електронна пошта та/або пароль');
@@ -46,31 +46,41 @@ export const login = createAsyncThunk(
 
 export const signup = createAsyncThunk(
   'user/signup',
-  async (formData, { rejectWithValue }) => {
-    // send userToCreate to signup endpoint
-    // handle data from API response
-    // const data = {
-    //   message: 'Щось пішло не так, реєстрація неуспішна. Спробуйте пізніше.',
-    // };
-    const data = { user: { ...formData, id: 'uniqidfromserver' } };
+  async (data, { rejectWithValue }) => {
+    // try {
+    //   const response = await fetch('http://127.0.0.1:8000/register');
+    //   const user = await JSON.parse(response);
+    //   console.log(user);
+    // } catch (err) {
+    //   console.log(err);
+    // }
 
-    const promise = new Promise((resolve, reject) => {
-      const registeredUser = data.user;
-      const failMessage = data.message;
+    // const data = { user: { ...data, id: 'uniqidfromserver' } };
 
-      if (registeredUser) {
-        localStorage.setItem('user', JSON.stringify(registeredUser));
-        return resolve(registeredUser);
-      }
+    // const promise = new Promise((resolve, reject) => {
+    //   const registeredUser = data.user;
+    //   const failMessage = data.message;
 
-      if (failMessage) return reject(failMessage);
+    //   if (registeredUser) {
+    //     localStorage.setItem('user', JSON.stringify(registeredUser));
+    //     return resolve(registeredUser);
+    //   }
 
-      return reject('Невідома внутрішня помилка');
-    });
+    //   if (failMessage) return reject(failMessage);
+
+    //   return reject('Невідома внутрішня помилка');
+    // });
 
     try {
-      const user = await promise;
+      const response = await fetch('http://127.0.0.1:8000/register', {
+        method: 'post',
+        body: data,
+      });
 
+      const user = await JSON.parse(response);
+
+      console.log(user);
+      
       return user;
     } catch (err) {
       return rejectWithValue(err);
