@@ -1,3 +1,15 @@
+export function isServerError(text) {
+  if (text === '5server@error.com') return true;
+
+  return false;
+}
+
+export function isRegisteredEmail(text) {
+  if (text === 'registered@email.com') return true;
+
+  return false;
+}
+
 export const categories = [
   {
     id: 1,

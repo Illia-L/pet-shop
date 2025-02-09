@@ -11,13 +11,14 @@ import Login from './components/cabinet/Login/Login';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { fetchUser } from './redux/userSlice';
+import ForgotPassword from './components/cabinet/ForgotPassword/ForgotPassword';
 
 function App() {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
-  useEffect(() => {
-    // dispatch(fetchUser());
-  }, []);
+  // useEffect(() => {
+  //   dispatch(fetchUser());
+  // }, []);
 
   return (
     <Layout>
@@ -57,6 +58,10 @@ function App() {
           <Route
             path='signup'
             element={<Signup />}
+          />
+          <Route
+            path='forgot-password'
+            element={<ForgotPassword/>}
           />
           <Route
             path='orders'

@@ -47,44 +47,43 @@ export const login = createAsyncThunk(
 export const signup = createAsyncThunk(
   'user/signup',
   async (data, { rejectWithValue }) => {
-    // try {
-    //   const response = await fetch('http://127.0.0.1:8000/register');
-    //   const user = await JSON.parse(response);
-    //   console.log(user);
-    // } catch (err) {
-    //   console.log(err);
-    // }
+    const fakeDataFromServer = { user: { ...data, id: 'uniqidfromserver' } };
+    // const data = { message: 'Сталася помилка на сервері. Спробуйте пізніше.' };
 
-    // const data = { user: { ...data, id: 'uniqidfromserver' } };
+    const promise = new Promise((resolve, reject) => {
+      const registeredUser = fakeDataFromServer.user;
+      const failMessage = fakeDataFromServer.message;
 
-    // const promise = new Promise((resolve, reject) => {
-    //   const registeredUser = data.user;
-    //   const failMessage = data.message;
+      setTimeout(() => {
+        if (registeredUser) {
+          localStorage.setItem('user', JSON.stringify(registeredUser));
+          return resolve(registeredUser);
+        }
 
-    //   if (registeredUser) {
-    //     localStorage.setItem('user', JSON.stringify(registeredUser));
-    //     return resolve(registeredUser);
-    //   }
+        if (failMessage) return reject(failMessage);
 
-    //   if (failMessage) return reject(failMessage);
-
-    //   return reject('Невідома внутрішня помилка');
-    // });
+        return reject('Невідома внутрішня помилка');
+      }, 800);
+    });
 
     try {
-      const response = await fetch('http://127.0.0.1:8000/register', {
-        method: 'post',
-        body: data,
-      });
-
-      const user = await JSON.parse(response);
-
-      console.log(user);
-      
-      return user;
+      return await promise;
     } catch (err) {
       return rejectWithValue(err);
     }
+
+    // try {
+    //   const response = await fetch('http://127.0.0.1:8000/register', {
+    //     method: 'post',
+    //     body: data,
+    //   });
+
+    //   const user = await JSON.parse(response);
+
+    //   return user;
+    // } catch (err) {
+    //   return rejectWithValue(err);
+    // }
   }
 );
 

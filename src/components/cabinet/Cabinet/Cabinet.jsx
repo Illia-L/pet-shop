@@ -1,4 +1,10 @@
-import { NavLink, Outlet, useLocation } from 'react-router-dom';
+import {
+  Navigate,
+  NavLink,
+  Outlet,
+  useLocation,
+  useNavigate,
+} from 'react-router-dom';
 import styles from './Cabinet.module.css';
 import Signup from '../Signup/Signup';
 import { useState } from 'react';
@@ -8,13 +14,18 @@ import { logout } from '../../../redux/userSlice';
 
 function Cabinet() {
   // const [user, setUser] = useState(null);
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const { pathname } = useLocation();
   const tab = pathname.split('/').at(-1);
+  const user = useSelector(state => state.user);
+  const canLoadTab =
+    user.id ||
+    tab === 'login' ||
+    tab === 'signup' ||
+    tab === 'forgot-password' ||
+    tab === 'reset-password';
 
-  const user = useSelector(state => state.user)
-
-  const canLoadTab = user.id || tab === 'login' || tab === 'signup';
+  if (!canLoadTab) return <Navigate to='login' />;
 
   const getButtonStyles = tabName =>
     styles.link + ' ' + (tabName === tab ? styles.current : '');
@@ -112,8 +123,7 @@ function Cabinet() {
         </ul>
       )}
       <div className={styles.content}>
-        {canLoadTab && <Outlet />}
-        {!canLoadTab && <Login/>}
+        <Outlet />
       </div>
     </div>
   );
