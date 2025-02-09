@@ -4,7 +4,7 @@
   <script type="text/javascript">
     // Redirect to the root index.html with the correct base path
     console.log(window.location.pathname);
-    var redirectPath = window.location.pathname.split('/').slice(0, -1).join('/') + '/index.html';
+    var redirectPath = window.location.pathname.split('/').slice(0, 2).join('/') + '/index.html';
     window.location.replace(redirectPath);
   </script>
 </head>
