@@ -32,15 +32,6 @@ function ForgotPassword() {
     );
 
   async function processSubmit({ email }) {
-    // send email to the server
-    // if email is registered
-    //   show message, that instructions are sent to email
-    //   hide form
-    //   reset form
-    // if email is not registered
-    //   show message and a link to register
-    // if server error
-    //   show message
     const promise = new Promise((resolve, reject) => {
       setTimeout(() => {
         if (isServerError(email)) return reject('error');
