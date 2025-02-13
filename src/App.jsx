@@ -12,6 +12,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { fetchUser } from './redux/userSlice';
 import ForgotPassword from './components/cabinet/ForgotPassword/ForgotPassword';
+import ResetPasswordLogic from './components/cabinet/passwordReset/PasswordResetLogic/PasswordResetLogic';
 
 function App() {
   // const dispatch = useDispatch();
@@ -61,7 +62,11 @@ function App() {
           />
           <Route
             path='forgot-password'
-            element={<ForgotPassword/>}
+            element={<ForgotPassword />}
+          />
+          <Route
+            path='reset-password'
+            element={<ResetPasswordLogic />}
           />
           <Route
             path='orders'

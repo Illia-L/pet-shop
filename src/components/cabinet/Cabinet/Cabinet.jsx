@@ -13,7 +13,6 @@ import Login from '../Login/Login';
 import { logout } from '../../../redux/userSlice';
 
 function Cabinet() {
-  // const [user, setUser] = useState(null);
   const dispatch = useDispatch();
   const { pathname } = useLocation();
   const tab = pathname.split('/').at(-1);

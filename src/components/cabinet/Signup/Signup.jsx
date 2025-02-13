@@ -17,8 +17,10 @@ function Signup() {
     register,
     handleSubmit,
     reset,
+    watch,
     formState: { errors },
   } = useForm({
+    mode:'onChange',
     defaultValues: {
       name: '',
       email: '',
@@ -85,6 +87,7 @@ function Signup() {
       <PasswordGroup
         required={required}
         register={register}
+        watch={watch}
         isLoading={isLoading}
         errors={errors}
       />

@@ -10,6 +10,11 @@ export function isRegisteredEmail(text) {
   return false;
 }
 
+export function isResetTokenValid(text) {
+  if (text === 'valid-token') return 'success';
+  if (text === 'invalid-token') return 'fail';
+}
+
 export const categories = [
   {
     id: 1,

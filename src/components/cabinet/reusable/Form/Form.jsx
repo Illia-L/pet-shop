@@ -1,3 +1,4 @@
+import Loader from '../Loader/Loader';
 import styles from './Form.module.css';
 
 function Form({
@@ -29,13 +30,7 @@ function Form({
           {submitCaption}
         </button>
       </form>
-      {isLoading && (
-        <div className={styles.loader}>
-          <div></div>
-          <div></div>
-          <div></div>
-        </div>
-      )}
+      {isLoading && <Loader />}
     </>
   );
 }

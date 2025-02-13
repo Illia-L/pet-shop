@@ -54,7 +54,7 @@ function ForgotPassword() {
   return (
     <>
       <Form
-        title='Відновлення паролю. Крок 1'
+        title='Зміна паролю. Крок 1'
         submitCaption='Відправити'
         handleSubmit={handleSubmit}
         processSubmit={processSubmit}
