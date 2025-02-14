@@ -4,7 +4,7 @@ export function isServerError(text) {
   return false;
 }
 
-export function isRegisteredEmail(text) {
+export function isEmailRegistered(text) {
   if (text === 'registered@email.com') return true;
 
   return false;

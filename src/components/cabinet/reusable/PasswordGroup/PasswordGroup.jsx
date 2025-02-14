@@ -34,6 +34,7 @@ function PasswordGroup({
   isLoading,
   register,
   watch,
+  trigger,
   // errors,
   shouldValidate = true,
 }) {
@@ -45,7 +46,10 @@ function PasswordGroup({
     ? { required, validate }
     : { required };
 
-  const passwordValue = watch('password', '');
+  // console.log(watch);
+  // let passwordValue = watch('password', '')
+
+  // if(!shouldValidate) passwordValue = false;
 
   function validate(value) {
     const values = rules.map(rule => rule.check(value));
@@ -53,8 +57,12 @@ function PasswordGroup({
     setRulesMatch(values);
   }
 
+  // useEffect(() => {
+  //   trigger('password');
+  // }, [passwordValue]);
+
   const shouldHint =
-    passwordValue &&
+    // passwordValue &&
     shouldValidate &&
     hasFocus &&
     !rulesMatch.every(rule => rule);

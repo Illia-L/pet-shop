@@ -1,20 +1,22 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { isServerError } from '../fake-data';
 
 export const fetchUser = createAsyncThunk(
   'user/fetch',
   async (_, { rejectWithValue }) => {
-    try {
-      // send api request to fetch user
+    const promise = new Promise((resolve, reject) => {
       const userStringified = localStorage.getItem('user');
-      const user = await JSON.parse(userStringified);
+      const user = JSON.parse(userStringified);
 
-      if (!user) return;
-      if (!user.remember) return;
+      if (!user) return reject();
+      // if (!user.remember) return;
+      return resolve(user);
+    });
 
-      return user;
-    } catch (err) {
-      rejectWithValue(err);
-    }
+    // send api request to fetch user
+    const user = await promise;
+
+    return user;
   }
 );
 
@@ -22,24 +24,31 @@ export const login = createAsyncThunk(
   'user/login',
   async (formdata, { rejectWithValue }) => {
     // fetch to login endpoint
-    try {
+    const promise = new Promise((resolve, reject) => {
       const userStringified = localStorage.getItem('user');
       const user = JSON.parse(userStringified);
       const isCorrect =
         user.email === formdata.email && user.password === formdata.password;
 
-      if (isCorrect) {
-        const updatedUser = { ...user, remember: formdata.remember };
-        const updatedStringifiedUser = JSON.stringify(updatedUser);
+      setTimeout(() => {
+        if (isCorrect) return resolve(user);
 
-        localStorage.setItem('user', updatedStringifiedUser);
+        if(isServerError(formdata.email)) return reject('error')
 
-        return user;
-      } else {
-        return rejectWithValue('Невірна електронна пошта та/або пароль');
-      }
+        reject('fail');
+      }, 800);
+    });
+
+    try {
+      const user = await promise;
+      // const updatedUser = { ...user, remember: formdata.remember };
+      // const updatedStringifiedUser = JSON.stringify(updatedUser);
+
+      // localStorage.setItem('user', updatedStringifiedUser);
+
+      return user;
     } catch (err) {
-      return rejectWithValue('Сталася помилка. Спробуйте пізніше');
+      return rejectWithValue(err);
     }
   }
 );
@@ -47,22 +56,18 @@ export const login = createAsyncThunk(
 export const signup = createAsyncThunk(
   'user/signup',
   async (data, { rejectWithValue }) => {
-    const fakeDataFromServer = { user: { ...data, id: 'uniqidfromserver' } };
-    // const data = { message: 'Сталася помилка на сервері. Спробуйте пізніше.' };
-
     const promise = new Promise((resolve, reject) => {
-      const registeredUser = fakeDataFromServer.user;
-      const failMessage = fakeDataFromServer.message;
-
       setTimeout(() => {
-        if (registeredUser) {
-          localStorage.setItem('user', JSON.stringify(registeredUser));
-          return resolve(registeredUser);
-        }
+        if (isServerError(data.emali)) return reject('error');
 
-        if (failMessage) return reject(failMessage);
+        const fakeDataFromServer = {
+          user: { ...data, id: 'uniqidfromserver' },
+        };
+        const registeredUser = fakeDataFromServer.user;
 
-        return reject('Невідома внутрішня помилка');
+        localStorage.setItem('user', JSON.stringify(registeredUser));
+
+        return resolve(registeredUser);
       }, 800);
     });
 
@@ -90,8 +95,7 @@ export const signup = createAsyncThunk(
 const initialState = {
   id: '',
   name: '',
-  isLoading: false,
-  fail: '',
+  status: '',
 };
 
 const slice = createSlice({
@@ -106,7 +110,7 @@ const slice = createSlice({
     logout(state) {
       state.id = '';
       state.name = '';
-      state.isLoading = false;
+      state.status = '';
       state.fail = '';
     },
   },
@@ -114,33 +118,32 @@ const slice = createSlice({
   extraReducers: builder =>
     builder
       .addCase(signup.pending, state => {
-        state.isLoading = true;
+        state.status = 'loading';
       })
       .addCase(signup.rejected, (state, action) => {
-        state.isLoading = false;
-        state.fail = action.payload;
+        state.status = action.payload;
       })
       .addCase(signup.fulfilled, (state, action) => {
         state.id = action.payload.id;
         state.name = action.payload.name;
-        state.isLoading = false;
+        state.status = 'success';
       })
       .addCase(fetchUser.fulfilled, (state, action) => {
         console.log(action);
         state.id = action.payload.id;
         state.name = action.payload.name;
+        state.status = 'success';
       })
-      .addCase(login.pending, (state, action) => {
-        state.isLoading = true;
+      .addCase(login.pending, state => {
+        state.status = 'loading';
       })
       .addCase(login.rejected, (state, action) => {
-        state.fail = action.payload;
-        state.isLoading = false;
+        state.status = action.payload;
       })
       .addCase(login.fulfilled, (state, action) => {
         state.id = action.payload.id;
         state.name = action.payload.name;
-        state.isLoading = false;
+        state.status = 'success';
       }),
 });
 

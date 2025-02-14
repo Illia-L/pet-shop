@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom';
-import styles from '../../reusable/Form/Form.module.css'
-import individualStyles from './ServerErrorMessage.module.css'
+import styles from '../../reusable/Form/Form.module.css';
+import individualStyles from './ServerErrorMessage.module.css';
 
 console.log(individualStyles.link);
 
-function ServerErrorMessage({sendVerifyTokenRequest}) {
+function ServerErrorMessage({ sendVerifyTokenRequest }) {
   return (
     <>
       <p className={styles.failStandalone}>

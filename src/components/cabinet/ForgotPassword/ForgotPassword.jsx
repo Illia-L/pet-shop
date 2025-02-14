@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { useState } from 'react';
 import Form from '../reusable/Form/Form';
 import EmailGroup from '../reusable/EmailGroup/EmailGroup';
-import { isRegisteredEmail, isServerError } from '../../../fake-data';
+import { isEmailRegistered, isServerError } from '../../../fake-data'
 import { Link } from 'react-router-dom';
 import styles from '../reusable/Form/Form.module.css';
 
@@ -36,13 +36,13 @@ function ForgotPassword() {
       setTimeout(() => {
         if (isServerError(email)) return reject('error');
 
-        if (isRegisteredEmail(email)) resolve();
+        if (isEmailRegistered(email)) resolve();
         else reject('fail');
       }, 800);
     });
 
     try {
-      setStatus('loading')
+      setStatus('loading');
       await promise;
       reset();
       setStatus('success');

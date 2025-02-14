@@ -6,6 +6,7 @@ function ConfirmPasswordGroup({
   register,
   errors,
 }) {
+  console.log('ConfirmPasswormGroup loaded...');
   return (
     <div className={styles.group}>
       <label

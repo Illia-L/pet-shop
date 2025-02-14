@@ -7,6 +7,12 @@ function EmailGroup({
   errors,
   checkIfEmailAvaillable = null,
 }) {
+  // function handleChange() {
+  //   if(errors.email) trigger('email')
+  // }
+
+  // console.log(errors.email);
+
   return (
     <div className={styles.group}>
       <label
@@ -25,13 +31,13 @@ function EmailGroup({
             value: /^[\d\w.-]+@[a-zA-Z\d.-]+\.[a-zA-Z]{2,}$/,
             message: 'Введіть дійсну електронну пошту',
           },
-          validate: checkIfEmailAvaillable || true,
+          // validate: checkIfEmailAvaillable || true,
         })}
         required
         placeholder='example@domain.com'
         disabled={isLoading}
       />
-      <p className={styles.fail}>{errors.email?.message}</p>
+      {!!errors.email && <p className={styles.fail}>{errors.email?.message}</p>}
     </div>
   );
 }

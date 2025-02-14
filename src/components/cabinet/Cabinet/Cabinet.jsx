@@ -9,7 +9,6 @@ import styles from './Cabinet.module.css';
 import Signup from '../Signup/Signup';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import Login from '../Login/Login';
 import { logout } from '../../../redux/userSlice';
 
 function Cabinet() {

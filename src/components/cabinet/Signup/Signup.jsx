@@ -18,9 +18,10 @@ function Signup() {
     handleSubmit,
     reset,
     watch,
+    trigger,
     formState: { errors },
   } = useForm({
-    mode:'onChange',
+    mode: 'onChange',
     defaultValues: {
       name: '',
       email: '',
@@ -79,8 +80,9 @@ function Signup() {
       <EmailGroup
         required={required}
         register={register}
-        isLoading={isLoading}
         errors={errors}
+        trigger={trigger}
+        isLoading={isLoading}
         checkIfEmailAvaillable={checkIfEmailAvaillable}
       />
 
@@ -88,6 +90,7 @@ function Signup() {
         required={required}
         register={register}
         watch={watch}
+        trigger={trigger}
         isLoading={isLoading}
         errors={errors}
       />
@@ -95,6 +98,7 @@ function Signup() {
       <ConfirmPasswordGroup
         required={required}
         register={register}
+        trigger={trigger}
         isLoading={isLoading}
         errors={errors}
       />

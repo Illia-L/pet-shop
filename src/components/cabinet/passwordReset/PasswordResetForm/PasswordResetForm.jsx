@@ -15,8 +15,10 @@ function PasswordResetForm() {
     register,
     handleSubmit,
     reset,
+    trigger,
     formState: { errors },
   } = useForm({
+    mode: 'onChange',
     defaultValues: {
       password: '',
       resetPassword: '',
@@ -71,7 +73,9 @@ function PasswordResetForm() {
           register={register}
           isLoading={status === 'loading'}
           errors={errors}
+          trigger={trigger}
         />
+
         <ConfirmPasswordGroup
           required={required}
           register={register}
@@ -80,9 +84,13 @@ function PasswordResetForm() {
         />
       </Form>
 
-      {status === 'error' && <>
-        <p className={styles.failStandalone}>Щось пішло не так. Спробуйте пізніше.</p>
-      </>}
+      {status === 'error' && (
+        <>
+          <p className={styles.failStandalone}>
+            Щось пішло не так. Спробуйте пізніше.
+          </p>
+        </>
+      )}
     </>
   );
 }

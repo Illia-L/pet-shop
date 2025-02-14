@@ -12,11 +12,12 @@ const required = { value: true, message: "Це поле обов'язкове д
 
 function Login() {
   const dispatch = useDispatch();
-  const { id, fail, isLoading } = useSelector(state => state.user);
+  const { id, status } = useSelector(state => state.user);
   const {
     register,
     handleSubmit,
     reset,
+    trigger,
     formState: { errors },
   } = useForm({
     defaultValues: {
@@ -43,20 +44,22 @@ function Login() {
         submitCaption='Увійти'
         handleSubmit={handleSubmit}
         processSubmit={processSubmit}
-        isLoading={isLoading}
+        isLoading={status === 'loading'}
       >
         <EmailGroup
           required={required}
           register={register}
-          isLoading={isLoading}
+          isLoading={status === 'loading'}
           errors={errors}
+          trigger={trigger}
           // checkIfEmailAvaillable={checkIfEmailAvaillable}
         />
         <PasswordGroup
           required={required}
           register={register}
-          isLoading={isLoading}
+          isLoading={status === 'loading'}
           errors={errors}
+          trigger={trigger}
           shouldValidate={false}
         />
         <Link
@@ -66,6 +69,8 @@ function Login() {
           Забули пароль?
         </Link>
       </Form>
+      {status === 'fail' && <p className={styles.failStandalone}>Невірна пошта та/або пароль</p>}
+      {status === 'error' && <p className={styles.failStandalone}>Щось пішло не так. Спробуйте пізніше</p>}
       <Link
         to='../signup'
         className={styles.link}
