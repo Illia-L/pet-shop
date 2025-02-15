@@ -58,7 +58,7 @@ export const signup = createAsyncThunk(
   async (data, { rejectWithValue }) => {
     const promise = new Promise((resolve, reject) => {
       setTimeout(() => {
-        if (isServerError(data.emali)) return reject('error');
+        if (isServerError(data.password)) return reject('error');
 
         const fakeDataFromServer = {
           user: { ...data, id: 'uniqidfromserver' },

@@ -1,12 +1,6 @@
-import styles from '../Form/Form.module.css'
+import styles from '../Form/Form.module.css';
 
-function ConfirmPasswordGroup({
-  required,
-  isLoading,
-  register,
-  errors,
-}) {
-  console.log('ConfirmPasswormGroup loaded...');
+function ConfirmPasswordGroup({ isLoading, register, errors }) {
   return (
     <div className={styles.group}>
       <label
@@ -20,7 +14,7 @@ function ConfirmPasswordGroup({
         type='password'
         id='confirm-password'
         {...register('passwordConfirm', {
-          required,
+          required: "Підтвердження паролю обов'язкове для заповнення",
           validate: {
             isPasswordConfirmed: (passwordConfirm, { password }) =>
               passwordConfirm === password

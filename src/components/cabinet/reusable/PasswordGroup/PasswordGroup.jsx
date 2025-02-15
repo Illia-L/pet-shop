@@ -1,72 +1,6 @@
-import { useEffect, useState } from 'react';
 import styles from '../Form/Form.module.css';
-import hintStyles from './PasswordGroup.module.css';
 
-const rules = [
-  {
-    message: 'Довжина має бути не менш 8 символів',
-    check: password => password.length >= 8,
-    value: false,
-  },
-
-  {
-    message: 'Тільки латиниця',
-    check: password =>
-      /^[A-Za-z0-9!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?`~]*$/.test(password),
-    value: true,
-  },
-
-  {
-    message: 'Хоча б одна цифра',
-    check: password => /[0-9]/.test(password),
-    value: false,
-  },
-
-  {
-    message: 'Хоча б одна літера',
-    check: password => /^(?=.*[A-Za-z]).*$/.test(password),
-    value: false,
-  },
-];
-
-function PasswordGroup({
-  required,
-  isLoading,
-  register,
-  watch,
-  trigger,
-  // errors,
-  shouldValidate = true,
-}) {
-  const [hasFocus, setHasFocus] = useState(false);
-  const [rulesMatch, setRulesMatch] = useState(() =>
-    rules.map(hint => hint.value)
-  );
-  const validationToApply = shouldValidate
-    ? { required, validate }
-    : { required };
-
-  // console.log(watch);
-  // let passwordValue = watch('password', '')
-
-  // if(!shouldValidate) passwordValue = false;
-
-  function validate(value) {
-    const values = rules.map(rule => rule.check(value));
-
-    setRulesMatch(values);
-  }
-
-  // useEffect(() => {
-  //   trigger('password');
-  // }, [passwordValue]);
-
-  const shouldHint =
-    // passwordValue &&
-    shouldValidate &&
-    hasFocus &&
-    !rulesMatch.every(rule => rule);
-
+function PasswordGroup({ register, errors, hasFocus, validate = () => true, setHasFocus = () => {} }) {
   return (
     <div className={styles.group}>
       <label
@@ -79,28 +13,17 @@ function PasswordGroup({
         className={styles.input}
         type='password'
         id='password'
-        {...register('password', validationToApply)}
+        {...register('password', {
+          required: "Пароль обов'язковий для заповнення",
+          validate,
+        })}
         required
         placeholder='Введіть пароль'
-        disabled={isLoading}
         onFocus={() => setHasFocus(true)}
         onBlur={() => setHasFocus(false)}
       />
-      {/* <p className={styles.fail}>{errors.password?.message}</p> */}
-      {shouldHint &&
-        rules.map((hint, i) => (
-          <p
-            className={hintStyles.hint}
-            key={i}
-          >
-            {rulesMatch[i] ? (
-              <span className={hintStyles.check}>&#10003;</span>
-            ) : (
-              <span className={hintStyles.cross}>&#10005;</span>
-            )}
-            {hint.message}
-          </p>
-        ))}
+
+      {errors.password && !hasFocus && <p className={styles.fail}>{errors.password.message}</p>}
     </div>
   );
 }

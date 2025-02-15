@@ -22,3 +22,9 @@
   0%, 80%, 100% { transform: scale(0); }
   40% { transform: scale(1); }
 }
+
+.loader.small div {
+  margin-top: 8px;
+  width: 4px;
+  height: 4px;
+}

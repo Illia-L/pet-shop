@@ -1,18 +1,13 @@
 import styles from '../Form/Form.module.css';
+import Loader from '../Loader/Loader';
 
 function EmailGroup({
-  required,
   isLoading,
   register,
   errors,
-  checkIfEmailAvaillable = null,
+  isCheckingAvailability = false,
+  checkIfEmailAvaillableWithDelay = () => true,
 }) {
-  // function handleChange() {
-  //   if(errors.email) trigger('email')
-  // }
-
-  // console.log(errors.email);
-
   return (
     <div className={styles.group}>
       <label
@@ -26,18 +21,21 @@ function EmailGroup({
         type='email'
         id='email'
         {...register('email', {
-          required,
+          required: "Електронна пошта обов'язкова для заповнення",
           pattern: {
             value: /^[\d\w.-]+@[a-zA-Z\d.-]+\.[a-zA-Z]{2,}$/,
             message: 'Введіть дійсну електронну пошту',
           },
-          // validate: checkIfEmailAvaillable || true,
+          validate: {
+            checkAvailability: async email =>
+              await checkIfEmailAvaillableWithDelay(email),
+          },
         })}
         required
         placeholder='example@domain.com'
         disabled={isLoading}
       />
-      {!!errors.email && <p className={styles.fail}>{errors.email?.message}</p>}
+      {!isCheckingAvailability && !!errors.email && <p className={styles.fail}>{errors.email.message}</p>}
     </div>
   );
 }

@@ -1,14 +1,12 @@
 import { useForm } from 'react-hook-form';
 import styles from '../reusable/Form/Form.module.css';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { login } from '../../../redux/userSlice';
 import Form from '../reusable/Form/Form';
 import EmailGroup from '../reusable/EmailGroup/EmailGroup';
 import PasswordGroup from '../reusable/PasswordGroup/PasswordGroup';
 import { Link } from 'react-router-dom';
-
-const required = { value: true, message: "Це поле обов'язкове для заповнення" };
 
 function Login() {
   const dispatch = useDispatch();
@@ -20,6 +18,7 @@ function Login() {
     trigger,
     formState: { errors },
   } = useForm({
+    mode: 'onChange',
     defaultValues: {
       email: '',
       password: '',
@@ -31,7 +30,7 @@ function Login() {
     reset();
   }, [id]);
 
-  if (id) return <p>Ви увійшли в акаунт.</p>;
+  if (id) return <p className={styles.success}>Ви увійшли в акаунт.</p>;
 
   function processSubmit(data) {
     dispatch(login(data));
@@ -47,7 +46,6 @@ function Login() {
         isLoading={status === 'loading'}
       >
         <EmailGroup
-          required={required}
           register={register}
           isLoading={status === 'loading'}
           errors={errors}
@@ -55,7 +53,6 @@ function Login() {
           // checkIfEmailAvaillable={checkIfEmailAvaillable}
         />
         <PasswordGroup
-          required={required}
           register={register}
           isLoading={status === 'loading'}
           errors={errors}
@@ -69,8 +66,14 @@ function Login() {
           Забули пароль?
         </Link>
       </Form>
-      {status === 'fail' && <p className={styles.failStandalone}>Невірна пошта та/або пароль</p>}
-      {status === 'error' && <p className={styles.failStandalone}>Щось пішло не так. Спробуйте пізніше</p>}
+      {status === 'fail' && (
+        <p className={styles.failStandalone}>Невірна пошта та/або пароль</p>
+      )}
+      {status === 'error' && (
+        <p className={styles.failStandalone}>
+          Щось пішло не так. Спробуйте пізніше
+        </p>
+      )}
       <Link
         to='../signup'
         className={styles.link}

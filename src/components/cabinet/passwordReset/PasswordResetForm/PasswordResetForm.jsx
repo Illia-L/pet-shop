@@ -6,6 +6,7 @@ import ConfirmPasswordGroup from '../../reusable/ConfirmPasswordGroup/ConfirmPas
 import { useState } from 'react';
 import { isServerError } from '../../../../fake-data';
 import { Link } from 'react-router-dom';
+import NewPassword from '../../reusable/NewPassword/NewPassword';
 
 const required = { value: true, message: "Це поле обов'язкове для заповнення" };
 
@@ -15,7 +16,6 @@ function PasswordResetForm() {
     register,
     handleSubmit,
     reset,
-    trigger,
     formState: { errors },
   } = useForm({
     mode: 'onChange',
@@ -68,12 +68,9 @@ function PasswordResetForm() {
         processSubmit={processSubmit}
         isLoading={status === 'loading'}
       >
-        <PasswordGroup
-          required={required}
+        <NewPassword
           register={register}
-          isLoading={status === 'loading'}
           errors={errors}
-          trigger={trigger}
         />
 
         <ConfirmPasswordGroup
