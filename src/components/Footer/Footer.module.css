@@ -1,0 +1,109 @@
+.footer {
+  margin-top: auto;
+  padding: 30px 0 50px;
+  line-height: 1.7;
+  font-family: 'Raleway', sans-serif;
+  font-size: 14px;
+  text-align: center;
+  color: #fff;
+  background-color: #000;
+}
+
+.subtitle {
+  line-height: 1.7;
+  font-size: 16px;
+  font-weight: 700;
+  color: #fe7a29;
+}
+
+.desc {
+  margin-top: 4px;
+}
+
+.socials {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+.mt20 {
+  margin-top: 20px;
+}
+
+.mt40 {
+  margin-top: 40px;
+}
+
+.icon {
+  width: 21px;
+  height: 21px;
+}
+
+@media (min-width: 768px) {
+  .footer {
+    padding-block: 50px;
+    font-size: 16px;
+    text-align: left;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: space-between;
+    margin-inline: auto;
+    max-height: 214px;
+    width: 590px;
+  }
+
+  .mt40 {
+    margin-top: 20px;
+  }
+
+  .socials {
+    justify-content: start;
+  }
+
+  .icon {
+    width: 22px;
+    height: 22px;
+  }
+
+  .schedule {
+    margin-top: 0;
+  }
+}
+
+@media (min-width: 1440px) {
+  .footer {
+    padding-block: 80px;
+    line-height: 2;
+    font-size: 24px;
+  }
+
+  .container {
+    width: 1268px;
+    max-height: 331px;
+  }
+
+  .subtitle {
+    font-size: 24px;
+  }
+
+  .desc {
+    margin-top: 28px;
+  }
+
+  .icon {
+    width: 25px;
+    height: 25px;
+  }
+
+  .schedule {
+    flex-basis: 331px;
+  }
+
+  .policyBlock {
+    margin-top: 0;
+  }
+}

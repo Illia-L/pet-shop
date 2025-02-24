@@ -1,103 +1,183 @@
 import Catalog from '../../components/catalog/Catalog/Catalog';
 
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useReducer, useState } from 'react';
 import {
   categories as initialCategories,
   products as initialProducts,
 } from '../../fake-data';
-import { useSearchParams } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 
-const defaultProductsPerPage = 10;
+const sortValues = ['default', 'asc', 'desc'];
 
-function useFilter() {
-  const [searchParams, setSearchParams] = useSearchParams()
+const initialFilter = {
+  category: '',
+  search: '',
+  sort: sortValues[0],
+  perPage: 10,
+  page: 1,
+  pagesCount: 0,
+};
 
-  const filters = useMemo(
-    () => ({
-      category: searchParams.get('category') || '',
-      search: searchParams.get('search') || '',
-    }),
-    [searchParams]
-  );
+function filterReducer(state, action) {
+  switch (action.type) {
+    case 'SET_CATEGORY': {
+      const category = action.payload;
 
-  function setFilter(key, value) {
-    const newParams = new URLSearchParams(searchParams)
+      if (category === state.category) return state;
 
-    if(value) {
-      newParams.set(key, value)
-    } else {
-      newParams.delete(key)
+      return { ...state, page: 1, search: '', category };
     }
 
-    setSearchParams(newParams)
-  }
+    case 'SET_SEARCH': {
+      const search = action.payload;
 
-  return [filters, setFilter]
+      if (search === state.search) return state;
+
+      const category = search ? '' : state.category;
+
+      return { ...state, page: 1, category, search };
+    }
+
+    case 'SET_SORT': {
+      if (!sortValues.includes(action.payload)) return state;
+
+      return { ...state, page: 1, sort: action.payload };
+    }
+
+    case 'SET_PER_PAGE':
+      return { ...state, perPage: action.payload };
+
+    case 'SET_PAGE': {
+      const page = action.payload;
+
+      if (!Number.isInteger(page) || page < 1) return state;
+
+      return { ...state, page };
+    }
+
+    case 'SET_PAGES_COUNT':
+      return { ...state, pagesCount: action.payload };
+
+    default:
+      return state;
+  }
 }
 
 export default function CatalogPage() {
+  const [state, dispatch] = useReducer(filterReducer, initialFilter);
   const [categories, setCategories] = useState([]);
   const [products, setProducts] = useState([]);
-  const [productsPerPage, setProductsPerPage] = useState(
-    defaultProductsPerPage
-  );
-  const [pagesCount, setPagesCount] = useState(null);
-  const [currentProductsPage, setcurrentProductsPage] = useState(1);
-  // const [currentCategoryId, setCurrentCategoryId] = useState(null);
-  // const [searchText, setSearchText] = useState('');
-  const [filters, setFilter] = useFilter()
+  const [searchParams] = useSearchParams();
+  const navigate = useNavigate();
 
   function selectCategory(id) {
-    setFilter('category', id);
+    dispatch({ type: 'SET_CATEGORY', payload: id });
   }
 
-  function searchText(text) {
-    setFilter('search', text)
+  function setSearch(text) {
+    dispatch({ type: 'SET_SEARCH', payload: text });
+  }
+
+  function setSort(value) {
+    dispatch({ type: 'SET_SORT', payload: value });
+  }
+
+  function setPage(num) {
+    dispatch({ type: 'SET_PAGE', payload: num });
+  }
+
+  function setPerPage(num) {
+    dispatch({ type: 'SET_PER_PAGE', payload: num });
+  }
+
+  function setPagesCount(num) {
+    dispatch({ type: 'SET_PAGES_COUNT', payload: num });
+  }
+
+  async function fetchCategories() {
+    // const response = await fetch('api/categories');
+    // const categories = await response.json()
+    const categories = initialCategories;
+
+    setCategories(categories);
+  }
+
+  async function fetchProducts() {
+    // const categoryParam = state.category ? `category=${state.category}` : '';
+    // const searchParam = state.search ? `search=${state.search}` : '';
+    // const sortParam = state.sort ? `sort=${state.sort}` : '';
+    // const pageParam = state.page ? `page=${state.page}` : '';
+    // const paramsToSend = [categoryParam, searchParam, sortParam, pageParam]
+    //   .filter(param => param)
+    //   .join('&');
+    // const response = await fetch('api/products?' + paramsToSend);
+    // const data = await response.json();
+    // const { products, pagesCount } = data;
+
+    const products = initialProducts;
+
+    setProducts(products);
+    // setPagesCount(pagesCount);
+  }
+
+  function saveSearchParamsToState() {
+    const category = searchParams.get('category');
+    const search = searchParams.get('search');
+    const sort = searchParams.get('sort');
+    const page = searchParams.get('page');
+    const perPage = searchParams.get('per-page');
+
+    if (search) setSearch(search);
+    if (!search && category) selectCategory(category);
+    if (sort) setSort(sort);
+    if (page) setPage(page);
+    if (perPage) setPerPage(perPage);
+  }
+
+  function navigateWithSearchParamsFromState() {
+    const queryString = createQueryString(state);
+
+    navigate(`/catalog?${queryString}`);
   }
 
   useEffect(() => {
-    setcurrentProductsPage(() => 1);
-  }, [filters]);
-
-  useEffect(() => {
-    const filteredProductsByCategory =
-      !filters.category
-        ? initialProducts
-        : initialProducts.filter(p => `${p.categoryId}` === filters.category);
-
-    const filteredProducts = filteredProductsByCategory.filter(p =>
-      p.title.toLowerCase().includes(filters.search.toLowerCase())
-    );
-
-    setPagesCount(Math.ceil(filteredProducts.length / productsPerPage));
-
-    const startChunkIndex = productsPerPage * (currentProductsPage - 1);
-    const endChunkIndex = productsPerPage * currentProductsPage;
-    const currentPageProducts = filteredProducts.slice(
-      startChunkIndex,
-      endChunkIndex
-    );
-
-    setProducts(currentPageProducts);
-  }, [filters, currentProductsPage]);
-
-  useEffect(() => {
-    setCategories(initialCategories);
+    fetchCategories();
+    saveSearchParamsToState();
   }, []);
+
+  useEffect(() => {
+    navigateWithSearchParamsFromState();
+    fetchProducts();
+  }, [state.category, state.search, state.sort, state.page, state.perPage]);
 
   return (
     <>
       <Catalog
         categories={categories}
         products={products}
-        currentCategoryId={filters.category}
-        currentProductsPage={currentProductsPage}
-        pagesCount={pagesCount}
-        setProducts={setProducts}
-        setcurrentProductsPage={setcurrentProductsPage}
-        searchText={searchText}
+        currentCategoryId={state.category}
+        currentProductsPage={state.page}
+        pagesCount={state.pagesCount}
+        search={state.search}
+        sort={state.sort}
+        setcurrentProductsPage={setPage}
+        setProductsPerPage={setPerPage}
+        setSearch={setSearch}
+        setSort={setSort}
         selectCategory={selectCategory}
       />
     </>
   );
+}
+
+function createQueryString(state) {
+  const categoryParam = state.category ? `category=${state.category}` : '';
+  const searchParam = state.search ? `search=${state.search}` : '';
+  const sortParam = state.sort !== 'default' ? `sort=${state.sort}` : '';
+  const pageParam = state.page !== 1 ? `page=${state.page}` : '';
+  const queryString = [categoryParam, searchParam, sortParam, pageParam]
+    .filter(param => param)
+    .join('&');
+
+  return queryString;
 }

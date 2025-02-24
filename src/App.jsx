@@ -29,6 +29,10 @@ function App() {
           element={<CatalogPage />}
         />
         <Route
+          path='catalog'
+          element={<CatalogPage />}
+        />
+        <Route
           path='about'
           element={<div>About</div>}
         />

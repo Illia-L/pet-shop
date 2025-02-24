@@ -1,6 +1,10 @@
-import styles from './Catalog.module.css';
+import css from './Catalog.module.css';
 import Categories from '../Categories/Categories';
 import Products from '../Products/Products';
+import ProductsControls from '../ProductsControls/ProductsControls';
+import Pagination from '../Pagination/Pagination';
+import CategoriesMobileViget from '../CategoriesMobileViget/CategoriesMobileViget';
+import { useState } from 'react';
 
 export default function Catalog({
   categories,
@@ -8,26 +12,64 @@ export default function Catalog({
   currentCategoryId,
   currentProductsPage,
   pagesCount,
+  search,
+  sort,
   setProducts,
   setcurrentProductsPage,
-  searchText,
+  setSearch,
+  setSort,
   selectCategory,
 }) {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const allCategoriesItem = {
+    id: '',
+    title: 'Всі категорії',
+  };
+
+  const categoriesWithAllCategoriesItem = [allCategoriesItem, ...categories];
+
+  const currentCategoryName = categoriesWithAllCategoriesItem.find(
+    cat => `${cat.id}` === `${currentCategoryId}`
+  )?.title;
+
   return (
-    <div className={styles.catalog}>
-      <Categories
-        categories={categories}
-        currentCategoryId={currentCategoryId}
-        selectCategory={selectCategory}
+    <div className={css.catalog}>
+      <CategoriesMobileViget
+        currentCategoryName={currentCategoryName}
+        setIsModalOpen={setIsModalOpen}
       />
-      <Products
-        products={products}
-        currentProductsPage={currentProductsPage}
-        pagesCount={pagesCount}
-        setProducts={setProducts}
-        setcurrentProductsPage={setcurrentProductsPage}
-        searchText={searchText}
+
+      <ProductsControls
+        search={search}
+        sort={sort}
+        setSort={setSort}
+        setSearch={setSearch}
       />
+
+      <div className={css.content}>
+        <Categories
+          categoriesWithAllCategoriesItem={categoriesWithAllCategoriesItem}
+          currentCategoryId={currentCategoryId}
+          isModalOpen={isModalOpen}
+          selectCategory={selectCategory}
+          setIsModalOpen={setIsModalOpen}
+        />
+        <div>
+          <Products
+            products={products}
+            currentProductsPage={currentProductsPage}
+            pagesCount={pagesCount}
+            setProducts={setProducts}
+            setcurrentProductsPage={setcurrentProductsPage}
+          />
+          <Pagination
+            currentProductsPage={currentProductsPage}
+            pagesCount={pagesCount}
+            setcurrentProductsPage={setcurrentProductsPage}
+          />
+        </div>
+      </div>
     </div>
   );
 }

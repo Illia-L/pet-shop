@@ -2,6 +2,7 @@ import css from "./Layout.module.css";
 import Header from '../Header/Header';
 
 import { Suspense } from "react";
+import Footer from "../Footer/Footer";
 
 export default function Layout ({ children }) {
   return (
@@ -10,7 +11,7 @@ export default function Layout ({ children }) {
           <main>
             {children}
           </main>
-          {/* <Footer /> */}
+          <Footer />
       </div>
   )
 }

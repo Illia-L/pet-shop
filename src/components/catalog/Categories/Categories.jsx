@@ -1,38 +1,50 @@
-import styles from './Categories.module.css';
+import css from './Categories.module.css';
+import Icon from '../../reusable-global/Icon/Icon';
+import Modal from '../Modal/Modal';
 
-function Categories({ categories, currentCategoryId, selectCategory }) {
+function Categories({
+  isModalOpen,
+  categoriesWithAllCategoriesItem,
+  currentCategoryId,
+  selectCategory,
+  setIsModalOpen,
+}) {
   const getButtonStyles = categoryId =>
-    styles.button +
+    css.button +
     ' ' +
-    (`${categoryId}` === `${currentCategoryId}` ? styles.current : '');
+    (`${categoryId}` === `${currentCategoryId}` ? css.current : '');
+
+  const modalStyles = css.modal + ' ' + (isModalOpen ? css.open : '');
+
+  function handleSelectCategory(id) {
+    selectCategory(id);
+    setIsModalOpen(false);
+  }
 
   return (
-    <ul className={styles.categories}>
-      <li
-        className={styles.item}
-        key={'category-all'}
+    <>
+      <Modal
+        isOpen={isModalOpen}
+        setIsOpen={setIsModalOpen}
       >
-        <button
-          className={getButtonStyles('')}
-          onClick={() => selectCategory(null)}
-        >
-          Всі категорії
-        </button>
-      </li>
-      {categories.map(cat => (
-        <li
-          className={styles.item}
-          key={'category-' + cat.id}
-        >
-          <button
-            className={getButtonStyles(cat.id)}
-            onClick={() => selectCategory(cat.id)}
-          >
-            {cat.title}
-          </button>
-        </li>
-      ))}
-    </ul>
+        <ul className={css.categories}>
+          {categoriesWithAllCategoriesItem.map(cat => (
+            <li
+              className={css.item}
+              key={'category-' + cat.id}
+            >
+              <button
+                type='button'
+                className={getButtonStyles(cat.id)}
+                onClick={() => handleSelectCategory(cat.id)}
+              >
+                {cat.title}
+              </button>
+            </li>
+          ))}
+        </ul>
+      </Modal>
+    </>
   );
 }
 

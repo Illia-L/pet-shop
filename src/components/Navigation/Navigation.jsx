@@ -1,22 +1,31 @@
 import { NavLink, useLocation } from 'react-router-dom';
-import styles from './Navigation.module.css';
+import css from './Navigation.module.css';
 
-export default function Navigation({setIsMenuOpen}) {
-  const location = useLocation()
+export default function Navigation({ setIsMenuOpen }) {
+  const location = useLocation();
 
   console.log(location.pathname);
 
-  
   const getLinkStyle = path => {
-    const isCurrent = path === location.pathname.split('/')[1]
+    const isCurrent = path === location.pathname.split('/')[1];
 
-    return `${styles.link} ${isCurrent ? styles.current : ''}`
-  }
+    return `${css.link} ${isCurrent ? css.current : ''}`;
+  };
 
   return (
-    <nav className={styles.nav}>
-      <ul className={styles.list}>
-        <li>
+    <nav className={css.nav}>
+      <ul className={css.list}>
+        <li className={css.item}>
+          <NavLink
+            to='/'
+            className={css.link}
+            onClick={() => setIsMenuOpen(false)}
+          >
+            Головна
+          </NavLink>
+        </li>
+
+        <li className={css.item}>
           <NavLink
             to='/'
             className={getLinkStyle('')}
@@ -25,7 +34,8 @@ export default function Navigation({setIsMenuOpen}) {
             Каталог
           </NavLink>
         </li>
-        <li>
+
+        <li className={css.item}>
           <NavLink
             to='about'
             className={getLinkStyle('about')}
@@ -34,31 +44,14 @@ export default function Navigation({setIsMenuOpen}) {
             Про нас
           </NavLink>
         </li>
-        <li>
+
+        <li className={css.item}>
           <NavLink
             to='contacts'
             className={getLinkStyle('contacts')}
             onClick={() => setIsMenuOpen(false)}
           >
             Контакти
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            to='basket'
-            className={getLinkStyle('basket')}
-            onClick={() => setIsMenuOpen(false)}
-          >
-            Кошик
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            to='cabinet'
-            className={getLinkStyle('cabinet')}
-            onClick={() => setIsMenuOpen(false)}
-          >
-            Кабінет
           </NavLink>
         </li>
       </ul>
