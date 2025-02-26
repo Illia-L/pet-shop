@@ -36,4 +36,9 @@
     width: unset;
     padding: 0;
   }
+
+  .modalTitle {
+    display: none;
+  }
 }
+

@@ -49,8 +49,19 @@
   .card {
     width: calc((100% - 2 * 16px) / 3);
   }
+
+  .title {
+    line-height: 1.2;
+    font-size: 14px;
+  }
 }
 
-@media (min-width:1440px) {
-  .card{width: calc((100% - 3 * 16px) / 4);}
+@media (min-width: 1440px) {
+  .card {
+    width: calc((100% - 3 * 16px) / 4);
+  }
+
+  .title {
+    font-size: 18px;
+  }
 }

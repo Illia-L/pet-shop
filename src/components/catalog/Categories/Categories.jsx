@@ -27,7 +27,7 @@ function Categories({
         isOpen={isModalOpen}
         setIsOpen={setIsModalOpen}
       >
-        <ul className={css.categories}>
+        <ul className={css.list}>
           {categoriesWithAllCategoriesItem.map(cat => (
             <li
               className={css.item}
