@@ -1,8 +1,16 @@
 import { NavLink } from 'react-router-dom';
 import css from './ProductCard.module.css';
-import Icon from '../../reusable-global/Icon/Icon'
+import Icon from '../../reusable-global/Icon/Icon';
+import { useDispatch } from 'react-redux';
+import { addItemToCart } from '../../../redux/productsSlice';
 
 function ProductCard({product}) {
+  const dispatch = useDispatch();
+
+  const addToCart = () => {
+      dispatch(addItemToCart(product));
+    };
+
   return (
     <li className={css.card}>
       <NavLink to={`products/${product.id}`} className={css.link}>
@@ -19,7 +27,7 @@ function ProductCard({product}) {
         <p className={css.purchaseBox}>
           {product.price}
           
-          <button type='button' className='cartButton'>
+          <button type='button' className='cartButton' onClick={() => addToCart(product)}>
             <Icon id='icon-cart-filled' width={24} height={22}/>
           </button>
         </p>
