@@ -2,13 +2,16 @@ import css from './Header.module.css';
 
 import Navigation from '../Navigation/Navigation';
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import Icon from '../reusable-global/Icon/Icon';
 import Menu from '../Menu/Menu';
 
 export default function AppBar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
+  const products = useSelector((state) => state.products.items);
+  const totalOfProducts = products.reduce((acc, number) => acc + number.quantity, 0);
+  
   return (
     <header className={css.header}>
       <div className={css.container}>
@@ -61,6 +64,7 @@ export default function AppBar() {
           </NavLink>
 
           <NavLink
+            className={css.iconCartPosition}
             to='basket'
             onClick={() => setIsMenuOpen(false)}
           >
@@ -70,6 +74,7 @@ export default function AppBar() {
               height={42}
               iconClass={css.iconCart}
             />
+            {totalOfProducts > 0 && <div className={css.numbersProducts}>{totalOfProducts}</div>}
           </NavLink>
         </div>
       </div>
