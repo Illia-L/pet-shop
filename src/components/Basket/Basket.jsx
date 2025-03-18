@@ -1,4 +1,5 @@
 import BasketList from "./BasketList/BasketList";
+import BasketEmpty from "./BasketEmpty/BasketEmpty";
 import { useSelector } from "react-redux";
 import css from './Basket.module.css';
 
@@ -7,7 +8,7 @@ export default function Basket () {
 
   return (
     <>
-      {products.length > 0 ? <BasketList /> : <h1>Кошик порожний</h1>}
+      {products.length > 0 ? <BasketList /> : <BasketEmpty />}
     </>
   )
 }
