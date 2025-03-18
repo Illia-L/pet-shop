@@ -1,4 +1,4 @@
-import Loader from '../Loader/Loader';
+import Loader from '../../../reusable-global/Loader/Loader';
 import styles from './Form.module.css';
 
 function Form({

@@ -26,8 +26,12 @@
 
 .title {
   margin-top: 10px;
-  display: flex;
-  align-items: center;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  overflow: hidden;
+  /* align-items: center; */
   height: 32px;
   line-height: 1.2;
   font-family: 'Nunito Sans', sans-serif;
@@ -62,6 +66,7 @@
   }
 
   .title {
+    height: 44px;
     font-size: 18px;
   }
 }

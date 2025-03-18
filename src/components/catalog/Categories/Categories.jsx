@@ -1,6 +1,8 @@
 import css from './Categories.module.css';
 import Icon from '../../reusable-global/Icon/Icon';
-import Modal from '../Modal/Modal';
+import Modal from '../../pageModals/Modal/Modal';
+import MediaQuery from 'react-responsive';
+import CloseButton from '../../pageModals/CloseButton/CloseButton';
 
 function Categories({
   isModalOpen,
@@ -26,7 +28,19 @@ function Categories({
       <Modal
         isOpen={isModalOpen}
         setIsOpen={setIsModalOpen}
+        modalClass={css.modal}
       >
+        <MediaQuery maxWidth={767}>
+          <CloseButton
+            icon='chevron'
+            setIsOpen={setIsModalOpen}
+          />
+
+          <h2 className={css.title}>
+            <span>Категорії</span>
+          </h2>
+        </MediaQuery>
+
         <ul className={css.list}>
           {categoriesWithAllCategoriesItem.map(cat => (
             <li

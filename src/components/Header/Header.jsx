@@ -6,12 +6,16 @@ import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import Icon from '../reusable-global/Icon/Icon';
 import Menu from '../Menu/Menu';
+import UserControls from '../UserControls/UserControls';
 
 export default function AppBar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const products = useSelector((state) => state.products.items);
-  const totalOfProducts = products.reduce((acc, number) => acc + number.quantity, 0);
-  
+  const products = useSelector(state => state.products.items);
+  const totalOfProducts = products.reduce(
+    (acc, number) => acc + number.quantity,
+    0
+  );
+
   return (
     <header className={css.header}>
       <div className={css.container}>
@@ -49,19 +53,7 @@ export default function AppBar() {
         />
 
         <div className={css.iconsRight}>
-          <NavLink
-            to='cabinet'
-            onClick={() => setIsMenuOpen(false)}
-            className={css.linkCabinet}
-          >
-            <Icon
-              id='icon-profile'
-              width={22}
-              height={42}
-              iconClass={css.profileIcon}
-            />
-            <span className={css.profileText}> Log in/Sign up</span>
-          </NavLink>
+          <UserControls />
 
           <NavLink
             className={css.iconCartPosition}
@@ -74,7 +66,9 @@ export default function AppBar() {
               height={42}
               iconClass={css.iconCart}
             />
-            {totalOfProducts > 0 && <div className={css.numbersProducts}>{totalOfProducts}</div>}
+            {totalOfProducts > 0 && (
+              <div className={css.numbersProducts}>{totalOfProducts}</div>
+            )}
           </NavLink>
         </div>
       </div>
