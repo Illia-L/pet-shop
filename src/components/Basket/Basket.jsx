@@ -8,7 +8,7 @@ export default function Basket () {
 
   return (
     <>
-      {products.length > 0 ? <BasketList /> : <BasketEmpty />}
+      {/* {products.length > 0 ? <BasketList /> : <BasketEmpty />} */}
     </>
   )
 }

@@ -1,0 +1,39 @@
+.container {
+  min-width: 320px;
+  max-width: 375px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.icon {
+  fill: #FE7A29;
+  height: 21px;
+  width: 21px;
+}
+
+.link {
+  display: flex;
+  gap: 10px;
+}
+
+@media (min-width: 768px) {
+  .container {
+    margin-top: 10px;
+    max-width: 768px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container {
+    margin-top: 20px;
+    max-width: 1280px;
+  }
+
+  .linkBack {
+    font-family: Inter;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 120%;
+    letter-spacing: 0px;
+  }
+}
