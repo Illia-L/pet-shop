@@ -1,11 +1,3 @@
-.container {
-  min-width: 320px;
-  max-width: 375px;
-  padding: 5px 10px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
 .products {
   display: flex;
   flex-wrap: wrap;
@@ -35,23 +27,24 @@
   /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
 }
 
-@media (min-width: 576px) {
+/* @media (min-width: 576px) {
   .card {
-    flex: 0 0 calc(100% / 2); /* 3 cards per row on wide screens */
+    flex: 0 0 calc(100% / 2); 
   }
 }
 
 @media (min-width: 1024px) {
   .card {
-    flex: 0 0 calc(100% / 3); /* 3 cards per row on wide screens */
+    flex: 0 0 calc(100% / 3); 
   }
 }
 
 @media (min-width: 1200px) {
   .card {
-    flex: 0 0 calc(100% / 4); /* 3 cards per row on wide screens */
+    flex: 0 0 calc(100% / 4); 
   }
-}
+} */
+
 .mainTitle {
   font-family: Inter;
   font-weight: 700;
@@ -71,7 +64,7 @@
 .listBox {
   min-width: 320px;
   max-width: 375px;
-  padding: 5px 10px;
+  padding: 0 10px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -81,6 +74,25 @@
   justify-content: space-between;
   gap: 15px;
   width: 100%;
+}
+
+.btnBox {
+  min-width: 320px;
+  max-width: 375px;
+  padding: 0 10px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.deleteText {
+  font-family: Inter;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 16.8px;
+  letter-spacing: 0%;
+  margin-right: 20px;
 }
 
 .image {
@@ -150,13 +162,16 @@
   display: flex;
   flex-direction: column;
   gap: 24px;
-  background-color: #F6F6F6;
 
   min-width: 320px;
   max-width: 375px;
   padding: 20px 10px;
   margin-left: auto;
   margin-right: auto;
+}
+
+.background {
+  background-color: #F6F6F6;
 }
 
 .total {
@@ -206,3 +221,172 @@
   letter-spacing: 0px;
 }
 
+.textBox {
+  width: 200px;
+}
+
+.iconDelete {
+  width: 16px;
+  height: 16px;
+}
+
+@media (min-width: 768px) {
+  .container {
+    min-width: 320px;
+    max-width: 768px;
+    padding: 5px 24px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .totalBox {
+    max-width: 768px;
+    padding: 20px 150px;
+  }
+
+  .listBox {
+    max-width: 768px;
+    padding: 0 150px;
+  }
+
+  .productBox {
+    gap: 40px;
+  }
+
+  .btnBox {
+    max-width: 768px;
+    padding: 0 150px;
+    margin-bottom: 20px;
+  }
+
+  .mainTitle {
+    max-width: 768px;
+    padding: 10px 150px;
+  }
+
+  .image {
+    width: 188px;
+    height: 160px;
+  }
+
+  .title {
+    font-family: Inter;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 21.6px;
+    letter-spacing: 0%;
+  }
+
+  .price {
+    font-family: Inter;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 21.6px;
+    letter-spacing: 0%;
+  }
+
+  .deleteText {
+    font-family: Inter;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 21.6px;
+    letter-spacing: 0%;
+  }
+
+  .iconDelete {
+  width: 20px;
+  height: 20px;
+}
+}
+
+@media (min-width: 1280px) {
+  .container {
+    min-width: 320px;
+    max-width: 1280px;
+    padding: 5px 24px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .totalBox {
+    max-width: 1280px;
+    padding: 20px 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .total {
+    margin-left: auto;
+    gap: 160px;
+  }
+
+  .listBox {
+    max-width: 1280px;
+    padding: 0 200px;
+    margin-top: 20px;
+  }
+
+  .productBox {
+    gap: 40px;
+  }
+
+  .btnBox {
+    max-width: 1280px;
+    padding: 0 200px;
+    margin-bottom: 40px;
+  }
+
+  .mainTitle {
+    max-width: 1280px;
+    padding: 10px 200px;
+  }
+
+  .image {
+    width: 286px;
+    height: 206px;
+  }
+
+  .title {
+    font-family: Inter;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 26.4px;
+    letter-spacing: 0%;
+  }
+
+  .price {
+    font-family: Inter;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 26.4px;
+    letter-spacing: 0%;
+  }
+
+  .deleteText {
+    font-family: Inter;
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 26.4px;
+    letter-spacing: 0%;
+  }
+
+  .iconDelete {
+    width: 24px;
+    height: 24px;
+  }
+
+  .textBox {
+    width: 300px;
+  }
+
+
+
+  .btnOrder {
+    width: 350px;
+    margin-left: auto;
+  }
+
+  .continueText {
+    margin-right: auto;
+  }
+}

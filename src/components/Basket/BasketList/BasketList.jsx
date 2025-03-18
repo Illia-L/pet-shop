@@ -29,17 +29,16 @@ export default function BasketList () {
 
   return (
     <div>
-      {/* <button type="button" onClick={() => handleClearCart()}>Очистити весь кошик</button> */}
       <h1 className={css.mainTitle}>Мій Кошик</h1>
       <div className={css.listBox}>
         <ul className={css.products}>
           {products.map((item) => (
             <li className={css.card} key={item.id}>
               <div className={css.productBox}>
-                <div>
+                {/* <div>
                   <input type='checkbox'>
                   </input>
-                </div>
+                </div> */}
                 <div className={css.imageBox}>
                   <img
                     src={'/pet-shop' + item.image}
@@ -57,21 +56,28 @@ export default function BasketList () {
                   </div>
                 </div>
                 <div className={css.buttonPosition}>
-                  <button type='button' onClick={() => removeFromCartHandler(item.id)}><FaRegTrashAlt /></button>
+                  <button type='button' onClick={() => removeFromCartHandler(item.id)}><FaRegTrashAlt className={css.iconDelete} /></button>
                 </div>
               </div>
             </li>
           ))}
         </ul>
       </div>
-
-      <div className={css.totalBox}>
-        <div className={css.total}>
-          <span className={css.totalText}>Разом</span>
-          <span className={css.totalAmount}>{totalAmount},00 ₴</span>
+      <div className={css.btnBox}>
+        <p className={css.deleteText}>Видалити все</p>
+        <button className={css.btnClear} type="button" onClick={() => handleClearCart()}>
+        <FaRegTrashAlt className={css.iconDelete} />
+        </button>
+      </div>
+      <div className={css.background}>
+        <div className={css.totalBox}>
+          <div className={css.total}>
+            <span className={css.totalText}>Разом</span>
+            <span className={css.totalAmount}>{totalAmount},00 ₴</span>
+          </div>
+          <button className={css.btnOrder} type='button'>Оформити замовлення</button>
+          <NavLink to='/catalog' className={css.continueText}>Продовжити покупки</NavLink>
         </div>
-        <button className={css.btnOrder} type='button'>Оформити замовлення</button>
-        <NavLink to='/catalog' className={css.continueText}>Продовжити покупки</NavLink>
       </div>
     </div>
   )
