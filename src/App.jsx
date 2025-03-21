@@ -3,6 +3,7 @@ import Layout from './components/Layout/Layout';
 
 import { Route, Routes } from 'react-router-dom';
 import CatalogPage from './pages/CatalogPage/CatalogPage';
+import CheckoutPage from './pages/CheckoutPage/CheckoutPage';
 import ProductDetails from './components/ProductDetails/ProductDetails';
 import BasketPage from './pages/BasketPage/BasketPage';
 import Cabinet from './components/cabinet/Cabinet/Cabinet';
@@ -38,7 +39,7 @@ function App() {
         />
         <Route
           path='checkout'
-          element={<div>Checkout</div>}
+          element={<CheckoutPage />}
         />
         <Route
           path='basket'

@@ -2,9 +2,10 @@ import { useSelector, useDispatch } from "react-redux";
 import { removeItemFromCart, incrementQuantity, decrementQuantity, clearCart} from '../../../redux/productsSlice';
 import { NavLink } from "react-router-dom";
 import { FaRegTrashAlt } from "react-icons/fa";
+import { RxCross1 } from "react-icons/rx";
 import css from './BasketList.module.css';
 
-export default function BasketList () {
+export default function BasketList ({ onClose }) {
 
   const dispatch = useDispatch();
   const products = useSelector((state) => state.products.items);
@@ -28,8 +29,20 @@ export default function BasketList () {
   }
 
   return (
-    <div>
-      <h1 className={css.mainTitle}>Мій Кошик</h1>
+    <div className={css.container}>
+      <div className={css.titleBox}>
+        <h1 className={css.mainTitle}>Мій Кошик</h1>
+        <div className={css.border}></div>
+        <button className={css.buttonBorder}>
+          <RxCross1 className={css.iconCross} onClick={() => onClose()}/>
+        </button>
+      </div>
+      <div className={css.btnBox}>
+        <p className={css.deleteText}>Видалити все</p>
+        <button className={css.btnClear} type="button" onClick={() => handleClearCart()}>
+        <FaRegTrashAlt className={css.iconDelete} />
+        </button>
+      </div>
       <div className={css.listBox}>
         <ul className={css.products}>
           {products.map((item) => (
@@ -39,20 +52,24 @@ export default function BasketList () {
                   <input type='checkbox'>
                   </input>
                 </div> */}
-                <div className={css.imageBox}>
-                  <img
-                    src={'/pet-shop' + item.image}
-                    alt={item.title}
-                    className={css.image}
-                  />
-                </div>
-                <div className={css.textBox}>
-                  <p className={css.title}>{item.title}</p>
-                  <p className={css.price}>{item.price},00 ₴</p>
-                  <div>
-                  <button className={css.counter} onClick={() => handleDecrement(item.id)}>-</button>
-                  <span className={css.quantity}> {item.quantity} </span>
-                  <button className={css.counter} onClick={() => handleIncrement(item.id)}>+</button>
+                <div className={css.gap}>
+                  <div className={css.imageBox}>
+                    <img
+                      src={'/pet-shop' + item.image}
+                      alt={item.title}
+                      className={css.image}
+                    />
+                  </div>
+                  <div className={css.textBox}>
+                    <p className={css.title}>{item.title}</p>
+                    <div className={css.priceBox}>
+                      <p className={css.price}>{item.price},00 ₴</p>
+                      <div>
+                        <button className={css.counter} onClick={() => handleDecrement(item.id)}>-</button>
+                        <span className={css.quantity}> {item.quantity} </span>
+                        <button className={css.counter} onClick={() => handleIncrement(item.id)}>+</button>
+                      </div>
+                    </div>
                   </div>
                 </div>
                 <div className={css.buttonPosition}>
@@ -63,12 +80,6 @@ export default function BasketList () {
           ))}
         </ul>
       </div>
-      <div className={css.btnBox}>
-        <p className={css.deleteText}>Видалити все</p>
-        <button className={css.btnClear} type="button" onClick={() => handleClearCart()}>
-        <FaRegTrashAlt className={css.iconDelete} />
-        </button>
-      </div>
       <div className={css.background}>
         <div className={css.totalBox}>
           <div className={css.total}>
@@ -76,7 +87,9 @@ export default function BasketList () {
             <span className={css.totalAmount}>{totalAmount},00 ₴</span>
           </div>
           <button className={css.btnOrder} type='button'>Оформити замовлення</button>
-          <NavLink to='/catalog' className={css.continueText}>Продовжити покупки</NavLink>
+          <NavLink to='/catalog' className={css.continueText}>
+            <button className={css.continueText} onClick={() => onClose()}>Продовжити покупки</button>
+            </NavLink>
         </div>
       </div>
     </div>
