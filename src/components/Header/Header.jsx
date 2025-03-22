@@ -1,16 +1,40 @@
 import css from './Header.module.css';
 
 import Navigation from '../Navigation/Navigation';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import Icon from '../reusable-global/Icon/Icon';
 import Menu from '../Menu/Menu';
+import ModalBasket from '../Basket/ModalBasket/ModalBasket';
 
 export default function AppBar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const products = useSelector((state) => state.products.items);
   const totalOfProducts = products.reduce((acc, number) => acc + number.quantity, 0);
+
+  const [isOpen, setIsOpen] = useState(false);
+
+  const openModal = () => {
+      setIsOpen(true);
+  }
+
+  const closeModal = () => {
+      setIsOpen(false)
+  }
+
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+  }, [isOpen]);
+
   
   return (
     <header className={css.header}>
@@ -63,10 +87,9 @@ export default function AppBar() {
             <span className={css.profileText}> Log in/Sign up</span>
           </NavLink>
 
-          <NavLink
+          <button
             className={css.iconCartPosition}
-            to='basket'
-            onClick={() => setIsMenuOpen(false)}
+            onClick={openModal}
           >
             <Icon
               id='icon-cart-outlined'
@@ -75,9 +98,11 @@ export default function AppBar() {
               iconClass={css.iconCart}
             />
             {totalOfProducts > 0 && <div className={css.numbersProducts}>{totalOfProducts}</div>}
-          </NavLink>
+          </button>
         </div>
       </div>
+      {isOpen && <ModalBasket isOpen={setIsOpen} onClose={closeModal} />}
+
     </header>
   );
 }
