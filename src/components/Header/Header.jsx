@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import Icon from '../reusable-global/Icon/Icon';
 import Menu from '../Menu/Menu';
-import UserControls from '../UserControls/UserControls';
+import UserControls from '../userControls/UserControls/UserControls';
 
 export default function AppBar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);

@@ -1,5 +1,8 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { isServerError } from '../fake-data';
+import axios from 'axios';
+
+const apiUrl = 'http://54.196.142.53:8000'
 
 export const fetchUser = createAsyncThunk(
   'user/fetch',
@@ -33,7 +36,7 @@ export const login = createAsyncThunk(
       setTimeout(() => {
         if (isCorrect) return resolve(user);
 
-        if(isServerError(formdata.email)) return reject('error')
+        if (isServerError(formdata.email)) return reject('error');
 
         reject('fail');
       }, 800);
@@ -55,40 +58,34 @@ export const login = createAsyncThunk(
 
 export const signup = createAsyncThunk(
   'user/signup',
-  async (data, { rejectWithValue }) => {
-    const promise = new Promise((resolve, reject) => {
-      setTimeout(() => {
-        if (isServerError(data.password)) return reject('error');
+  async (formData, { rejectWithValue }) => {
+    console.log('signup called...');
 
-        const fakeDataFromServer = {
-          user: { ...data, id: 'uniqidfromserver' },
-        };
-        const registeredUser = fakeDataFromServer.user;
+    const {
+      name: first_name,
+      email,
+      password,
+      passwordConfirm: password_confirm,
+    } = formData;
 
-        localStorage.setItem('user', JSON.stringify(registeredUser));
+    const registerData = {first_name, email, password, password_confirm}
 
-        return resolve(registeredUser);
-      }, 800);
-    });
+    console.log('registerData', registerData);
 
     try {
-      return await promise;
+      const response = await axios.post(`${apiUrl}/register/`, registerData)
+      const serverUser = response.data
+
+      console.log('serverUser', serverUser);
+
+      const {id, first_name: name} = serverUser
+
+      console.log('id, name:', id, name);
+
+      return {id, name};
     } catch (err) {
       return rejectWithValue(err);
     }
-
-    // try {
-    //   const response = await fetch('http://127.0.0.1:8000/register', {
-    //     method: 'post',
-    //     body: data,
-    //   });
-
-    //   const user = await JSON.parse(response);
-
-    //   return user;
-    // } catch (err) {
-    //   return rejectWithValue(err);
-    // }
   }
 );
 
@@ -129,7 +126,6 @@ const slice = createSlice({
         state.status = 'success';
       })
       .addCase(fetchUser.fulfilled, (state, action) => {
-        console.log(action);
         state.id = action.payload.id;
         state.name = action.payload.name;
         state.status = 'success';

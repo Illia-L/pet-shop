@@ -39,6 +39,7 @@
 @media (min-width: 768px) {
   .menu {
     position: static;
+    z-index: 0;
     margin-left: 16px;
     padding: 0;
     background-color: transparent;

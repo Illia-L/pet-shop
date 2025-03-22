@@ -1,0 +1,25 @@
+
+.forgotPassword {
+  display: block;
+  margin-top: 28px;
+  line-height: 1.2;
+  font-size: 16px;
+  text-align: right;
+  color: #35b0f3;
+}
+
+.signup {
+  margin-top: 16px;
+  background-color: transparent;
+  color: #fe7a29;
+}
+
+@media (min-width: 768px) {
+  .forgotPassword {
+    margin-top: 40px;
+  }
+
+  .signup {
+    margin-top: 24px;
+  }
+}

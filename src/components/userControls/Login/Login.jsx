@@ -1,4 +1,5 @@
 import { useForm } from 'react-hook-form';
+import formCss from '../css/form.module.css';
 import css from './Login.module.css';
 import Icon from '../../reusable-global/Icon/Icon';
 import Loader from '../../reusable-global/Loader/Loader';
@@ -6,66 +7,55 @@ import { login } from '../../../redux/userSlice';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import CloseButton from '../CloseButton/CloseButton';
+import CloseButton from '../../pageModals/CloseButton/CloseButton';
 import { useMediaQuery } from 'react-responsive';
+import Form from '../reusable/Form/Form';
 
-function Login({ setIsOpen }) {
+function Login({ setModalComponent }) {
   const { register, handleSubmit } = useForm();
   const dispatch = useDispatch();
   const user = useSelector(state => state.user);
   const isLoading = user.status === 'loading';
-  const isMobile = useMediaQuery({ query: '(max-width: 767px' });
 
   function onSubmit(data) {
     dispatch(login(data));
   }
 
   useEffect(() => {
-    if (user.name) setIsOpen(false);
+    if (user.name) setModalComponent(null);
   }, [user.name]);
 
   return (
     <>
-      <form
-        className={css.form}
-        onSubmit={handleSubmit(onSubmit)}
+      <Form
+        title='Вхід до акаунту'
+        isLoading={isLoading}
+        handleSubmit={() => handleSubmit(onSubmit)}
+        setModalComponent={setModalComponent}
       >
-        <CloseButton
-          icon={isMobile ? 'chevron' : 'cross'}
-          setIsOpen={setIsOpen}
-          side={isMobile ? 'left' : 'right'}
-        />
-
-        <Icon
-          id='icon-full-logo-orange'
-          width={123}
-          height={84}
-          iconClass={css.logo}
-        />
-        <h2 className={css.title}>Вхід в акаунт</h2>
-        <div className={css.inputGroup}>
+        <div className={formCss.inputGroup}>
           <label
-            className={css.label}
+            className={formCss.label}
             htmlFor='login-email'
           >
             Електронна пошта*
           </label>
           <input
-            className={css.input}
+            className={formCss.input}
             type='email'
             {...register('email')}
             id='login-email'
           />
         </div>
-        <div className={css.inputGroup}>
+        <div className={formCss.inputGroup}>
           <label
-            className={css.label}
+            className={formCss.label}
             htmlFor='login-password'
           >
             Пароль*
           </label>
           <input
-            className={css.input}
+            className={formCss.input}
             type='password'
             {...register('password')}
             id='login-password'
@@ -74,27 +64,25 @@ function Login({ setIsOpen }) {
         <Link
           to='cabinet/forgot-password'
           className={css.forgotPassword}
-          onClick={() => setIsOpen(false)}
+          onClick={() => setModalComponent(null)}
         >
           Забули пароль?
         </Link>
         <button
-          className={css.button + ' ' + css.submit}
+          className={formCss.button + ' ' + formCss.submit}
           type='submit'
         >
           Продовжити
         </button>
 
         <button
-          className={css.button + ' ' + css.signup}
+          className={formCss.button + ' ' + css.signup}
           type='button'
-          onClick={() => setIsOpen(false)}
+          onClick={() => setModalComponent('signup')}
         >
           Створити акаунт
         </button>
-      </form>
-
-      {isLoading && <Loader />}
+      </Form>
     </>
   );
 }

@@ -1,13 +1,14 @@
 import { NavLink } from 'react-router-dom';
 import css from './UserControls.module.css';
-import Icon from '../reusable-global/Icon/Icon';
+import Icon from '../../reusable-global/Icon/Icon';
 import { useSelector } from 'react-redux';
 import { useState } from 'react';
-import Modal from '../pageModals/Modal/Modal';
-import Login from '../pageModals/Login/Login';
+import Modal from '../reusable/Modal/Modal';
+import Login from '../Login/Login';
+import SignupBlock from '../signupBlock/SignupBlock/SignupBlock';
 
 function UserControls() {
-  const [isOpen, setIsOpen] = useState(false);
+  const [modalComponent, setModalComponent] = useState(false);
   const userName = useSelector(state => state.user.name);
 
   return (
@@ -31,7 +32,7 @@ function UserControls() {
         <button
           className={css.linkCabinet}
           type='button'
-          onClick={() => setIsOpen(true)}
+          onClick={() => setModalComponent('login')}
         >
           <Icon
             id='icon-profile'
@@ -45,10 +46,17 @@ function UserControls() {
       )}
 
       <Modal
-        isOpen={isOpen}
-        setIsOpen={setIsOpen}
+        isOpen={modalComponent === 'login'}
+        setModalComponent={setModalComponent}
       >
-        <Login setIsOpen={setIsOpen} />
+        <Login setModalComponent={setModalComponent} />
+      </Modal>
+
+      <Modal
+        isOpen={modalComponent === 'signup'}
+        setModalComponent={setModalComponent}
+      >
+        <SignupBlock setModalComponent={setModalComponent} />
       </Modal>
     </>
   );
