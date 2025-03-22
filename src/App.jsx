@@ -1,7 +1,8 @@
 import './reset.css';
-import Layout from './components/Layout/Layout';
-
 import { Route, Routes } from 'react-router-dom';
+import Modal from 'react-modal'
+
+import Layout from './components/Layout/Layout';
 import CatalogPage from './pages/CatalogPage/CatalogPage';
 import CheckoutPage from './pages/CheckoutPage/CheckoutPage';
 import ProductDetails from './components/ProductDetails/ProductDetails';
@@ -9,18 +10,12 @@ import BasketPage from './pages/BasketPage/BasketPage';
 import Cabinet from './components/cabinet/Cabinet/Cabinet';
 import Signup from './components/cabinet/Signup/Signup';
 import Login from './components/cabinet/Login/Login';
-import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
-import { fetchUser } from './redux/userSlice';
 import ForgotPassword from './components/cabinet/ForgotPassword/ForgotPassword';
 import ResetPasswordLogic from './components/cabinet/passwordReset/PasswordResetLogic/PasswordResetLogic';
 
-function App() {
-  // const dispatch = useDispatch();
+Modal.setAppElement('#root')
 
-  // useEffect(() => {
-  //   dispatch(fetchUser());
-  // }, []);
+function App() {
 
   return (
     <Layout>

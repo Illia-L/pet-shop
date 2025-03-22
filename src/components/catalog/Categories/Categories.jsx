@@ -1,6 +1,9 @@
 import css from './Categories.module.css';
 import Icon from '../../reusable-global/Icon/Icon';
-import Modal from '../Modal/Modal';
+import Modal from '../../userControls/reusable/Modal/Modal';
+import MediaQuery from 'react-responsive';
+import CloseButton from '../../pageModals/CloseButton/CloseButton';
+import CategoryList from '../CategoryList/CategoryList';
 
 function Categories({
   isModalOpen,
@@ -9,12 +12,7 @@ function Categories({
   selectCategory,
   setIsModalOpen,
 }) {
-  const getButtonStyles = categoryId =>
-    css.button +
-    ' ' +
-    (`${categoryId}` === `${currentCategoryId}` ? css.current : '');
-
-  const modalStyles = css.modal + ' ' + (isModalOpen ? css.open : '');
+  // const modalStyles = css.modal + ' ' + (isModalOpen ? css.open : '');
 
   function handleSelectCategory(id) {
     selectCategory(id);
@@ -23,27 +21,29 @@ function Categories({
 
   return (
     <>
-      <Modal
-        isOpen={isModalOpen}
-        setIsOpen={setIsModalOpen}
-      >
-        <ul className={css.list}>
-          {categoriesWithAllCategoriesItem.map(cat => (
-            <li
-              className={css.item}
-              key={'category-' + cat.id}
-            >
-              <button
-                type='button'
-                className={getButtonStyles(cat.id)}
-                onClick={() => handleSelectCategory(cat.id)}
-              >
-                {cat.title}
-              </button>
-            </li>
-          ))}
-        </ul>
-      </Modal>
+      <MediaQuery maxWidth={767}>
+        <Modal isOpen={isModalOpen}>
+          <div className={css.container}>
+            <CloseButton
+              icon='chevron'
+              setIsOpen={setIsModalOpen}
+            />
+            <h2 className={css.title}>
+              <span>Категорії</span>
+            </h2>
+            <CategoryList
+              categoriesWithAllCategoriesItem={categoriesWithAllCategoriesItem}
+              currentCategoryId={currentCategoryId}
+            />
+          </div>
+        </Modal>
+      </MediaQuery>
+      <MediaQuery minWidth={768}>
+        <CategoryList
+          categoriesWithAllCategoriesItem={categoriesWithAllCategoriesItem}
+          currentCategoryId={currentCategoryId}
+        />
+      </MediaQuery>
     </>
   );
 }

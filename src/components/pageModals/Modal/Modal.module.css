@@ -1,0 +1,33 @@
+.modal {
+  position: absolute;
+  z-index: 10;
+  top: 0;
+  bottom: 0;
+  left: -100%;
+  width: 100%;
+  padding: 16px calc((100% - 351px) / 2);
+  background-color: #fff;
+  transition: left 250ms linear;
+}
+
+.modal.open {
+  left: 0;
+}
+
+@media (min-width: 768px) {
+  .modal {
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #d9d9d966;
+    opacity: 0;
+    transition: opacity 250ms linear;
+    pointer-events: none;
+  }
+
+  .modal.open {
+    opacity: 1;
+    pointer-events: all;
+  }
+}

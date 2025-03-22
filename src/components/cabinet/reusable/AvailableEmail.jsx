@@ -2,7 +2,7 @@ import { useState } from 'react';
 import styles from './Form/Form.module.css'
 import { isEmailRegistered, isServerError } from '../../../fake-data';
 import EmailGroup from './EmailGroup/EmailGroup';
-import Loader from './Loader/Loader';
+import Loader from '../../reusable-global/Loader/Loader';
 
 function AvailableEmail({ register, errors, trigger, isLoading }) {
   const [isCheckingAvailability, setIsCheckingAvailability] = useState(false);

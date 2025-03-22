@@ -1,0 +1,34 @@
+.desc {
+  margin-top: 100px;
+  line-height: 1.2;
+  font-size: 20px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.title {
+  margin-top: 36px;
+  line-height: 1.2;
+  font-size: 24px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.title span {
+  color: #fe7a29;
+}
+
+.image {
+  margin-top: 60px;
+  margin-inline: auto;
+}
+
+@media (min-width: 768px) {
+  .desc {
+    font-size: 24px;
+  }
+
+  .title {
+    font-size: 28px;
+  }
+}

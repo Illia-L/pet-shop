@@ -7,6 +7,7 @@ import { NavLink } from 'react-router-dom';
 import Icon from '../reusable-global/Icon/Icon';
 import Menu from '../Menu/Menu';
 import ModalBasket from '../Basket/ModalBasket/ModalBasket';
+import UserControls from '../userControls/UserControls/UserControls';
 
 export default function AppBar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -73,19 +74,7 @@ export default function AppBar() {
         />
 
         <div className={css.iconsRight}>
-          <NavLink
-            to='cabinet'
-            onClick={() => setIsMenuOpen(false)}
-            className={css.linkCabinet}
-          >
-            <Icon
-              id='icon-profile'
-              width={22}
-              height={42}
-              iconClass={css.profileIcon}
-            />
-            <span className={css.profileText}> Log in/Sign up</span>
-          </NavLink>
+          <UserControls />
 
           <button
             className={css.iconCartPosition}

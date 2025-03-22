@@ -1,5 +1,5 @@
 import styles from '../Form/Form.module.css';
-import Loader from '../Loader/Loader';
+import Loader from '../../../reusable-global/Loader/Loader';
 
 function EmailGroup({
   isLoading,

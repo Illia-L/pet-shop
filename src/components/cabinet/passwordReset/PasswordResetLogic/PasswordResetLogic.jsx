@@ -1,7 +1,7 @@
 import { Link, useSearchParams } from 'react-router-dom';
 import { isResetTokenValid } from '../../../../fake-data';
 import styles from '../../reusable/Form/Form.module.css';
-import Loader from '../../reusable/Loader/Loader';
+import Loader from '../../../reusable-global/Loader/Loader';
 import PasswordResetForm from '../PasswordResetForm/PasswordResetForm';
 import { useEffect, useState } from 'react';
 import InvalidTokenMessage from '../InvalidTokenMessage/InvalidTokenMessage';

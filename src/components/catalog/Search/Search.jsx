@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import Icon from '../../reusable-global/Icon/Icon';
 import css from './Search.module.css';
 import MediaQuery from 'react-responsive';
-import Modal from '../Modal/Modal';
+import Modal from '../../pageModals/Modal/Modal';
 
 function Search({ search, setSearch }) {
   const [value, setValue] = useState('');

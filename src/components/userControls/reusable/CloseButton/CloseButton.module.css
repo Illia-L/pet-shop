@@ -1,0 +1,25 @@
+.button {
+  position: absolute;
+  z-index: 11;
+  top: 12px;
+  left: 16px;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* transform: translatey(-50%); */
+}
+
+.right {
+  top: 24px;
+  right: 24px;
+  left: unset;
+}
+
+@media (min-width: 768px) {
+  .button {
+    width: 14px;
+    height: 14px;
+  }
+}

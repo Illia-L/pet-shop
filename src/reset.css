@@ -1,8 +1,10 @@
 button,
+div,
 h1,
 h2,
 h3,
 input,
+label,
 li,
 p,
 ul {
@@ -26,6 +28,10 @@ ul {
 
 address {
   font-style: normal;
+}
+
+label {
+  display: block;
 }
 
 input {
