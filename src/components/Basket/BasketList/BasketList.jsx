@@ -47,10 +47,6 @@ export default function BasketList ({ onClose }) {
           {products.map((item) => (
             <li className={css.card} key={item.id}>
               <div className={css.productBox}>
-                {/* <div>
-                  <input type='checkbox'>
-                  </input>
-                </div> */}
                 <div className={css.gap}>
                   <div className={css.imageBox}>
                     <img

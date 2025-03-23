@@ -31,7 +31,7 @@
   flex-direction: column;
   justify-content: space-between;
   width: 375px;
-  height: 95%;
+  max-height: 95%;
   margin: auto;
   background-color: #fff;
 }
