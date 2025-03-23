@@ -1,15 +1,46 @@
 .container {
-  min-width: 320px;
-  max-width: 375px;
-  padding: 50px 10px;
-  margin-left: auto;
-  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 
+.iconFlex {
+  margin-top: 50px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   gap: 10px;
+}
+
+.mainTitle {
+  font-family: Inter;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 28.8px;
+  letter-spacing: 0%;
+  padding-left: 10px;
+  margin-bottom: 5px;
+}
+
+.border {
+  border: 1px solid #F6F6F6;
+}
+
+
+.titleBox {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 5px;
+  background-color: #fff;
+  border-bottom: 1px solid #C2C2C2;
+
+}
+
+.iconCross {
+  width: 20px;
+  height: 20px;
+  margin-top: 5px;
+  margin-right: 10px;
 }
 
 .icon {
@@ -40,11 +71,20 @@
 
 @media (min-width: 768px) {
   .container {
-    min-width: 320px;
-    max-width: 768px;
-    padding: 50px 24px;
+    width: 688px;
     margin-left: auto;
     margin-right: auto;
+  }
+
+  .titleBox {
+    width: 100%;
+    padding: 20px 10px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #C2C2C2;
+    display: flex;
+    justify-content: space-between;
   }
 
   .icon {
@@ -76,9 +116,7 @@
 
 @media (min-width: 1280px) {
   .container {
-    min-width: 320px;
-    max-width: 1280px;
-    padding: 50px 24px;
+    width: 1035px;
     margin-left: auto;
     margin-right: auto;
   }

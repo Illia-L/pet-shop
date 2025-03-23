@@ -29,21 +29,20 @@ export default function BasketList ({ onClose }) {
   }
 
   return (
-    <div className={css.container}>
+    <>
       <div className={css.titleBox}>
         <h1 className={css.mainTitle}>Мій Кошик</h1>
-        <div className={css.border}></div>
         <button className={css.buttonBorder}>
           <RxCross1 className={css.iconCross} onClick={() => onClose()}/>
         </button>
       </div>
-      <div className={css.btnBox}>
-        <p className={css.deleteText}>Видалити все</p>
-        <button className={css.btnClear} type="button" onClick={() => handleClearCart()}>
-        <FaRegTrashAlt className={css.iconDelete} />
-        </button>
-      </div>
       <div className={css.listBox}>
+        <div className={css.btnBox}>
+          <p className={css.deleteText}>Видалити все</p>
+          <button className={css.btnClear} type="button" onClick={() => handleClearCart()}>
+          <FaRegTrashAlt className={css.iconDelete} />
+          </button>
+        </div>
         <ul className={css.products}>
           {products.map((item) => (
             <li className={css.card} key={item.id}>
@@ -82,16 +81,18 @@ export default function BasketList ({ onClose }) {
       </div>
       <div className={css.background}>
         <div className={css.totalBox}>
-          <div className={css.total}>
-            <span className={css.totalText}>Разом</span>
-            <span className={css.totalAmount}>{totalAmount},00 ₴</span>
+          <div className={css.totalBtnBox}>
+            <div className={css.total}>
+              <span className={css.totalText}>Разом</span>
+              <span className={css.totalAmount}>{totalAmount},00 ₴</span>
+            </div>
+            <button className={css.btnOrder} type='button'>Оформити замовлення</button>
           </div>
-          <button className={css.btnOrder} type='button'>Оформити замовлення</button>
           <NavLink to='/catalog' className={css.continueText}>
             <button className={css.continueText} onClick={() => onClose()}>Продовжити покупки</button>
-            </NavLink>
+          </NavLink>
         </div>
       </div>
-    </div>
+    </>
   )
 }
