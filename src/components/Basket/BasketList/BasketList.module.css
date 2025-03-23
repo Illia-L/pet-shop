@@ -6,9 +6,7 @@
   /* gap: 20px; */
   list-style: none;
   /* background-color: #fff8dc; */
-  overflow-y: auto;
   width: 350px;
-  height: 320px;
   margin-right: auto;
   margin-left: auto;
   margin-bottom: 10px;
@@ -46,19 +44,12 @@
   }
 } */
 
-.container {
-  width: 375px;
-  margin-left: auto;
-  margin-right: auto;
-  background-color: #F6F6F6;
-  height: 648px;
-}
-
 .titleBox {
   display: flex;
   justify-content: space-between;
   padding-top: 5px;
   background-color: #fff;
+  border-bottom: 1px solid #C2C2C2;
 }
 
 .mainTitle {
@@ -75,12 +66,15 @@
   border: 1px solid #F6F6F6;
 }
 
-.listBox {
+.listBox { 
+  height: 100%;
   width: 375px;
-  padding: 0 10px;
+  padding: 0;
   margin-left: auto;
   margin-right: auto;
   background-color: #fff;
+  overflow-y: auto;
+  scrollbar-width: none; 
 }
 
 .productBox {
@@ -189,12 +183,16 @@
 }
 
 .background {
+  position: sticky;
+  bottom: 0px;
+  z-index: 999;
   background-color: #F6F6F6;
 }
 
 .total {
   display: flex;
   justify-content: space-between;
+  margin-bottom: 20px;
 }
 
 .totalText {
@@ -237,6 +235,7 @@
   font-weight: 600;
   line-height: 24px;
   letter-spacing: 0px;
+  width: 350px;
 }
 
 .textBox {
@@ -256,26 +255,24 @@
 }
 
 @media (min-width: 768px) {
-  .container {
-    width: 688px;
-    padding: 10px 0;
-    margin-left: auto;
-    margin-right: auto;
-    height: 812px;
-    /* display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: start; */
-  }
   
   .products {
     width: 510px;
-    height: 460px;
   }
 
   .totalBox {
     width: 688px;
     padding: 20px 60px;
+  }
+
+  .total {
+    gap: 150px;
+  }
+
+  .totalBtnBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   .listBox {
@@ -301,14 +298,11 @@
 
   .btnBox {
     width: 688px;
-    padding: 0 60px;
-    padding-top: 20px;
   }
 
   .titleBox {
-    min-width: 320px;
-    /* max-width: 768px; */
-    padding: 5px 10px;
+    width: 100%;
+    padding: 20px 10px;
     margin-left: auto;
     margin-right: auto;
     padding-bottom: 5px;
@@ -356,7 +350,6 @@
 @media (min-width: 1280px) {
   .container {
     width: 1035px;
-    height: 923px;
     padding: 5px 0;
     margin-left: 0;
     margin-right: 0;
@@ -364,26 +357,23 @@
 
   .products {
     width: 857px;
-    height: 481px;
   }
 
   .totalBox {
     width: 1035px;
     padding: 20px 60px;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    flex-direction: row-reverse;
+    align-items: end;
   }
 
   .total {
     margin-left: auto;
-    gap: 160px;
+    margin-bottom: 20px;
   }
 
   .listBox {
     width: 1035px;
-    padding: 0 60px;
-    padding-top: 20px;
   }
 
   .gap {
@@ -405,7 +395,6 @@
 
   .mainTitle {
     width: 1035px;
-    padding: 10px 60px;
   }
 
   .image {
@@ -448,7 +437,6 @@
   }
 
   .btnOrder {
-    width: 350px;
     margin-left: auto;
   }
 

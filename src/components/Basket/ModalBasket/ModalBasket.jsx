@@ -1,10 +1,14 @@
 import ReactModal from "react-modal";
 import BasketList from "../BasketList/BasketList";
+import BasketEmpty from "../BasketEmpty/BasketEmpty";
+import { useSelector } from "react-redux";
 import css from './ModalBasket.module.css';
 
 ReactModal.setAppElement('#root');
 
 export default function ModalBasket ({ onClose }) {
+  const products = useSelector((state) => state.products.items);
+
   return (
     <ReactModal
       isOpen={true}
@@ -20,7 +24,7 @@ export default function ModalBasket ({ onClose }) {
       }}
       closeTimeoutMS={500}
       onRequestClose={onClose}>
-    <BasketList onClose={onClose} />
+    {products.length > 0 ? <BasketList onClose={onClose}/> : <BasketEmpty onClose={onClose}/>}
     </ReactModal>
   );
 }
