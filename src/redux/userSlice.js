@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { isServerError } from '../fake-data';
 import axios from 'axios';
 
-const apiUrl = 'http://54.196.142.53:8000'
+const apiUrl = 'https://gfts.website'
 
 export const fetchUser = createAsyncThunk(
   'user/fetch',
