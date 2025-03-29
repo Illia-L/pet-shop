@@ -82,7 +82,9 @@ export default function BasketList ({ onClose }) {
               <span className={css.totalText}>Разом</span>
               <span className={css.totalAmount}>{totalAmount},00 ₴</span>
             </div>
-            <button className={css.btnOrder} type='button'>Оформити замовлення</button>
+            <NavLink to='/checkout'>
+            <button className={css.btnOrder} type='button' onClick={() => onClose()}>Оформити замовлення</button>
+            </NavLink>
           </div>
           <NavLink to='/catalog' className={css.continueText}>
             <button className={css.continueText} onClick={() => onClose()}>Продовжити покупки</button>
