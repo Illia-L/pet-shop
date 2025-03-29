@@ -1,19 +1,239 @@
 .container {
   min-width: 320px;
   max-width: 375px;
+  margin-top: 20px;
   margin-left: auto;
   margin-right: auto;
+  padding: 0 12px;
+}
+
+.titleLink {
+  margin-bottom: 20px;
+}
+
+.titleH1 {
+  margin-bottom: 20px;
+  font-family: Inter;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 120%;
+  letter-spacing: 0%;
+}
+
+.card {
+  padding: 10px 0;
+}
+
+.productBox {
+  display: flex;
+  justify-content: space-between;
+}
+
+.gap {
+  display: flex;
+  gap: 40px;
+}
+
+.priceBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 180px;
+}
+
+.title {
+  font-family: Inter;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 120%;
+  letter-spacing: 0%;
+}
+
+.price {
+  font-family: Inter;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 120%;
+  letter-spacing: 0%;
 }
 
 .icon {
-  fill: #FE7A29;
-  height: 21px;
-  width: 21px;
+  fill: #fe7a29;
+  height: 21x;
+  width: 16px;
+}
+
+.image {
+  border: 1px solid #fe7a29;
+  border-radius: 10%;
+  width: 124px;
+  height: 104px;
 }
 
 .link {
   display: flex;
   gap: 10px;
+}
+
+.linkBack {
+  font-family: Nunito Sans;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 100%;
+  letter-spacing: 0px;
+  text-align: center;
+}
+
+.button {
+  margin-top: 20px;
+  font-family: Inter;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 120%;
+  letter-spacing: 0px;
+  text-decoration: underline;
+  float: inline-end;
+}
+
+.submitBox {
+  width: 349px;
+  border-radius: 25px;
+  background-color: #f6f6f6;
+  padding: 30px 20px 40px 20px;
+  margin-bottom: 20px;
+}
+
+.titleForm {
+  font-family: Inter;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 120%;
+  letter-spacing: 0%;
+  margin-bottom: 40px;
+}
+
+.titleMargin {
+  margin-top: 60px;
+  margin-bottom: 30px;
+}
+
+.textForm {
+  font-family: Inter;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 120%;
+  letter-spacing: 0%;
+  margin-bottom: 20px;
+}
+
+.infoBox {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.inputBox {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.label {
+  font-family: Nunito Sans;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 120%;
+  letter-spacing: 0px;
+  padding-left: 10px;
+}
+
+.input {
+  border: 1px solid #d9d9d9;
+  border-radius: 100px;
+  padding: 10px 25px;
+  font-family: Nunito Sans;
+  font-weight: 400;
+  font-size: 16px;
+  width: 100%;
+  line-height: 100%;
+  letter-spacing: 0px;
+  margin-bottom: 20px;
+}
+
+.input::placeholder {
+  font-family: Nunito Sans;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 100%;
+  letter-spacing: 0px;
+}
+
+.totalBox {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.marginBox {
+  margin-top: 50px;
+}
+
+.numberForm {
+  font-family: Inter;
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 120%;
+  letter-spacing: 0%;
+}
+
+.submitButton {
+  font-family: Inter;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 120%;
+  letter-spacing: 0px;
+  padding: 21px 44px;
+  color: #fff;
+  background-color: #fe7a29;
+  width: 100%;
+  border-radius: 100px;
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+
+.textInformation {
+  font-family: Nunito Sans;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 100%;
+  letter-spacing: 0px;
+  margin-bottom: 10px;
+}
+
+.policy {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.list {
+  list-style: circle;
+  padding-left: 20px;
+}
+
+.item {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.textItem {
+  font-family: Nunito Sans;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 100%;
+  letter-spacing: 0px;
 }
 
 @media (min-width: 768px) {
@@ -29,10 +249,77 @@
     max-width: 1280px;
   }
 
+  .containerList {
+    width: 820px;
+  }
+
+  .card {
+    padding: 10px 0;
+  }
+
+  .productBox {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .gap {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .products {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
   .linkBack {
     font-family: Inter;
     font-weight: 500;
     font-size: 18px;
+    line-height: 120%;
+    letter-spacing: 0px;
+  }
+
+  .title {
+    font-family: Inter;
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 120%;
+    letter-spacing: 0%;
+  }
+
+  .titleH1 {
+    font-family: Inter;
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 120%;
+    letter-spacing: 0%;
+    margin-top: 20px;
+  }
+
+  .title {
+    font-family: Inter;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 120%;
+    letter-spacing: 0%;
+  }
+
+  .price {
+    font-family: Inter;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 120%;
+    letter-spacing: 0%;
+  }
+
+  .button {
+    text-decoration: underline;
+    font-family: Inter;
+    font-weight: 600;
+    font-size: 20px;
     line-height: 120%;
     letter-spacing: 0px;
   }
