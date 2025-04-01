@@ -25,7 +25,7 @@ function Error500() {
     imageHeight = 214;
   }
 
-  const imageSrc = `/pet-shop/img/design/dog-sleeping${screenSize}${screenRes}.webp`;
+  const imageSrc = `/img/design/dog-sleeping${screenSize}${screenRes}.webp`;
 
   return (
     <>

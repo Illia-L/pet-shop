@@ -7,7 +7,7 @@ function SignupSuccess() {
   const imageHeight = isMobile ? 194 : 298;
   const screenSize = isMobile ? '-mob' : '';
   const screenRes = isRetina ? '-2x' : '';
-  const imageSrc = `/pet-shop/img/design/dog-standing${screenSize}${screenRes}.webp`;
+  const imageSrc = `/img/design/dog-standing${screenSize}${screenRes}.webp`;
 
   return (
     <div className={css.container}>
