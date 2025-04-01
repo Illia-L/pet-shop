@@ -92,9 +92,7 @@ export const products = [
     description: 'Міцний нейлоновий повідок довжиною 1.5 м для прогулянок.',
     categoryId: 1,
     image: '/img/products/1.jpg',
-    unit: 'шт',
     price: 250,
-    quantity: 1,
   },
   {
     id: 2,
@@ -103,9 +101,7 @@ export const products = [
       "Комфортна шлея з м'якою підкладкою для зручності вашого улюбленця.",
     categoryId: 1,
     image: '/img/products/2.jpg',
-    unit: 'шт',
     price: 450,
-    quantity: 1,
   },
   {
     id: 3,
@@ -113,9 +109,7 @@ export const products = [
     description: 'Розсувний повідок довжиною 3 м для додаткового простору.',
     categoryId: 1,
     image: '/img/products/3.jpeg',
-    unit: 'шт',
     price: 350,
-    quantity: 1,
   },
   {
     id: 4,
@@ -124,9 +118,7 @@ export const products = [
       'Стильний шкіряний повідок довжиною 2 м для елегантних прогулянок.',
     categoryId: 1,
     image: '/img/products/4.jpg',
-    unit: 'шт',
     price: 700,
-    quantity: 1,
   },
   {
     id: 5,
@@ -135,9 +127,7 @@ export const products = [
       'Повідок з світловідбиваючими елементами для прогулянок у темний час.',
     categoryId: 1,
     image: '/img/products/5.jpg',
-    unit: 'шт',
     price: 300,
-    quantity: 1,
   },
   {
     id: 6,
@@ -145,9 +135,7 @@ export const products = [
     description: 'Легка та зручна шлея для активних прогулянок та тренувань.',
     categoryId: 1,
     image: '/img/products/6.jpg',
-    unit: 'шт',
     price: 500,
-    quantity: 1,
   },
   {
     id: 7,
@@ -156,9 +144,7 @@ export const products = [
       'Міцна нейлонова рулетка довжиною 5 м для комфортних прогулянок.',
     categoryId: 2,
     image: '/img/products/7.webp',
-    unit: 'шт',
     price: 450,
-    quantity: 1,
   },
   {
     id: 8,
@@ -167,9 +153,7 @@ export const products = [
       'Зручна рулетка для собак середніх порід, витримує вагу до 20 кг.',
     categoryId: 2,
     image: '/img/products/8.webp',
-    unit: 'шт',
     price: 520,
-    quantity: 1,
   },
   {
     id: 9,
@@ -177,9 +161,7 @@ export const products = [
     description: 'Легка та компактна рулетка для маленьких собак довжиною 3 м.',
     categoryId: 2,
     image: '/img/products/9.png',
-    unit: 'шт',
     price: 350,
-    quantity: 1,
   },
   {
     id: 10,
@@ -187,9 +169,7 @@ export const products = [
     description: 'Надійна рулетка з автоматичним механізмом, довжиною 7 м.',
     categoryId: 2,
     image: '/img/products/10.jpg',
-    unit: 'шт',
     price: 620,
-    quantity: 1,
   },
   {
     id: 11,
@@ -198,9 +178,7 @@ export const products = [
       'Сучасна рулетка з підсвіткою для безпечних вечірніх прогулянок.',
     categoryId: 2,
     image: '/img/products/11.webp',
-    unit: 'шт',
     price: 680,
-    quantity: 1,
   },
   {
     id: 12,
@@ -208,9 +186,7 @@ export const products = [
     description: 'Зручний та стильний нашийник з еко-шкіри для середніх собак.',
     categoryId: 3,
     image: '/img/products/12.jpg',
-    unit: 'шт',
     price: 300,
-    quantity: 1,
   },
   {
     id: 13,
@@ -219,9 +195,7 @@ export const products = [
       'Нашийник з вбудованим світловідбивачем для безпеки у темний час.',
     categoryId: 3,
     image: '/img/products/13.jpg',
-    unit: 'шт',
     price: 420,
-    quantity: 1,
   },
   {
     id: 14,
@@ -230,9 +204,7 @@ export const products = [
       'Компактний нашийник для собак малих порід, виготовлений з якісного матеріалу.',
     categoryId: 3,
     image: '/img/products/14.png',
-    unit: 'шт',
     price: 280,
-    quantity: 1,
   },
   {
     id: 15,
@@ -240,9 +212,7 @@ export const products = [
     description: 'Міцний нашийник з металевою пряжкою для надійної фіксації.',
     categoryId: 3,
     image: '/img/products/15.webp',
-    unit: 'шт',
     price: 350,
-    quantity: 1,
   },
   {
     id: 16,
@@ -251,9 +221,7 @@ export const products = [
       "Комфортний нашийник з м'якою підкладкою, ідеальний для тривалих прогулянок.",
     categoryId: 3,
     image: '/img/products/16.jpg',
-    unit: 'шт',
     price: 400,
-    quantity: 1,
   },
   {
     id: 17,
@@ -262,9 +230,7 @@ export const products = [
       'Практичний нашийник з вбудованим жетоном для контактної інформації.',
     categoryId: 3,
     image: '/img/products/17.avif',
-    unit: 'шт',
     price: 500,
-    quantity: 1,
   },
   {
     id: 18,
@@ -272,9 +238,7 @@ export const products = [
     description: 'Легкий та зручний намордник для собак малих порід.',
     categoryId: 4,
     image: '/img/products/18.webp',
-    unit: 'шт',
     price: 250,
-    quantity: 1,
   },
   {
     id: 19,
@@ -282,9 +246,7 @@ export const products = [
     description: 'Міцний металевий намордник для середніх та великих собак.',
     categoryId: 4,
     image: '/img/products/19.jpg',
-    unit: 'шт',
     price: 400,
-    quantity: 1,
   },
   {
     id: 20,
@@ -292,9 +254,7 @@ export const products = [
     description: 'Практичний намордник з дихаючою сіткою для комфорту собаки.',
     categoryId: 4,
     image: '/img/products/20.jpg',
-    unit: 'шт',
     price: 320,
-    quantity: 1,
   },
   {
     id: 21,
@@ -302,9 +262,7 @@ export const products = [
     description: "М'який нейлоновий намордник для коротких прогулянок.",
     categoryId: 4,
     image: '/img/products/21.jpg',
-    unit: 'шт',
     price: 200,
-    quantity: 1,
   },
   {
     id: 22,
@@ -313,9 +271,7 @@ export const products = [
       'Регульований намордник, що підходить для собак різних розмірів.',
     categoryId: 4,
     image: '/img/products/22.jpg',
-    unit: 'шт',
     price: 300,
-    quantity: 1,
   },
   {
     id: 23,
@@ -324,9 +280,7 @@ export const products = [
       'Спеціальний намордник для собак із короткою мордою, забезпечує комфорт і безпеку.',
     categoryId: 4,
     image: '/img/products/23.jpg',
-    unit: 'шт',
     price: 450,
-    quantity: 1,
   },
   {
     id: 24,
@@ -335,9 +289,7 @@ export const products = [
       'Зручна сумка для ласощів з кріпленням на пояс, ідеальна для тренувань.',
     categoryId: 5,
     image: '/img/products/24.webp',
-    unit: 'шт',
     price: 320,
-    quantity: 1,
   },
   {
     id: 25,
@@ -346,9 +298,7 @@ export const products = [
       "Компактний контейнер для зберігання сухого корму об'ємом 2 літри.",
     categoryId: 5,
     image: '/img/products/25.jpg',
-    unit: 'шт',
     price: 450,
-    quantity: 1,
   },
   {
     id: 26,
@@ -357,9 +307,7 @@ export const products = [
       'Практична сумка з декількома відділеннями для ласощів та аксесуарів.',
     categoryId: 5,
     image: '/img/products/26.webp',
-    unit: 'шт',
     price: 370,
-    quantity: 1,
   },
   {
     id: 27,
@@ -367,9 +315,7 @@ export const products = [
     description: 'Зручний складний контейнер для подорожей, економить місце.',
     categoryId: 5,
     image: '/img/products/27.webp',
-    unit: 'шт',
     price: 290,
-    quantity: 1,
   },
   {
     id: 28,
@@ -378,9 +324,7 @@ export const products = [
       'Контейнер для зручного зберігання вологого корму, герметичний.',
     categoryId: 5,
     image: '/img/products/28.avif',
-    unit: 'шт',
     price: 410,
-    quantity: 1,
   },
   {
     id: 29,
@@ -389,9 +333,7 @@ export const products = [
       'Сумка-диспенсер з легким доступом до ласощів, зручна у використанні.',
     categoryId: 5,
     image: '/img/products/29.webp',
-    unit: 'шт',
     price: 340,
-    quantity: 1,
   },
   {
     id: 30,
@@ -400,9 +342,7 @@ export const products = [
       'Містка сумка для зберігання ласощів, підходить для довгих тренувань.',
     categoryId: 5,
     image: '/img/products/30.jpeg',
-    unit: 'шт',
     price: 500,
-    quantity: 1,
   },
   {
     id: 31,
@@ -411,9 +351,7 @@ export const products = [
       'Металевий адресник з можливістю гравіювання контактної інформації.',
     categoryId: 6,
     image: '/img/products/31.webp',
-    unit: 'шт',
     price: 200,
-    quantity: 1,
   },
   {
     id: 32,
@@ -421,9 +359,7 @@ export const products = [
     description: 'Симпатичний адресник у формі кісточки для собак.',
     categoryId: 6,
     image: '/img/products/32.webp',
-    unit: 'шт',
     price: 250,
-    quantity: 1,
   },
   {
     id: 33,
@@ -431,9 +367,7 @@ export const products = [
     description: 'Брелок з вбудованим світлодіодом для зручності у темний час.',
     categoryId: 6,
     image: '/img/products/33.webp',
-    unit: 'шт',
     price: 300,
-    quantity: 1,
   },
   {
     id: 34,
@@ -442,9 +376,7 @@ export const products = [
       'Сучасний адресник з QR-кодом для сканування контактних даних.',
     categoryId: 6,
     image: '/img/products/34.jpg',
-    unit: 'шт',
     price: 350,
-    quantity: 1,
   },
   {
     id: 35,
@@ -453,9 +385,7 @@ export const products = [
       'Практичний брелок із дзвіночком, що допомагає знайти улюбленця.',
     categoryId: 6,
     image: '/img/products/35.webp',
-    unit: 'шт',
     price: 180,
-    quantity: 1,
   },
   {
     id: 36,
@@ -463,9 +393,7 @@ export const products = [
     description: "Унікальний дерев'яний адресник, виготовлений вручну.",
     categoryId: 6,
     image: '/img/products/36.jpg',
-    unit: 'шт',
     price: 400,
-    quantity: 1,
   },
   {
     id: 37,
@@ -474,9 +402,7 @@ export const products = [
       'Міцний адресник з нержавіючої сталі для довговічного використання.',
     categoryId: 6,
     image: '/img/products/37.webp',
-    unit: 'шт',
     price: 300,
-    quantity: 1,
   },
   {
     id: 38,
@@ -485,9 +411,7 @@ export const products = [
       'Креативний брелок у формі лапки, доступний у різних кольорах.',
     categoryId: 6,
     image: '/img/products/38.jpg',
-    unit: 'шт',
     price: 220,
-    quantity: 1,
   },
   {
     id: 39,
@@ -496,9 +420,7 @@ export const products = [
       'Стильний брелок із дзеркальною поверхнею, що відображає світло.',
     categoryId: 6,
     image: '/img/products/39.jpg',
-    unit: 'шт',
     price: 280,
-    quantity: 1,
   },
   {
     id: 40,
@@ -506,9 +428,7 @@ export const products = [
     description: 'Брелок з двома окремими секціями для різної інформації.',
     categoryId: 6,
     image: '/img/products/40.jpg',
-    unit: 'шт',
     price: 350,
-    quantity: 1,
   },
   {
     id: 41,
@@ -516,9 +436,7 @@ export const products = [
     description: 'Адресник у вигляді серця, ідеальний для милих улюбленців.',
     categoryId: 6,
     image: '/img/products/41.webp',
-    unit: 'шт',
     price: 250,
-    quantity: 1,
   },
   {
     id: 42,
@@ -526,8 +444,6 @@ export const products = [
     description: 'Брелок, що дозволяє персоналізувати інформацію на ньому.',
     categoryId: 6,
     image: '/img/products/42.jpg',
-    unit: 'шт',
     price: 320,
-    quantity: 1,
   },
 ];
