@@ -1,0 +1,43 @@
+.container {
+  text-align: center;
+}
+
+.container h2 {
+  margin-top: 16px;
+}
+
+.icon {
+  margin-top: 52px;
+}
+
+.container p {
+  margin-top: 24px;
+  line-height: 1;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.container button {
+  margin-top: 32px;
+  color: #35B0F3;
+}
+
+@media (min-width: 768px) {
+  .container h2 {
+    margin-top: 24px;
+  }
+  
+  .icon {
+    margin-top: 68px;
+    width: 60px;
+    height: 60px;
+  }
+
+  .container p {
+    font-size: 18px;
+  }
+  
+  .container p:first-child {
+    margin-top: 40px;
+  }
+}

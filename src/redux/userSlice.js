@@ -1,8 +1,9 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { isServerError } from '../fake-data';
 import axios from 'axios';
+import { act } from 'react';
 
-const apiUrl = 'https://gfts.website'
+const apiUrl = 'https://gfts.website';
 
 export const fetchUser = createAsyncThunk(
   'user/fetch',
@@ -12,11 +13,9 @@ export const fetchUser = createAsyncThunk(
       const user = JSON.parse(userStringified);
 
       if (!user) return reject();
-      // if (!user.remember) return;
       return resolve(user);
     });
 
-    // send api request to fetch user
     const user = await promise;
 
     return user;
@@ -26,30 +25,11 @@ export const fetchUser = createAsyncThunk(
 export const login = createAsyncThunk(
   'user/login',
   async (formdata, { rejectWithValue }) => {
-    // fetch to login endpoint
-    const promise = new Promise((resolve, reject) => {
-      const userStringified = localStorage.getItem('user');
-      const user = JSON.parse(userStringified);
-      const isCorrect =
-        user.email === formdata.email && user.password === formdata.password;
-
-      setTimeout(() => {
-        if (isCorrect) return resolve(user);
-
-        if (isServerError(formdata.email)) return reject('error');
-
-        reject('fail');
-      }, 800);
-    });
+    const { email, password } = formdata;
+    const loginData = { email, password };
 
     try {
-      const user = await promise;
-      // const updatedUser = { ...user, remember: formdata.remember };
-      // const updatedStringifiedUser = JSON.stringify(updatedUser);
-
-      // localStorage.setItem('user', updatedStringifiedUser);
-
-      return user;
+      return await axios.post(`${apiUrl}/login/`, loginData);
     } catch (err) {
       return rejectWithValue(err);
     }
@@ -59,8 +39,6 @@ export const login = createAsyncThunk(
 export const signup = createAsyncThunk(
   'user/signup',
   async (formData, { rejectWithValue }) => {
-    console.log('signup called...');
-
     const {
       name: first_name,
       email,
@@ -68,21 +46,13 @@ export const signup = createAsyncThunk(
       passwordConfirm: password_confirm,
     } = formData;
 
-    const registerData = {first_name, email, password, password_confirm}
-
-    console.log('registerData', registerData);
+    const registerData = { first_name, email, password, password_confirm };
 
     try {
-      const response = await axios.post(`${apiUrl}/register/`, registerData)
-      const serverUser = response.data
+      const response = await axios.post(`${apiUrl}/register/`, registerData);
+      const { first_name: name, email } = response.data;
 
-      console.log('serverUser', serverUser);
-
-      const {id, first_name: name} = serverUser
-
-      console.log('id, name:', id, name);
-
-      return {id, name};
+      return { name, email };
     } catch (err) {
       return rejectWithValue(err);
     }
@@ -90,9 +60,9 @@ export const signup = createAsyncThunk(
 );
 
 const initialState = {
-  id: '',
   name: '',
-  status: '',
+  status: '', // '', 'loading', '401', '500', 'active'
+  email: '',
 };
 
 const slice = createSlice({
@@ -100,8 +70,7 @@ const slice = createSlice({
   initialState,
   reducers: {
     setUser(state, action) {
-      state.id = action.payload.id;
-      state.name = action.payload.name;
+      Object.assign(state, action.payload);
     },
 
     logout(state) {
@@ -110,6 +79,10 @@ const slice = createSlice({
       state.status = '';
       state.fail = '';
     },
+
+    closeAuthView(state) {
+      state.status = state.id ? 'active' : '';
+    },
   },
 
   extraReducers: builder =>
@@ -117,13 +90,15 @@ const slice = createSlice({
       .addCase(signup.pending, state => {
         state.status = 'loading';
       })
-      .addCase(signup.rejected, (state, action) => {
-        state.status = action.payload;
+      .addCase(signup.rejected, state => {
+        state.status = '500';
       })
       .addCase(signup.fulfilled, (state, action) => {
-        state.id = action.payload.id;
-        state.name = action.payload.name;
-        state.status = 'success';
+        const {name, email} = action.payload
+
+        state.name = name;
+        state.email = email;
+        state.status = 'active';
       })
       .addCase(fetchUser.fulfilled, (state, action) => {
         state.id = action.payload.id;
@@ -134,15 +109,18 @@ const slice = createSlice({
         state.status = 'loading';
       })
       .addCase(login.rejected, (state, action) => {
-        state.status = action.payload;
+        const statusCode = action.payload.response?.status;
+        const status = statusCode === 401 ? '401' : '500';
+
+        state.status = status;
       })
       .addCase(login.fulfilled, (state, action) => {
-        state.id = action.payload.id;
-        state.name = action.payload.name;
-        state.status = 'success';
+        // console.log(action.payload);
+        state.name = action.payload.data.first_name;
+        state.status = 'active';
       }),
 });
 
-export const { logout } = slice.actions;
+export const { logout, closeAuthView } = slice.actions;
 
 export default slice.reducer;

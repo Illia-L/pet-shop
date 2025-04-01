@@ -13,7 +13,6 @@
   color: black; /* Set text color to black */
 }
 
-
 .form {
   margin-inline: auto;
   width: 90%;
@@ -90,6 +89,13 @@
   background: #0056b3;
 }
 
+.loaderContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 32px;
+}
+
 .link {
   display: block;
   text-align: center;
@@ -107,6 +113,10 @@
 
 .forgotPassword {
   text-align: right;
+}
+
+.messageBox {
+  height: 12px;
 }
 
 .fail {
@@ -145,5 +155,8 @@
   margin-inline: auto;
 }
 
-
-      
+@media (min-width: 768px) {
+  .messageBox {
+    height: 16px;
+  }
+}

@@ -5,11 +5,11 @@ import { useSelector } from 'react-redux';
 
 function SignupBlock({ setModalComponent }) {
   const [elementToShow, setElementToShow] = useState('signup'); // signup / verify / success
-  const { id } = useSelector(state => state.user);
+  const { name } = useSelector(state => state.user);
 
   useEffect(() => {
-    if (id) setElementToShow('success');
-  }, [id]);
+    if (name) setElementToShow('success');
+  }, [name]);
 
   return (
     <>

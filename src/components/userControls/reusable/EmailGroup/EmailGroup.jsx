@@ -1,4 +1,4 @@
-import formCss from '../../css/form.module.css'
+import formCss from '../../css/form.module.css';
 import css from '../Form/Form.module.css';
 import Loader from '../../../reusable-global/Loader/Loader';
 
@@ -7,7 +7,7 @@ function EmailGroup({
   register,
   errors,
   isCheckingAvailability = false,
-  checkIfEmailAvaillableWithDelay = () => true,
+  checkIfEmailAvaillable = () => true,
 }) {
   return (
     <div className={formCss.inputGroup}>
@@ -17,6 +17,7 @@ function EmailGroup({
       >
         Електронна пошта
       </label>
+      
       <input
         className={formCss.input}
         type='email'
@@ -29,14 +30,18 @@ function EmailGroup({
           },
           validate: {
             checkAvailability: async email =>
-              await checkIfEmailAvaillableWithDelay(email),
+              await checkIfEmailAvaillable(email),
           },
         })}
         required
         placeholder='example@domain.com'
         disabled={isLoading}
       />
-      {!isCheckingAvailability && !!errors.email && <p className={formCss.fail}>{errors.email.message}</p>}
+      <div className={css.messageBox}>
+        {!isCheckingAvailability && !!errors.email && (
+          <p className={formCss.fail}>{errors.email.message}</p>
+        )}
+      </div>
     </div>
   );
 }

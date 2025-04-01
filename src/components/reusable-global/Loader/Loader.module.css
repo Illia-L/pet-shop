@@ -6,7 +6,7 @@
 }
 
 .loader div {
-  margin-top: 36px;
+  /* margin-top: 36px; */
   width: 8px;
   height: 8px;
   background-color: #bbb;

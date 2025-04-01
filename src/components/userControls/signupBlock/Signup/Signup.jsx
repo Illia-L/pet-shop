@@ -9,6 +9,7 @@ import ConfirmPasswordGroup from '../../reusable/ConfirmPasswordGroup/ConfirmPas
 import Form from '../../reusable/Form/Form';
 import AvailableEmail from '../../reusable/AvailableEmail';
 import NewPassword from '../../reusable/NewPassword/NewPassword';
+import Loader from '../../../reusable-global/Loader/Loader';
 
 function Signup({ setElementToShow }) {
   const dispatch = useDispatch();
@@ -32,7 +33,7 @@ function Signup({ setElementToShow }) {
 
   useEffect(() => {
     if (!id) return;
-    
+
     reset();
     setElementToShow('success');
   }, [id]);
@@ -63,7 +64,6 @@ function Signup({ setElementToShow }) {
             id='name'
             {...register('name')}
             placeholder='Вадим'
-            disabled={status === 'loading'}
           />
         </div>
 
@@ -71,7 +71,6 @@ function Signup({ setElementToShow }) {
           register={register}
           errors={errors}
           trigger={trigger}
-          isLoading={status === 'loading'}
         />
 
         <NewPassword
@@ -83,7 +82,6 @@ function Signup({ setElementToShow }) {
         <ConfirmPasswordGroup
           register={register}
           trigger={trigger}
-          isLoading={status === 'loading'}
           errors={errors}
         />
 

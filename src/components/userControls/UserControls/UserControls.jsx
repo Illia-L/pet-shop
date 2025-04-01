@@ -1,15 +1,26 @@
 import { NavLink } from 'react-router-dom';
 import css from './UserControls.module.css';
 import Icon from '../../reusable-global/Icon/Icon';
-import { useSelector } from 'react-redux';
-import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect, useState } from 'react';
 import Modal from '../reusable/Modal/Modal';
 import Login from '../Login/Login';
 import SignupBlock from '../signupBlock/SignupBlock/SignupBlock';
+import Error500 from '../Error500/Error500';
+import { closeAuthView } from '../../../redux/userSlice';
 
 function UserControls() {
   const [modalComponent, setModalComponent] = useState(false);
-  const userName = useSelector(state => state.user.name);
+  const { name: userName, status } = useSelector(state => state.user);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    return () => dispatch(closeAuthView());
+  }, []);
+
+useEffect(()=>{
+  if(status === '500') setModalComponent('500')
+},[status])
 
   return (
     <>
@@ -57,6 +68,13 @@ function UserControls() {
         setModalComponent={setModalComponent}
       >
         <SignupBlock setModalComponent={setModalComponent} />
+      </Modal>
+
+      <Modal
+        isOpen={modalComponent === '500'}
+        setModalComponent={setModalComponent}
+      >
+        <Error500 />
       </Modal>
     </>
   );

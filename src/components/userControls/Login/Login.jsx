@@ -30,7 +30,7 @@ function Login({ setModalComponent }) {
       <Form
         title='Вхід до акаунту'
         isLoading={isLoading}
-        handleSubmit={() => handleSubmit(onSubmit)}
+        handleSubmit={handleSubmit(onSubmit)}
         setModalComponent={setModalComponent}
       >
         <div className={formCss.inputGroup}>
@@ -47,6 +47,7 @@ function Login({ setModalComponent }) {
             id='login-email'
           />
         </div>
+        
         <div className={formCss.inputGroup}>
           <label
             className={formCss.label}
