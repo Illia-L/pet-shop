@@ -1,0 +1,39 @@
+.productBox {
+  display: flex;
+  justify-content: space-between;
+}
+
+.gap {
+  display: flex;
+  gap: 40px;
+}
+
+.priceBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 180px;
+}
+
+.image {
+  border: 1px solid #fe7a29;
+  border-radius: 10%;
+  width: 124px;
+  height: 104px;
+}
+
+.title {
+  font-family: Inter;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 120%;
+  letter-spacing: 0%;
+}
+
+.price {
+  font-family: Inter;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 120%;
+  letter-spacing: 0%;
+}
