@@ -7,198 +7,8 @@
   padding: 0 12px;
 }
 
-.titleLink {
-  margin-bottom: 20px;
-}
-
-.titleH1 {
-  margin-bottom: 20px;
-  font-family: Inter;
-  font-weight: 700;
-  font-size: 24px;
-  line-height: 120%;
-  letter-spacing: 0%;
-}
-
-.card {
-  padding: 10px 0;
-}
-
-.products {
-  overflow-y: auto;
-  height: 250px;
-  scrollbar-width: none;
-}
-
-.icon {
-  fill: #fe7a29;
-  height: 21x;
-  width: 16px;
-}
-
-.link {
-  display: flex;
-  gap: 10px;
-}
-
-.linkBack {
-  font-family: Nunito Sans;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 100%;
-  letter-spacing: 0px;
-  text-align: center;
-}
-
-.button {
-  margin-top: 20px;
-  font-family: Inter;
-  font-weight: 600;
-  font-size: 14px;
-  line-height: 120%;
-  letter-spacing: 0px;
-  text-decoration: underline;
-  float: inline-end;
-}
-
-.submitBox {
-  width: 349px;
-  border-radius: 25px;
-  background-color: #f6f6f6;
-  padding: 30px 20px 40px 20px;
-  margin-bottom: 20px;
-}
-
-.titleForm {
-  font-family: Inter;
-  font-weight: 600;
-  font-size: 24px;
-  line-height: 120%;
-  letter-spacing: 0%;
-  margin-bottom: 40px;
-}
-
-.titleMargin {
-  margin-top: 60px;
-  margin-bottom: 30px;
-}
-
-.textForm {
-  font-family: Inter;
-  font-weight: 500;
-  font-size: 20px;
-  line-height: 120%;
-  letter-spacing: 0%;
-  margin-bottom: 20px;
-}
-
-.infoBox {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 20px;
-}
-
-.inputBox {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-}
-
-.label {
-  font-family: Nunito Sans;
-  font-weight: 500;
-  font-size: 13px;
-  line-height: 120%;
-  letter-spacing: 0px;
-  padding-left: 10px;
-}
-
-.input {
-  border: 1px solid #d9d9d9;
-  border-radius: 100px;
-  padding: 10px 25px;
-  font-family: Nunito Sans;
-  font-weight: 400;
-  font-size: 16px;
-  width: 100%;
-  line-height: 100%;
-  letter-spacing: 0px;
-  margin-bottom: 20px;
-}
-
-.input::placeholder {
-  font-family: Nunito Sans;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 100%;
-  letter-spacing: 0px;
-}
-
-.totalBox {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 20px;
-}
-
 .marginBox {
   margin-top: 50px;
-}
-
-.numberForm {
-  font-family: Inter;
-  font-weight: 700;
-  font-size: 22px;
-  line-height: 120%;
-  letter-spacing: 0%;
-}
-
-.submitButton {
-  font-family: Inter;
-  font-weight: 600;
-  font-size: 20px;
-  line-height: 120%;
-  letter-spacing: 0px;
-  padding: 21px 44px;
-  color: #fff;
-  background-color: #fe7a29;
-  width: 100%;
-  border-radius: 100px;
-  margin-top: 20px;
-  margin-bottom: 40px;
-}
-
-.textInformation {
-  font-family: Nunito Sans;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 100%;
-  letter-spacing: 0px;
-  margin-bottom: 10px;
-}
-
-.policy {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.list {
-  list-style: circle;
-  padding-left: 20px;
-}
-
-.item {
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.textItem {
-  font-family: Nunito Sans;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 100%;
-  letter-spacing: 0px;
 }
 
 @media (min-width: 768px) {
@@ -206,77 +16,20 @@
     margin-top: 10px;
     max-width: 768px;
   }
+
+  .form {
+    height: 1169px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 36px;
+  }
 }
 
 @media (min-width: 1280px) {
   .container {
     margin-top: 20px;
     max-width: 1304px;
-    padding: 0;
   }
 
-  .formContainer {
-    display: flex;
-    flex-direction: row;
-    gap: 80px;
-  }
-
-  .containerList {
-    width: 820px;
-  }
-
-  .card {
-    padding: 10px 0;
-  }
-
-  .products {
-    margin-top: 10px;
-    margin-bottom: 10px;
-  }
-
-  .linkBack {
-    font-family: Inter;
-    font-weight: 500;
-    font-size: 18px;
-    line-height: 120%;
-    letter-spacing: 0px;
-  }
-
-  .titleH1 {
-    font-family: Inter;
-    font-weight: 700;
-    font-size: 28px;
-    line-height: 120%;
-    letter-spacing: 0%;
-  }
-
-  .button {
-    text-decoration: underline;
-    font-family: Inter;
-    font-weight: 600;
-    font-size: 20px;
-    line-height: 120%;
-    letter-spacing: 0px;
-  }
-
-  .containerForm {
-    width: 820px;
-  }
-
-  .infoBox {
-    flex-direction: row;
-  }
-
-  .inputDoubleBox {
-    margin-right: 20px;
-  }
-
-  .input {
-    width: 400px;
-  }
-
-  .submitBox {
-    width: 400px;
-    height: 551px;
-  }
 }

@@ -1,4 +1,4 @@
-import css from './ProductBox.module.css';
+import css from "./ProductBox.module.css";
 
 export default function ProductBox({ item }) {
   return (
