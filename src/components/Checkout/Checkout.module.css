@@ -15,6 +15,17 @@
   .container {
     margin-top: 10px;
     max-width: 768px;
+    margin-left: 12px;
+    margin-right: 12px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container {
+    margin-top: 20px;
+    max-width: 1304px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .form {
@@ -23,13 +34,6 @@
     flex-direction: column;
     flex-wrap: wrap;
     gap: 36px;
-  }
-}
-
-@media (min-width: 1280px) {
-  .container {
-    margin-top: 20px;
-    max-width: 1304px;
   }
 
 }

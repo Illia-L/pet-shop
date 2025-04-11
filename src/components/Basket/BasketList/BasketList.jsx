@@ -58,7 +58,7 @@ export default function BasketList({ onClose }) {
                 <div className={css.gap}>
                   <div className={css.imageBox}>
                     <img
-                      src={"/pet-shop" + item.image}
+                      src={item.image}
                       alt={item.title}
                       className={css.image}
                     />

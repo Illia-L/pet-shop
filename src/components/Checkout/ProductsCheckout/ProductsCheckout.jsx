@@ -7,7 +7,7 @@ import ProductBoxDes from "../ProductBoxDes/ProductBoxDes";
 
 export default function ProductsCheckout({ openModal }) {
   const products = useSelector((state) => state.products.items);
-  const isDesktop = useMedia("(min-width: 1280px)");
+  const isDesktop = useMedia("(min-width: 768px)");
 
   return (
     <div className={css.containerList}>

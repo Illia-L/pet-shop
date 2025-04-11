@@ -10,9 +10,8 @@ export default function FormInputs({ register, control, errors }) {
         name="dropdown"
         control={control}
         defaultValue=""
-        rules={{ required: "This field is required" }}
         render={({ field }) => (
-          <select {...field} id="dropdown" className={css.input}>
+          <select {...field} id="dropdown" className={css.inputDropdown}>
             <option value="">Виберіть відповідне відділення</option>
             <option value="option1">Option 1</option>
             <option value="option2">Option 2</option>
@@ -20,8 +19,10 @@ export default function FormInputs({ register, control, errors }) {
           </select>
         )}
       />
+      <br></br><span className={css.error}>{errors.dropdown?.message}</span>
+      <h2 className={css.titleForm}>Оплата</h2>
+      <p className={css.textForm2}>Під час отримання товару</p>
       <h2 className={css.titleForm}>Отримувач</h2>
-
       <div className={css.infoBox}>
         <div className={css.inputDoubleBox}>
           <div className={css.inputBox}>
@@ -30,18 +31,18 @@ export default function FormInputs({ register, control, errors }) {
               type="text"
               id="surname"
               placeholder="Котіненко"
-              {...register("surname", { required: true, maxLength: 20 })}
+              {...register("surname")}
               className={css.input}
             />
-            <span className={css.error}>{errors.name?.message}</span>
+            <span className={css.error}>{errors.surname?.message}</span>
           </div>
           <div className={css.inputBox}>
             <label className={css.label}>Імʼя*</label>
             <input
               type="text"
               id="name"
-              placeholder="Муся"
-              {...register("name", { required: true, maxLength: 20 })}
+              placeholder="Цезарь"
+              {...register("name")}
               className={css.input}
             />
             <span className={css.error}>{errors.name?.message}</span>
@@ -54,10 +55,10 @@ export default function FormInputs({ register, control, errors }) {
               type="email"
               id="email"
               placeholder="example@mail.com"
-              {...register("email", { required: true, maxLength: 20 })}
+              {...register("email")}
               className={css.input}
             />
-            <span className={css.error}>{errors.name?.message}</span>
+            <span className={css.error}>{errors.email?.message}</span>
           </div>
           <div className={css.inputBox}>
             <label className={css.label}>Мобільний телефон*</label>
@@ -65,10 +66,10 @@ export default function FormInputs({ register, control, errors }) {
               type="text"
               id="phone"
               placeholder="+380501112233"
-              {...register("phone", { required: true, maxLength: 20 })}
+              {...register("phone")}
               className={css.input}
             />
-            <span className={css.error}>{errors.name?.message}</span>
+            <span className={css.error}>{errors.phone?.message}</span>
           </div>
         </div>
       </div>
