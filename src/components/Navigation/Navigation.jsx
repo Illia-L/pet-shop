@@ -4,8 +4,6 @@ import css from './Navigation.module.css';
 export default function Navigation({ setIsMenuOpen }) {
   const location = useLocation();
 
-  console.log(location.pathname);
-
   const getLinkStyle = path => {
     const isCurrent = path === location.pathname.split('/')[1];
 

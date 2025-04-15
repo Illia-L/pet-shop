@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import css from './Error500.module.css';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { closeAuthView } from '../../../redux/userSlice';
+import { closeAuthView } from '../../redux/userSlice';
 import { useMediaQuery } from 'react-responsive';
 
 function Error500() {

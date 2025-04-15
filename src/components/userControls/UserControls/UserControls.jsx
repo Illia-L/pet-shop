@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 import Modal from '../reusable/Modal/Modal';
 import Login from '../Login/Login';
 import SignupBlock from '../signupBlock/SignupBlock/SignupBlock';
-import Error500 from '../Error500/Error500';
+import Error500 from '../../Error500/Error500';
 import { closeAuthView } from '../../../redux/userSlice';
 
 function UserControls() {

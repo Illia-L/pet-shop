@@ -1,37 +1,20 @@
 import css from './Catalog.module.css';
 import Categories from '../Categories/Categories';
-import Products from '../Products/Products';
+import ProductList from '../ProductList/ProductList';
 import ProductsControls from '../ProductsControls/ProductsControls';
 import Pagination from '../Pagination/Pagination';
 import CategoriesMobileViget from '../CategoriesMobileViget/CategoriesMobileViget';
 import { useState } from 'react';
+import useFilter from '../filterLogic';
 
-export default function Catalog({
-  categories,
-  products,
-  currentCategoryId,
-  currentProductsPage,
-  pagesCount,
-  search,
-  sort,
-  setProducts,
-  setcurrentProductsPage,
-  setSearch,
-  setSort,
-  selectCategory,
-}) {
+export default function Catalog({}) {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [categories, setCategories] = useState([]);
+  // const [currentCategoryId, setCurrentCategoryId] = useState({});
+  const [filter, filterActions] = useFilter();
 
-  const allCategoriesItem = {
-    id: '',
-    title: 'Всі категорії',
-  };
-
-  const categoriesWithAllCategoriesItem = [allCategoriesItem, ...categories];
-
-  const currentCategoryName = categoriesWithAllCategoriesItem.find(
-    cat => `${cat.id}` === `${currentCategoryId}`
-  )?.title;
+  const currentCategoryName =
+    categories.find(cat => `${cat.id}` === `${filter.category}`)?.title || '';
 
   return (
     <div className={css.catalog}>
@@ -41,32 +24,34 @@ export default function Catalog({
       />
 
       <ProductsControls
-        search={search}
-        sort={sort}
-        setSort={setSort}
-        setSearch={setSearch}
+        search={filter.search}
+        sort={filter.sort}
+        setSort={filterActions.setSort}
+        setSearch={filterActions.setSearch}
       />
 
       <div className={css.content}>
         <Categories
-          categoriesWithAllCategoriesItem={categoriesWithAllCategoriesItem}
-          currentCategoryId={currentCategoryId}
+          categories={categories}
+          setCategories={setCategories}
+          currentCategoryId={filter.category}
           isModalOpen={isModalOpen}
-          selectCategory={selectCategory}
+          selectCategory={filterActions.setCategory}
           setIsModalOpen={setIsModalOpen}
         />
         <div>
-          <Products
-            products={products}
-            currentProductsPage={currentProductsPage}
-            pagesCount={pagesCount}
-            setProducts={setProducts}
-            setcurrentProductsPage={setcurrentProductsPage}
+          <ProductList
+            // products={products}
+            // currentProductsPage={filter.page}
+            filter={filter}
+            // pagesCount={pagesCount}
+            // setProducts={setProducts}
+            setcurrentProductsPage={filterActions.setPage}
           />
           <Pagination
-            currentProductsPage={currentProductsPage}
-            pagesCount={pagesCount}
-            setcurrentProductsPage={setcurrentProductsPage}
+            currentProductsPage={filter.page}
+            // pagesCount={pagesCount}
+            setcurrentProductsPage={filterActions.setPage}
           />
         </div>
       </div>

@@ -3,7 +3,7 @@ import { Route, Routes } from 'react-router-dom';
 import Modal from 'react-modal'
 
 import Layout from './components/Layout/Layout';
-import CatalogPage from './pages/CatalogPage/CatalogPage';
+// import CatalogPage from './pages/CatalogPage/CatalogPage';
 import CheckoutPage from './pages/CheckoutPage/CheckoutPage';
 import ProductDetails from './components/ProductDetails/ProductDetails';
 import BasketPage from './pages/BasketPage/BasketPage';
@@ -12,6 +12,7 @@ import Signup from './components/cabinet/Signup/Signup';
 import Login from './components/cabinet/Login/Login';
 import ForgotPassword from './components/cabinet/ForgotPassword/ForgotPassword';
 import ResetPasswordLogic from './components/cabinet/passwordReset/PasswordResetLogic/PasswordResetLogic';
+import Catalog from './components/catalog/Catalog/Catalog';
 
 Modal.setAppElement('#root')
 
@@ -22,11 +23,11 @@ function App() {
       <Routes>
         <Route
           path=''
-          element={<CatalogPage />}
+          element={<Catalog />}
         />
         <Route
           path='catalog'
-          element={<CatalogPage />}
+          element={<Catalog />}
         />
         <Route
           path='about'
