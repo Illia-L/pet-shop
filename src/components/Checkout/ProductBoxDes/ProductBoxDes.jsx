@@ -5,7 +5,7 @@ export default function ProductBoxDes({ item }) {
     <div className={css.productBox}>
       <div className={css.imageBox}>
         <img
-          src={"/pet-shop" + item.image}
+          src={item.image}
           alt={item.title}
           className={css.image}
         />
