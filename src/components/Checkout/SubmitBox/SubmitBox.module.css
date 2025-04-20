@@ -38,6 +38,22 @@
   letter-spacing: 0%;
 }
 
+.totalForm {
+  font-family: Inter;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 120%;
+  letter-spacing: 0px;
+}
+
+.totalTotal {
+  font-family: Inter;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 130%;
+  letter-spacing: 0px;
+}
+
 .submitButton {
   font-family: Inter;
   font-weight: 600;
@@ -87,10 +103,104 @@
   letter-spacing: 0px;
 }
 
+@media (min-width: 768px) {
+  .submitBox {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .titleForm {
+    font-family: Inter;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 120%;
+    letter-spacing: 0%;
+  }
+
+  .textForm {
+    font-family: Nunito Sans;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 120%;
+    letter-spacing: 0px;
+
+    margin-bottom: 0;
+  }
+
+  .numberForm {
+    font-family: Inter;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 120%;
+    letter-spacing: 0%;
+
+    margin-right: 20px;
+  }
+
+  .totalTotal {
+    font-family: Inter;
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 130%;
+    letter-spacing: 0px;
+    margin-right: 20px;
+  }
+
+  .submitButton {
+    width: 350px;
+  }
+
+  .submitBoxHalf1 {
+    width: 50%;
+    margin-left: 9px;
+    margin-right: 9px;
+  }
+
+  .submitBoxHalf2 {
+    width: 50%;
+  }
+
+
+  .totalBox {
+    display: flex;
+    align-items: center;
+  }
+
+  .marginBox {
+    padding-top: 20px;
+  }
+
+  .textInformation {
+    font-family: Nunito Sans;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 120%;
+    letter-spacing: 0px;
+  }
+
+  .textItem {
+    font-family: Nunito Sans;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 120%;
+    letter-spacing: 0px;
+  }
+}
+
 @media (min-width: 1280px) {
   .submitBox {
     width: 400px;
     height: 551px;
+    flex-direction: column;
+  }
+
+  .submitBoxHalf1 {
+    width: 100%;
+  }
+
+  .submitBoxHalf2 {
+    width: 100%;
   }
 
   .textItem {
@@ -98,6 +208,22 @@
     font-weight: 500;
     font-size: 18px;
     line-height: 120%;
+    letter-spacing: 0px;
+  }
+
+  .totalForm {
+    font-family: Inter;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 120%;
+    letter-spacing: 0px;
+  }
+
+  .totalTotal {
+    font-family: Inter;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 130%;
     letter-spacing: 0px;
   }
 }

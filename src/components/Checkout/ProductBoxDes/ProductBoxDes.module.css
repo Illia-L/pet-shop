@@ -7,14 +7,18 @@
 
 .productBox {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
 }
 
 .imageBox {
+  margin-right: 20px;
+}
+
+.priceBox {
   display: flex;
   align-items: center;
-  gap: 20px;
+  text-align: center;
+  justify-content: space-between;
+  width: 90%;
 }
 
 .title {
@@ -23,14 +27,25 @@
   font-size: 16px;
   line-height: 120%;
   letter-spacing: 0px;
+  width: 224px;
+  text-align: start;
 }
 
 .price {
+  font-family: Nunito Sans;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 100%;
+  letter-spacing: 0px;
+}
+
+.total {
   font-family: Inter;
   font-weight: 600;
   font-size: 16px;
   line-height: 120%;
   letter-spacing: 0px;
+  text-align: right;
 }
 
 @media (min-width: 1280px) {
@@ -40,18 +55,28 @@
   }
 
   .title {
-    font-family: Inter;
+    font-family: Nunito Sans;
     font-weight: 500;
     font-size: 20px;
     line-height: 120%;
-    letter-spacing: 0%;
+    letter-spacing: 0px;
+    width: 265px;
   }
 
   .price {
-    font-family: Inter;
-    font-weight: 700;
-    font-size: 22px;
+    font-family: Nunito Sans;
+    font-weight: 500;
+    font-size: 13px;
     line-height: 120%;
-    letter-spacing: 0%;
+    letter-spacing: 0px;
+  }
+
+  .total {
+    font-family: Inter;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 120%;
+    letter-spacing: 0px;
+    text-align: right;
   }
 }

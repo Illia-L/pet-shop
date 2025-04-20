@@ -1,6 +1,7 @@
 import css from "./ProductsCheckout.module.css";
 import { useSelector } from "react-redux";
 import { useMedia } from "react-use";
+import { NavLink } from "react-router-dom";
 
 import ProductBox from "../ProductBox/ProductBox";
 import ProductBoxDes from "../ProductBoxDes/ProductBoxDes";
@@ -24,9 +25,9 @@ export default function ProductsCheckout({ openModal }) {
         ))}
       </ul>
 
-      <button className={css.button} onClick={openModal}>
+      <NavLink className={css.button} onClick={openModal}>
         Редагувати товари
-      </button>
+      </NavLink>
     </div>
   );
 }

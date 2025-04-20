@@ -1,0 +1,36 @@
+/* .label {
+  display: block;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 129%;
+  letter-spacing: -0.01em;
+
+  color: black;
+} */
+
+.input {
+  border: 1px solid #d9d9d9;
+  border-radius: 100px;
+  padding: 10px 15px;
+
+  color: #888888;
+
+  /* outline: none;
+  background-color: transparent;
+  transition: all var(--transition-delay) var(--transition); */
+}
+
+.input.inactive {
+  color: #171717;
+  border: 1px solid #888888;
+}
+.input.focused {
+  color: #171717;
+  border: 1px solid #171717;
+}
+
+.input.error {
+  color: #e56666;
+  border: 1px solid #e56666;
+  background-color: transparent;
+}
