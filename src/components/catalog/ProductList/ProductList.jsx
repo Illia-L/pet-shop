@@ -6,18 +6,27 @@ import Pagination from '../Pagination/Pagination';
 import { useEffect } from 'react';
 import * as api from '../../../api';
 
-function ProductList({ filter }) {
+function ProductList({ filter, setPagesCount }) {
   const [products, setProducts] = useState([]);
   const [isPending, setIsPending] = useState([]);
   const [isError, setIsError] = useState([]);
 
-  async function fetchAndSetProducts() {
+  useEffect(() => {
+    updateProducts();
+  }, [filter]);
+
+  async function updateProducts() {
     try {
       setIsPending(true);
       setIsError(false);
 
-      const products = await api.getProducts(filter);
+      const productsPage = await api.getProductsPage(filter);
+      const products = productsPage.results
+      const itemsCount = productsPage.count
+      const {perPage} = filter
+      const pagesCount = Math.ceil(itemsCount / perPage)
 
+      setPagesCount(pagesCount)
       setProducts([...products]);
     } catch (err) {
       setIsError(true);
@@ -25,10 +34,6 @@ function ProductList({ filter }) {
       setIsPending(false);
     }
   }
-
-  useEffect(() => {
-    fetchAndSetProducts();
-  }, [filter]);
 
   return (
     <ul className={css.products}>

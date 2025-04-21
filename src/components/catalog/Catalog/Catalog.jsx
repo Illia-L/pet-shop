@@ -4,12 +4,13 @@ import ProductList from '../ProductList/ProductList';
 import ProductsControls from '../ProductsControls/ProductsControls';
 import Pagination from '../Pagination/Pagination';
 import CategoriesMobileViget from '../CategoriesMobileViget/CategoriesMobileViget';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import useFilter from '../filterLogic';
 
 export default function Catalog({}) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [categories, setCategories] = useState([]);
+  const [pagesCount, setPagesCount] = useState(0);
   // const [currentCategoryId, setCurrentCategoryId] = useState({});
   const [filter, filterActions] = useFilter();
 
@@ -39,19 +40,21 @@ export default function Catalog({}) {
           selectCategory={filterActions.setCategory}
           setIsModalOpen={setIsModalOpen}
         />
-        <div>
+        <div className={css.products}>
           <ProductList
             // products={products}
             // currentProductsPage={filter.page}
             filter={filter}
+            setPagesCount={setPagesCount}
             // pagesCount={pagesCount}
             // setProducts={setProducts}
             setcurrentProductsPage={filterActions.setPage}
           />
           <Pagination
-            currentProductsPage={filter.page}
+            page={filter.page}
+            pagesCount={pagesCount}
             // pagesCount={pagesCount}
-            setcurrentProductsPage={filterActions.setPage}
+            setPage={filterActions.setPage}
           />
         </div>
       </div>

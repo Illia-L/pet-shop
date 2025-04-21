@@ -1,55 +1,91 @@
-import styles from './ProductDetails.module.css';
+import css from './ProductDetails.module.css';
 import { useEffect, useRef, useState } from 'react';
-import { products as initialProducts } from '../../fake-data';
-import { useParams } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { addItemToCart } from '../../redux/productsSlice';
+import { Link, useLocation, useParams } from 'react-router-dom';
+import * as api from '../../api';
+import { PulseLoader } from 'react-spinners';
+import Icon from '../reusable-global/Icon/Icon';
+import ProductDetailsForm from '../ProductDetailsForm/ProductDetailsForm';
 
 function ProductDetails() {
   const [product, setProduct] = useState({});
-  const [quantity, setQuantity] = useState(1);
+  const [isPending, setIsPending] = useState(false);
+  const [isError, setIsError] = useState(false);
   const { id } = useParams();
-
-  const dispatch = useDispatch();
-  
-  const addToCart = () => {
-    dispatch(addItemToCart(product));
-  };
-
+  const location = useLocation();
+  const fromRef = useRef('/catalog');
 
   useEffect(() => {
-    const fetchedProduct = initialProducts.find(p => `${p.id}` === `${id}`);
+    const from = location?.state?.from;
 
-    setProduct(fetchedProduct);
+    if (!from) return;
+
+    fromRef.current = from;
   }, []);
 
+  useEffect(() => {
+    getProduct();
+  }, [id]);
+
+  async function getProduct() {
+    try {
+      setIsError(false);
+      setIsPending(true);
+      const product = await api.getProduct(id);
+      setProduct(product);
+    } catch (err) {
+      setIsError(true);
+    } finally {
+      setIsPending(false);
+    }
+  }
+
+  // if (isPending)
+  //   return (
+  //     <PulseLoader
+  //       color='#a6a5a5'
+  //       margin={5}
+  //       speedMultiplier={0.6}
+  //     />
+  //   );
+
+  if (isError)
+    return (
+      <p>
+        Не вдалося завантажити дані про товар. Спробуйте, будь ласка, пізніше.
+      </p>
+    );
+
   return (
-    <div className={styles.container}>
-      <div className={styles.box}>
-        <div className={styles.fotos}>
-          <img
-            src={'/pet-shop' + product.image}
-            alt={product.title}
-          />
-        </div>
-        <div className={styles.details}>
-          <h1 className={styles.title}>{product.title}</h1>
-          <p className={styles.price}>{product.price}</p>
-          <div className={styles.order}>
-            <div className={styles.inputWrapper}>
-              <input
-                className={styles.inputQuantity}
-                id='quantity'
-                name='quantity'
-                value={quantity}
-                onChange={e => setQuantity(e.target.value)}
-              />
-            </div>
-            <button type='button' className={styles.toCart} onClick={() => addToCart(product)}>Додати до Кошика</button>
+    <div className={css.container}>
+      <Link to={fromRef.current} className={css.linkBack}>
+        <Icon
+          id='icon-chevron-left'
+          width={10}
+          height={16}
+        />
+        Назад
+      </Link>
+
+      <div className={css.box}>
+        <div className={css.details}>
+          <h1 className={css.title}>{product?.title}</h1>
+
+          <div className={css.desc}>
+            <span className={css.descLabel}>Опис:</span>
+            <p className={css.descContent}>{product?.description}</p>
           </div>
         </div>
+
+        <div className={css.imageContainer}>
+          <img
+            className={css.image}
+            src={product?.image}
+            alt={product?.title}
+          />
+        </div>
+
+        <ProductDetailsForm product={product} />
       </div>
-      <div className={styles.desc}>{product.description}</div>
     </div>
   );
 }

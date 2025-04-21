@@ -42,7 +42,7 @@ function filterReducer(state, action) {
       return { ...state, perPage: action.payload };
 
     case 'SET_PAGE': {
-      const page = action.payload;
+      const page = +action.payload;
 
       if (!Number.isInteger(page) || page < 1) return state;
 

@@ -1,0 +1,123 @@
+
+.order {
+  display: flex;
+  flex-direction: column;
+  margin-top: 64px;
+
+  @media (min-width: 768px) {
+    margin-top: 0;
+  }
+}
+
+.sumBox {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.quantityBox {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  @media (min-width: 768px) {
+    gap: 20px;
+  }
+}
+
+.quantityButton {
+  border-radius: 50%;
+  border: 1px solid #fe7a29;
+  width: 40px;
+  height: 40px;
+  font-family: 'Inter', sans-serif;
+  line-height: 38px;
+  font-size: 20px;
+  font-weight: 600;
+
+  @media (min-width: 768px) {
+    border-width: 1.2px;
+    width: 32px;
+    height: 32px;
+    line-height: 30px;
+    font-size: 24px;
+  }
+
+  @media (min-width: 1440px) {
+    width: 48px;
+    height: 48px;
+    line-height: 46px;
+  }
+
+  &:disabled {
+    background-color: #f6f6f6;
+    cursor: default;
+  }
+}
+
+.quantity {
+  font-family: 'Inter', sans-serif;
+  line-height: 1.2;
+  font-size: 20px;
+  font-weight: 600;
+
+  @media (min-width: 768px) {
+    font-size: 24px;
+    font-weight: 700;
+  }
+
+  @media (min-width: 1440px) {
+    font-weight: 600;
+  }
+}
+
+.price {
+  font-family: 'Inter', sans-serif;
+  line-height: 1.2;
+  font-size: 20px;
+  font-weight: 600;
+
+  @media (min-width: 768px) {
+    font-size: 24px;
+    font-weight: 700;
+  }
+
+  @media (min-width: 1440px) {
+    line-height: 1.3;
+    font-size: 32px;
+  }
+}
+
+.toCart {
+  margin-top: 38px;
+  border-radius: 100px;
+  border: 1px solid #fe7a29;
+  width: 100%;
+  padding: 14px;
+  font-family: 'Inter', sans-serif;
+  line-height: 1.2;
+  font-size: 20px;
+  font-weight: 600;
+  color: #f6f6f6;
+  background-color: #fe7a29;
+  /* text-align: center; */
+
+  @media (min-width: 768px) {
+    margin-top: 30px;
+    padding: 16px;
+  }
+
+  @media (min-width: 1440px) {
+    align-self: flex-end;
+    margin-top: 32px;
+    margin-left: auto;
+    width: 350px;
+  }
+
+  &.reversedColors{
+    border-color: #fe7a29;
+    color: #fe7a29;
+    background-color: #f6f6f6;
+    cursor: default;
+  }
+}

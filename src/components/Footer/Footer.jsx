@@ -52,10 +52,10 @@ function Footer() {
           <h3 className={css.subtitle}>Графік роботи</h3>
           <p className={css.desc}>
             Пн-Пт: <time dateTime='09:00'>09:00</time> –{' '}
-            <time datetime='20:00'>20:00</time>
+            <time dateTime='20:00'>20:00</time>
             <br />
             Сб-Нд: <time dateTime='10:00'>10:00</time> –{' '}
-            <time datetime='18:00'>18:00</time>
+            <time dateTime='18:00'>18:00</time>
           </p>
         </div>
 

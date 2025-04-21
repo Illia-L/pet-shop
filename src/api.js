@@ -8,7 +8,7 @@ export async function getCategories() {
   return response.data.results;
 }
 
-export async function getProducts(params = {}) {
+export async function getProductsPage(params = {}) {
   console.log(params);
   const { category, search, sort, page } = params;
   const processedParams = {};
@@ -20,7 +20,13 @@ export async function getProducts(params = {}) {
 
   console.log(processedParams);
 
-  const response = await axios.get('items', processedParams);
+  const response = await axios.get('items', {params: processedParams});
 
-  return response.data.results;
+  return response.data;
+}
+
+export async function getProduct(id) {
+  const response = await axios.get(`items/${id}`)
+
+  return response.data
 }

@@ -1,6 +1,6 @@
 import './reset.css';
-import { Route, Routes } from 'react-router-dom';
-import Modal from 'react-modal'
+import { Navigate, Route, Routes } from 'react-router-dom';
+import Modal from 'react-modal';
 
 import Layout from './components/Layout/Layout';
 // import CatalogPage from './pages/CatalogPage/CatalogPage';
@@ -14,16 +14,15 @@ import ForgotPassword from './components/cabinet/ForgotPassword/ForgotPassword';
 import ResetPasswordLogic from './components/cabinet/passwordReset/PasswordResetLogic/PasswordResetLogic';
 import Catalog from './components/catalog/Catalog/Catalog';
 
-Modal.setAppElement('#root')
+Modal.setAppElement('#root');
 
 function App() {
-
   return (
     <Layout>
       <Routes>
         <Route
           path=''
-          element={<Catalog />}
+          element={<Navigate to='/catalog' />}
         />
         <Route
           path='catalog'

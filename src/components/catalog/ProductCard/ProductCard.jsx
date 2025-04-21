@@ -1,19 +1,24 @@
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 import css from './ProductCard.module.css';
 import Icon from '../../reusable-global/Icon/Icon';
 import { useDispatch } from 'react-redux';
 import { addItemToCart } from '../../../redux/productsSlice';
 
-function ProductCard({product}) {
+function ProductCard({ product }) {
   const dispatch = useDispatch();
+  const location = useLocation();
 
   const addToCart = () => {
-      dispatch(addItemToCart(product));
-    };
+    dispatch(addItemToCart(product));
+  };
 
   return (
     <li className={css.card}>
-      <NavLink to={`products/${product.id}`} className={css.link}>
+      <Link
+        to={`/products/${product.id}`}
+        state={{ from: location }}
+        className={css.link}
+      >
         <div className={css.imageRelativeBox}>
           <div className={css.imageAbsoluteBox}>
             <img
@@ -26,12 +31,20 @@ function ProductCard({product}) {
         <h3 className={css.title}>{product.title}</h3>
         <p className={css.purchaseBox}>
           {product.price}
-          
-          <button type='button' className='cartButton' onClick={() => addToCart(product)}>
-            <Icon id='icon-cart-filled' width={24} height={22}/>
+
+          <button
+            type='button'
+            className='cartButton'
+            onClick={() => addToCart(product)}
+          >
+            <Icon
+              id='icon-cart-filled'
+              width={24}
+              height={22}
+            />
           </button>
         </p>
-      </NavLink>
+      </Link>
     </li>
   );
 }

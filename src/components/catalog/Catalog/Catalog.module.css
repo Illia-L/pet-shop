@@ -4,6 +4,10 @@
   padding-inline: 12px;
 }
 
+.products {
+  flex-grow: 1;
+}
+
 @media (min-width: 768px) {
   .catalog {
     width: 768px;
