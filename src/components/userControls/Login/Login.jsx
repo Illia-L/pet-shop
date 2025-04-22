@@ -1,24 +1,34 @@
 import { useForm } from 'react-hook-form';
 import formCss from '../css/form.module.css';
-import css from './Login.module.css';
-import Icon from '../../reusable-global/Icon/Icon';
-import Loader from '../../reusable-global/Loader/Loader';
-import { login } from '../../../redux/userSlice';
+import css from './Login.module.scss';
+import * as userActions from '../../../redux/userSlice';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import CloseButton from '../../pageModals/CloseButton/CloseButton';
 import { useMediaQuery } from 'react-responsive';
 import Form from '../reusable/Form/Form';
+import * as api from '../../../api'
+import { ref } from 'yup';
 
 function Login({ setModalComponent }) {
+  const [isError, setIsError] = useState(false)
   const { register, handleSubmit } = useForm();
   const dispatch = useDispatch();
   const user = useSelector(state => state.user);
   const isLoading = user.status === 'loading';
 
-  function onSubmit(data) {
-    dispatch(login(data));
+  async function onSubmit(data) {
+    try {
+      setIsError(false)
+
+      const authData = await api.login(data)
+      const {name, access: token, refresh} = authData
+
+      dispatch(userActions.handleLogin(name, token, refresh))
+    } catch (err) {
+      setIsError(true)
+    }
   }
 
   useEffect(() => {
@@ -62,6 +72,9 @@ function Login({ setModalComponent }) {
             id='login-password'
           />
         </div>
+
+        <p className={css.validationMessage}>{isError && 'Перевірте дані та спробуйте ще раз.'}&nbsp;</p>
+
         <Link
           to='cabinet/forgot-password'
           className={css.forgotPassword}

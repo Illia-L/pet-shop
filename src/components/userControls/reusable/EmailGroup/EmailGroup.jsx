@@ -3,11 +3,10 @@ import css from '../Form/Form.module.css';
 import Loader from '../../../reusable-global/Loader/Loader';
 
 function EmailGroup({
-  isLoading,
   register,
   errors,
-  isCheckingAvailability = false,
-  checkIfEmailAvaillable = () => true,
+  // isCheckingAvailability = false,
+  // checkIfEmailAvaillable = () => true,
 }) {
   return (
     <div className={formCss.inputGroup}>
@@ -28,17 +27,16 @@ function EmailGroup({
             value: /^[\d\w.-]+@[a-zA-Z\d.-]+\.[a-zA-Z]{2,}$/,
             message: 'Введіть дійсну електронну пошту',
           },
-          validate: {
-            checkAvailability: async email =>
-              await checkIfEmailAvaillable(email),
-          },
+          // validate: {
+          //   checkAvailability: async email =>
+          //     await checkIfEmailAvaillable(email),
+          // },
         })}
         required
         placeholder='example@domain.com'
-        disabled={isLoading}
       />
       <div className={css.messageBox}>
-        {!isCheckingAvailability && !!errors.email && (
+        {!!errors.email && (
           <p className={formCss.fail}>{errors.email.message}</p>
         )}
       </div>

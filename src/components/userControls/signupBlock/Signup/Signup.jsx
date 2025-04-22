@@ -1,21 +1,22 @@
 import { useForm } from 'react-hook-form';
 import formCss from '../../css/form.module.css';
 import css from '../../reusable/Form/Form.module.css';
-import { signup } from '../../../../redux/userSlice';
+import { setUser } from '../../../../redux/userSlice';
+import * as api from '../../../../api';
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import ConfirmPasswordGroup from '../../reusable/ConfirmPasswordGroup/ConfirmPasswordGroup';
-// import RememberMeGroup from '../reusable/RememberMeGroup/RememberMeGroup';
-import Form from '../../reusable/Form/Form';
-import AvailableEmail from '../../reusable/AvailableEmail';
 import NewPassword from '../../reusable/NewPassword/NewPassword';
-import Loader from '../../../reusable-global/Loader/Loader';
+import EmailGroup from '../../reusable/EmailGroup/EmailGroup';
+import Error500 from '../../../Error500/Error500';
 
 function Signup({ setElementToShow }) {
+  const [is500, setIs500] = useState(false);
   const dispatch = useDispatch();
   const {
     register,
     handleSubmit,
+    setError,
     reset,
     trigger,
     formState: { errors },
@@ -26,23 +27,38 @@ function Signup({ setElementToShow }) {
       email: '',
       password: '',
       passwordConfirm: '',
-      // remember: true,
     },
   });
   const { id, status } = useSelector(state => state.user);
 
-  useEffect(() => {
-    if (!id) return;
+  // useEffect(() => {
+  //   if (!id) return;
 
-    reset();
-    setElementToShow('success');
-  }, [id]);
+  //   reset();
+  //   setElementToShow('success');
+  // }, [id]);
 
-  // if (id) return <p className={css.success}>Ви зареєстровані</p>;
+  async function onSubmit(formData) {
+    try {
+      const user = await api.signup(formData);
 
-  function onSubmit(formData) {
-    dispatch(signup({ ...formData }));
+      reset();
+      setElementToShow('success');
+      // const { name, email } = user;
+
+      // dispatch(setUser({ name, email }));
+    } catch (err) {
+      if (err.response.data.email) {
+        setError('email', { message: 'Ця пошта вже зареєстрована' });
+
+        return;
+      }
+
+      setIs500(true);
+    }
   }
+
+  if (is500) return <Error500 />;
 
   return (
     <>
@@ -67,10 +83,9 @@ function Signup({ setElementToShow }) {
           />
         </div>
 
-        <AvailableEmail
+        <EmailGroup
           register={register}
           errors={errors}
-          trigger={trigger}
         />
 
         <NewPassword

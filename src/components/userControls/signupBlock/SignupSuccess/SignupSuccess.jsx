@@ -1,7 +1,9 @@
 import { useMediaQuery } from 'react-responsive';
-import css from './SignupSuccess.module.css';
+import formCss from '../../css/form.module.css';
+import css from './SignupSuccess.module.scss';
+import clsx from 'clsx';
 
-function SignupSuccess() {
+function SignupSuccess({ setModalComponent }) {
   const isMobile = useMediaQuery({ query: '(max-width: 767px)' });
   const isRetina = useMediaQuery({ query: '(min-resolution: 2dppx)' });
   const imageHeight = isMobile ? 194 : 298;
@@ -25,6 +27,14 @@ function SignupSuccess() {
         alt='A ready to play cartoon dog'
         loading='lazy'
       />
+
+      <button
+        className={clsx(formCss.button, css.button)}
+        type='button'
+        onClick={() => setModalComponent('login')}
+      >
+        Увійти в акаунт
+      </button>
     </div>
   );
 }

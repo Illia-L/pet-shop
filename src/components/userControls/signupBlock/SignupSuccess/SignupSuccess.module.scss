@@ -23,6 +23,14 @@
   margin-inline: auto;
 }
 
+.button {
+  margin-top: 24px;
+
+  @media (min-width: 768px) {
+    margin-top: 32px;
+  }
+}
+
 @media (min-width: 768px) {
   .desc {
     font-size: 24px;

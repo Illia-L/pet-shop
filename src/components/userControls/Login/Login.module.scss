@@ -1,0 +1,36 @@
+.validationMessage {
+  margin-top: 4px;
+  font-family: 'Nunito', sans-serif;
+  line-height: 100%;
+  font-size: 10px;
+  font-weight: 400;
+  color: #e56666;
+
+  @media (min-width: 768px) {
+    margin-top: 8px;
+    font-size: 12px;
+  }
+}
+
+.forgotPassword {
+  display: block;
+  margin-top: 12px;
+  line-height: 1.2;
+  font-size: 16px;
+  text-align: right;
+  color: #35b0f3;
+
+  @media (min-width: 768px) {
+    margin-top: 18px;
+  }
+}
+
+.signup {
+  margin-top: 16px;
+  background-color: transparent;
+  color: #fe7a29;
+
+  @media (min-width: 768px) {
+    margin-top: 24px;
+  }
+}

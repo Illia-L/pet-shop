@@ -9,7 +9,6 @@ export async function getCategories() {
 }
 
 export async function getProductsPage(params = {}) {
-  console.log(params);
   const { category, search, sort, page } = params;
   const processedParams = {};
 
@@ -18,15 +17,47 @@ export async function getProductsPage(params = {}) {
   if (page) processedParams.page = page;
   if (sort) processedParams.ordering = sort;
 
-  console.log(processedParams);
-
-  const response = await axios.get('items', {params: processedParams});
+  const response = await axios.get('items', { params: processedParams });
 
   return response.data;
 }
 
 export async function getProduct(id) {
-  const response = await axios.get(`items/${id}`)
+  const response = await axios.get(`items/${id}`);
 
-  return response.data
+  return response.data;
+}
+
+export async function signup(formData) {
+  const {
+    name: first_name,
+    email,
+    password,
+    passwordConfirm: password_confirm,
+  } = formData;
+
+  const registerData = { first_name, email, password, password_confirm };
+
+  const response = await axios.post(`register/`, registerData);
+
+  const user = { ...response.data };
+
+  user.name = user.first_name;
+  delete user.first_name;
+
+  return user;
+}
+
+export async function login(formData) {
+  const response = await axios.post('login/', formData);
+
+  const { access, refresh, first_name: name } = response.data;
+
+  return { access, refresh, name };
+}
+
+export async function getFreshAccessToken(refresh) {
+  const response = await axios.post('refresh/', { refresh });
+
+  return response.data.access;
 }
