@@ -30,7 +30,7 @@ function ProductCard({ product }) {
         </div>
         <h3 className={css.title}>{product.title}</h3>
         <p className={css.purchaseBox}>
-          {product.price}
+          {product.price} &#8372;
 
           <button
             type='button'
