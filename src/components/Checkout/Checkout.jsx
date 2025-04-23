@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import * as yup from "yup";
 
 import ProductsCheckout from "./ProductsCheckout/ProductsCheckout";
@@ -80,6 +81,8 @@ export default function Checkout() {
 
   const phoneValue = watch("phone");
 
+  const navigate = useNavigate();
+
   const onSubmit = (data) => {
     const productsId = products.map((product) => ({
       id: product.id,
@@ -95,6 +98,7 @@ export default function Checkout() {
     };
     console.log(arr);
     reset();
+    // navigate("/");
   };
 
   return (
