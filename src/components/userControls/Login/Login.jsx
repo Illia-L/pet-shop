@@ -5,11 +5,8 @@ import * as userActions from '../../../redux/userSlice';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
-import CloseButton from '../../pageModals/CloseButton/CloseButton';
-import { useMediaQuery } from 'react-responsive';
 import Form from '../reusable/Form/Form';
 import * as api from '../../../api'
-import { ref } from 'yup';
 
 function Login({ setModalComponent }) {
   const [isError, setIsError] = useState(false)
