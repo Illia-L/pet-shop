@@ -1,25 +1,25 @@
-import css from './ProductDetailsForm.module.css';
+import css from "./ProductDetailsForm.module.css";
 import {
   addItemToCart,
   incrementQuantity,
   decrementQuantity,
-} from '../../redux/productsSlice';
-import { useDispatch, useSelector } from 'react-redux';
-import clsx from 'clsx';
-import { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
-import { DiAndroid } from 'react-icons/di';
+} from "../../redux/productsSlice";
+import { useDispatch, useSelector } from "react-redux";
+import clsx from "clsx";
+import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
+import { DiAndroid } from "react-icons/di";
 
 const MAX_QUANTITY = 50;
 
 function ProductDetailsForm({ product }) {
   const [quantity, setQuantity] = useState(1);
   const dispatch = useDispatch();
-  const cart = useSelector(state => state.products.items);
+  const cart = useSelector((state) => state.products.items);
 
-  const cartProduct = cart.find(p => p.id === product.id);
+  const cartProduct = cart.find((p) => p.id === product.id);
   const cartQuantity = cartProduct?.quantity;
-  const buttonText = cartProduct ? 'У кошику' : 'Купити';
+  const buttonText = cartProduct ? "У кошику" : "Купити";
   const buttonClassList = [css.toCart];
 
   if (cartProduct) buttonClassList.push(css.reversedColors);
@@ -27,34 +27,25 @@ function ProductDetailsForm({ product }) {
   if (cartProduct && quantity !== cartQuantity) setQuantity(cartQuantity);
 
   function increaseQuantity() {
-    setQuantity(q => q + 1);
-    dispatch(addItemToCart({id: product.id}))
-
-    // if (cartProduct) dispatch(incrementQuantity(product.id));
+    setQuantity((q) => q + 1);
   }
 
   function decreaseQuantity() {
-    setQuantity(q => q - 1);
-    dispatch(decrementQuantity(product.id))
-    // if (cartProduct) dispatch(decrementQuantity(product.id));
+    setQuantity((q) => q - 1);
   }
 
   function handleSubmit(e) {
     e.preventDefault();
-
-    dispatch(addItemToCart({ id: product.id, quantity }));
+    dispatch(addItemToCart({ product, quantity }));
   }
 
   return (
-    <form
-      className={css.order}
-      onSubmit={handleSubmit}
-    >
+    <form className={css.order} onSubmit={handleSubmit}>
       <div className={css.sumBox}>
         <div className={css.quantityBox}>
           <button
             className={css.quantityButton}
-            type='button'
+            type="button"
             disabled={quantity <= 1}
             onClick={decreaseQuantity}
           >
@@ -65,7 +56,7 @@ function ProductDetailsForm({ product }) {
 
           <button
             className={css.quantityButton}
-            type='button'
+            type="button"
             disabled={quantity >= MAX_QUANTITY}
             onClick={increaseQuantity}
           >
@@ -78,7 +69,7 @@ function ProductDetailsForm({ product }) {
 
       <button
         className={clsx(buttonClassList)}
-        type='submit'
+        type="submit"
         disabled={!!cartProduct}
       >
         {buttonText}
