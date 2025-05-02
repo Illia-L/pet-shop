@@ -8,8 +8,11 @@ function ProductCard({ product }) {
   const dispatch = useDispatch();
   const location = useLocation();
 
-  const addToCart = () => {
-    dispatch(addItemToCart(product));
+  const handleAddToCart = e => {
+    console.log('handleAddToCart starts...');
+    e.preventDefault();
+    e.stopPropagation();
+    dispatch(addItemToCart({ product, quantity: 1 }));
   };
 
   return (
@@ -31,11 +34,10 @@ function ProductCard({ product }) {
         <h3 className={css.title}>{product.title}</h3>
         <p className={css.purchaseBox}>
           {product.price} &#8372;
-
           <button
             type='button'
             className='cartButton'
-            onClick={() => addToCart(product)}
+            onClick={handleAddToCart}
           >
             <Icon
               id='icon-cart-filled'
