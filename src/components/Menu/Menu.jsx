@@ -1,4 +1,4 @@
-import css from './Menu.module.css';
+import css from './Menu.module.scss';
 import Navigation from '../Navigation/Navigation';
 import Icon from '../reusable-global/Icon/Icon';
 

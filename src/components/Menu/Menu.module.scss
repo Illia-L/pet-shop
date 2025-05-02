@@ -1,3 +1,5 @@
+@import '../../css/variables';
+
 .overlay {
   position: absolute;
   z-index: 5;
@@ -9,6 +11,10 @@
   opacity: 0;
   pointer-events: none;
   transition: opacity 250ms linear;
+
+  @media (min-width: $screen-tab) {
+    display: none;
+  }
 }
 
 .overlay.open {
@@ -26,6 +32,18 @@
   padding: 8px 14px 22px calc((100% - 351px) / 2);
   background-color: #fff;
   transition: left 250ms linear;
+
+  @media (min-width: $screen-tab) {
+    position: static;
+    z-index: 0;
+    margin-left: 16px;
+    padding: 0;
+    background-color: transparent;
+  }
+
+  @media (min-width: $screen-desk) {
+    margin-left: 48px;
+  }
 }
 
 .menu.open {
@@ -34,22 +52,8 @@
 
 .btnClose {
   padding-inline: 4px;
-}
 
-@media (min-width: 768px) {
-  .menu {
-    position: static;
-    z-index: 0;
-    margin-left: 16px;
-    padding: 0;
-    background-color: transparent;
-  }
-
-  .overlay {
-    display: none;
-  }
-
-  .btnClose {
+  @media (min-width: $screen-tab) {
     display: none;
   }
 }

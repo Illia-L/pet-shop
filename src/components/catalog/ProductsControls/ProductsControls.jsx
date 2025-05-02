@@ -1,7 +1,4 @@
 import css from './ProductsControls.module.css';
-import { products as initialProducts } from '../../../fake-data';
-import { useRef, useState } from 'react';
-import Icon from '../../reusable-global/Icon/Icon';
 import Search from '../Search/Search';
 import Sort from '../Sort/Sort';
 

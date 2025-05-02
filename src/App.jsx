@@ -1,4 +1,3 @@
-import './reset.css';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import Modal from 'react-modal';
 
