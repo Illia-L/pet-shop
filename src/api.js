@@ -58,6 +58,7 @@ export async function login(formData) {
 
 export async function getFreshAccessToken(refresh) {
   const response = await axios.post('refresh/', { refresh });
-
+  
   return response.data.access;
 }
+

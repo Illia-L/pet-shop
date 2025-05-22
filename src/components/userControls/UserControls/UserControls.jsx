@@ -26,7 +26,7 @@ useEffect(()=>{
     <>
       {userName ? (
         <NavLink
-          to='cabinet'
+          to='account'
           onClick={() => setIsMenuOpen(false)}
           className={css.linkCabinet}
         >
