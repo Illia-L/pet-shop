@@ -11,11 +11,25 @@ export async function getCategories() {
 export async function getProductsPage(params = {}) {
   const { category, search, sort, page } = params;
   const processedParams = {};
+  let sortValue;
+
+  switch (sort) {
+    case 'asc':
+      sortValue = 'price';
+      break;
+
+    case 'desc':
+      sortValue = '-price';
+      break;
+
+    default:
+      sortValue = '';
+  }
 
   if (category) processedParams.category_id = category;
   if (search) processedParams.search = search;
   if (page) processedParams.page = page;
-  if (sort) processedParams.ordering = sort;
+  if (sort) processedParams.ordering = sortValue;
 
   const response = await axios.get('items', { params: processedParams });
 
