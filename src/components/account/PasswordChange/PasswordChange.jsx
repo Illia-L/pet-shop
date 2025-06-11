@@ -5,13 +5,14 @@ import InputGroup from '../../userControls/reusable/InputGroup/InputGroup';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import clsx from 'clsx';
+import {
+  newPassword,
+  passwordConfirm,
+} from '../../../settings/user.validation';
 
 const validationSchema = yup.object({
-  email: yup
-    .string()
-    .required('Email is required')
-    .email('Enter a valid email'),
-    newPassword: yup.string().required('New password is required')
+  newPassword,
+  passwordConfirm,
 });
 
 function PasswordChange() {
@@ -29,15 +30,25 @@ function PasswordChange() {
       onSubmit={handleSubmit(onsubmit)}
     >
       <InputGroup
-        inputName='name'
-        labelText="Ім'я"
+        inputName='currentPassword'
+        type='password'
+        labelText='Поточний пароль'
         register={register}
         errors={errors}
       />
 
       <InputGroup
-        inputName='email'
-        labelText='Електронна пошта'
+        inputName='newPassword'
+        type='password'
+        labelText='Новий пароль'
+        register={register}
+        errors={errors}
+      />
+
+      <InputGroup
+        inputName='passwordConfirm'
+        type='password'
+        labelText='Повторення паролю'
         register={register}
         errors={errors}
       />

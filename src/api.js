@@ -32,7 +32,7 @@ export async function signup(formData) {
   const {
     name: first_name,
     email,
-    password,
+    newPassword: password,
     passwordConfirm: password_confirm,
   } = formData;
 
@@ -58,7 +58,6 @@ export async function login(formData) {
 
 export async function getFreshAccessToken(refresh) {
   const response = await axios.post('refresh/', { refresh });
-  
+
   return response.data.access;
 }
-

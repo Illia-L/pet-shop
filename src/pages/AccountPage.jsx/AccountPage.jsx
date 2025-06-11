@@ -1,13 +1,16 @@
 import { useMediaQuery } from 'react-responsive';
 import css from './AccountPage.module.css';
 import AccountMobileLayout from '../../components/account/mobile/AccountMobileLayout/AccountMobileLayout';
+import DesktopLayout from '../../components/account/DesktopLayout/DesktopLayout';
 
 function AccountPage() {
   const isMobile = useMediaQuery({ query: '(max-width: 767px)' });
-  const isDesktop = useMediaQuery({ query: '(min-width: 1440px)' });
-  const isTablet = !isMobile && !isDesktop
 
-  return <div className={css.page}>{isMobile && <AccountMobileLayout />}</div>;
+  return <div className={css.page}>
+    {isMobile && <AccountMobileLayout />}
+
+    {!isMobile && <DesktopLayout/>}
+    </div>;
 }
 
 export default AccountPage;

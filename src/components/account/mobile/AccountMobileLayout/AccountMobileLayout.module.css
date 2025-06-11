@@ -1,4 +1,3 @@
-
 .container {
   padding: 8px 12px;
 }
@@ -7,4 +6,16 @@
   line-height: 2;
   font-size: 24px;
   font-weight: 700;
+}
+
+.logout {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 4px;
+  height: 44px;
+  padding-left: 10px;
+  line-height: 1.2;
+  font-size: 20px;
+  font-weight: 600;
 }

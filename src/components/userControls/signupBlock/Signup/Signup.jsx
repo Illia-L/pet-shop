@@ -1,15 +1,27 @@
 import { useForm } from 'react-hook-form';
 import formCss from '../../css/form.module.css';
-import css from '../../reusable/Form/Form.module.css';
+import css from './Signup.module.scss';
 import * as api from '../../../../api';
 import { useSelector } from 'react-redux';
 import { useState } from 'react';
-import ConfirmPasswordGroup from '../../reusable/ConfirmPasswordGroup/ConfirmPasswordGroup';
-import NewPassword from '../../reusable/NewPassword/NewPassword';
-import EmailGroup from '../../reusable/EmailGroup/EmailGroup';
 import Error500 from '../../../Error500/Error500';
+import * as yup from 'yup';
+import {
+  email,
+  newPassword,
+  passwordConfirm,
+} from '../../../../settings/user.validation';
+import { yupResolver } from '@hookform/resolvers/yup';
+import InputGroup from '../../reusable/InputGroup/InputGroup';
+import clsx from 'clsx';
 
-function Signup({ setElementToShow }) {
+const validationSchema = yup.object({
+  email,
+  newPassword,
+  passwordConfirm,
+});
+
+function Signup({ setModalComponent, setElementToShow }) {
   const [is500, setIs500] = useState(false);
   const {
     register,
@@ -22,9 +34,10 @@ function Signup({ setElementToShow }) {
     defaultValues: {
       name: '',
       email: '',
-      password: '',
+      newPassword: '',
       passwordConfirm: '',
     },
+    resolver: yupResolver(validationSchema),
   });
   const { id, status } = useSelector(state => state.user);
 
@@ -55,34 +68,42 @@ function Signup({ setElementToShow }) {
         noValidate
       >
         <h2 className={formCss.title}>Реєстрація</h2>
-        <div className={formCss.inputGroup}>
-          <label
-            className={formCss.label}
-            htmlFor='name'
-          >
-            Як до вас звертатися
-          </label>
-          <input
-            className={formCss.input}
-            type='text'
-            id='name'
-            {...register('name')}
-            placeholder='Вадим'
-          />
-        </div>
 
-        <EmailGroup
-          register={register}
-          errors={errors}
-        />
-
-        <NewPassword
+        <InputGroup
+          inputName='name'
+          type='text'
+          labelText="Ім'я*"
+          placeholder='Ivan Kozak'
           register={register}
           trigger={trigger}
           errors={errors}
         />
 
-        <ConfirmPasswordGroup
+        <InputGroup
+          inputName='email'
+          type='email'
+          placeholder='Ivan27kz@gmail.com'
+          labelText='Email*'
+          register={register}
+          trigger={trigger}
+          errors={errors}
+        />
+
+        <InputGroup
+          inputName='newPassword'
+          type='password'
+          labelText='Пароль*'
+          placeholder='Adkhff20$'
+          register={register}
+          trigger={trigger}
+          errors={errors}
+        />
+
+        <InputGroup
+          inputName='passwordConfirm'
+          type='password'
+          labelText='Підтвердіть пароль*'
+          placeholder='Adkhff20$'
           register={register}
           trigger={trigger}
           errors={errors}
@@ -92,7 +113,18 @@ function Signup({ setElementToShow }) {
           className={formCss.button + ' ' + formCss.submit}
           type='submit'
         >
-          Створити акаунт
+          Продовжити
+        </button>
+
+        <button
+          onClick={() => setModalComponent('login')}
+          className={clsx(
+            formCss.button,
+            formCss.buttonSecondary,
+            css.toLoginLink
+          )}
+        >
+          Повернутися до log in
         </button>
       </form>
 

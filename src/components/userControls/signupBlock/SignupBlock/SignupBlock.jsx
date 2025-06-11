@@ -14,7 +14,10 @@ function SignupBlock({ setModalComponent }) {
   return (
     <>
       {elementToShow === 'signup' && (
-        <Signup setElementToShow={setElementToShow} />
+        <Signup
+          setModalComponent={setModalComponent}
+          setElementToShow={setElementToShow}
+        />
       )}
       {elementToShow === 'success' && (
         <SignupSuccess

@@ -29,3 +29,7 @@
   overflow: hidden;
   transition: height 200ms linear;
 }
+
+.paddingWrapper {
+  padding-bottom: 24px;
+}

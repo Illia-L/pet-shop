@@ -2,7 +2,7 @@ import formCss from '../../css/form.module.css';
 import css from '../Form/Form.module.css';
 import { useId } from 'react';
 
-function InputGroup({inputName, type='text', labelText='', placeholder='', register, errors }) {
+function InputGroup({inputName, type='text', labelText='', placeholder='', register, errors={} }) {
   const imputId = useId()
 
   return (

@@ -6,10 +6,11 @@ import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import Form from '../reusable/Form/Form';
-import * as api from '../../../api'
+import * as api from '../../../api';
+import InputGroup from '../reusable/InputGroup/InputGroup';
 
 function Login({ setModalComponent }) {
-  const [isError, setIsError] = useState(false)
+  const [isError, setIsError] = useState(false);
   const { register, handleSubmit } = useForm();
   const dispatch = useDispatch();
   const user = useSelector(state => state.user);
@@ -17,14 +18,14 @@ function Login({ setModalComponent }) {
 
   async function onSubmit(data) {
     try {
-      setIsError(false)
+      setIsError(false);
 
-      const authData = await api.login(data)
-      const {name, access: token, refresh} = authData
+      const authData = await api.login(data);
+      const { name, access: token, refresh } = authData;
 
-      dispatch(userActions.handleLogin(name, token, refresh))
+      dispatch(userActions.handleLogin(name, token, refresh));
     } catch (err) {
-      setIsError(true)
+      setIsError(true);
     }
   }
 
@@ -40,37 +41,24 @@ function Login({ setModalComponent }) {
         handleSubmit={handleSubmit(onSubmit)}
         setModalComponent={setModalComponent}
       >
-        <div className={formCss.inputGroup}>
-          <label
-            className={formCss.label}
-            htmlFor='login-email'
-          >
-            Електронна пошта*
-          </label>
-          <input
-            className={formCss.input}
-            type='email'
-            {...register('email')}
-            id='login-email'
-          />
-        </div>
-        
-        <div className={formCss.inputGroup}>
-          <label
-            className={formCss.label}
-            htmlFor='login-password'
-          >
-            Пароль*
-          </label>
-          <input
-            className={formCss.input}
-            type='password'
-            {...register('password')}
-            id='login-password'
-          />
-        </div>
+        <InputGroup
+          inputName='email'
+          type='email'
+          labelText='Електронна пошта'
+          placeholder='example@email.com'
+          register={register}
+        />
 
-        <p className={css.validationMessage}>{isError && 'Перевірте дані та спробуйте ще раз.'}&nbsp;</p>
+        <InputGroup
+          inputName='password'
+          type='password'
+          labelText='Пароль'
+          register={register}
+        />
+
+        <p className={css.validationMessage}>
+          {isError && 'Перевірте дані та спробуйте ще раз.'}&nbsp;
+        </p>
 
         <Link
           to='cabinet/forgot-password'

@@ -20,6 +20,7 @@
 }
 
 .label {
+  padding-inline: 10px;
   line-height: 1.2;
   font-family: 'Nunito Sans', Arial, Helvetica, sans-serif;
   font-size: 13px;
@@ -42,9 +43,20 @@
 }
 
 .fail {
-  position: absolute;
-  font-size: 14px;
+  /* position: absolute; */
+  font-family: "Nunito Sans", sans-serif;
+  margin-top: 8px;
+  padding-inline: 10px;
+  font-size: 10px;
   color: #cc0000;
+
+  @media (min-width: 768px) {
+    font-size: 12px;
+  }
+
+  @media (min-width: 1440px) {
+    font-size: 13px;
+  }
 }
 
 .loaderContainer {
@@ -69,6 +81,11 @@
   background-color: #fe7a29;
 }
 
+.buttonSecondary {
+  color: #fe7a29;
+  background-color: #fff;
+}
+
 .submit {
   margin-top: 100px;
 }
@@ -77,8 +94,6 @@
   .form {
     position: relative;
     border-radius: 8px;
-    /* flex: 0 0 540px;
-    padding: 48px 96px; */
     background-color: #fff;
   }
 
