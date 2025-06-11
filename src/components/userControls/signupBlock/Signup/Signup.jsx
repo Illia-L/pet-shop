@@ -72,7 +72,7 @@ function Signup({ setModalComponent, setElementToShow }) {
         <InputGroup
           inputName='name'
           type='text'
-          labelText="Ім'я*"
+          labelText="Ім'я"
           placeholder='Ivan Kozak'
           register={register}
           trigger={trigger}
