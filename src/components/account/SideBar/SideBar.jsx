@@ -1,6 +1,7 @@
 import { RxExit } from 'react-icons/rx';
 import css from './SideBar.module.css';
 import clsx from 'clsx';
+import { handleLogout } from '../../../redux/userSlice';
 
 function SideBar({ setView }) {
   return (
@@ -36,7 +37,7 @@ function SideBar({ setView }) {
       </li>
 
       <li>
-        <button className={clsx(css.button, css.logout)}>
+        <button className={clsx(css.button, css.logout)} onClick={handleLogout}>
           <RxExit />
 
           <span>Вихід</span>

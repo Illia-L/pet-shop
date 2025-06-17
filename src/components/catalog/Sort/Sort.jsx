@@ -17,6 +17,10 @@ function Sort({ sort, setSort }) {
     setSort(value);
   }
 
+  const sortOptionsWithoutCurrent = Object.entries(sortOptions).filter(
+    ([key, _]) => key !== sort
+  );
+
   const modalStyles = css.list + ' ' + (isSortOpen ? css.open : '');
 
   const getOptionButtonStyles = key =>
@@ -50,7 +54,7 @@ function Sort({ sort, setSort }) {
       </button>
 
       <ul className={modalStyles}>
-        {Object.entries(sortOptions).map(([key, value]) => (
+        {sortOptionsWithoutCurrent.map(([key, value]) => (
           <li
             className={css.item}
             key={key}

@@ -10,7 +10,7 @@ function Form({ title, isLoading, handleSubmit, setModalComponent, children }) {
       >
         <h2 className={formCss.title}>{title}</h2>
 
-        {children}
+        <div className={formCss.fields}>{children}</div>
 
         {isLoading && <Loader />}
       </form>

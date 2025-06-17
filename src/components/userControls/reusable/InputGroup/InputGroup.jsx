@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import formCss from '../../css/form.module.css';
 import css from '../Form/Form.module.css';
 import { useId } from 'react';
@@ -22,10 +23,10 @@ function InputGroup({inputName, type='text', labelText='', placeholder='', regis
         required
         placeholder={placeholder}
       />
-      <div className={css.messageBox}>
-        {!!errors[inputName] && (
-          <p className={formCss.fail}>{errors[inputName].message}</p>
-        )}
+      <div className={clsx(css.messageBox, formCss.fail)}>
+        {errors[inputName] ? (
+          <p>{errors[inputName].message}</p>
+        ) : <span>&nbsp;</span>}
       </div>
     </div>
   );

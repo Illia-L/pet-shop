@@ -31,7 +31,7 @@ function Login({ setModalComponent }) {
 
   useEffect(() => {
     if (user.name) setModalComponent(null);
-  }, [user.name]);
+  }, [user.name, setModalComponent]);
 
   return (
     <>
@@ -44,7 +44,7 @@ function Login({ setModalComponent }) {
         <InputGroup
           inputName='email'
           type='email'
-          labelText='Електронна пошта'
+          labelText='Email*'
           placeholder='example@email.com'
           register={register}
         />
@@ -52,7 +52,7 @@ function Login({ setModalComponent }) {
         <InputGroup
           inputName='password'
           type='password'
-          labelText='Пароль'
+          labelText='Пароль*'
           register={register}
         />
 
@@ -71,7 +71,7 @@ function Login({ setModalComponent }) {
           className={formCss.button + ' ' + formCss.submit}
           type='submit'
         >
-          Продовжити
+          Увійти в акаунт
         </button>
 
         <button

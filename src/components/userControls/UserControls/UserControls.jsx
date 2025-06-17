@@ -16,7 +16,7 @@ function UserControls() {
 
   useEffect(() => {
     return () => dispatch(closeAuthView());
-  }, []);
+  }, [dispatch]);
 
 useEffect(()=>{
   if(status === '500') setModalComponent('500')
@@ -27,7 +27,6 @@ useEffect(()=>{
       {userName ? (
         <NavLink
           to='account'
-          onClick={() => setIsMenuOpen(false)}
           className={css.linkCabinet}
         >
           <Icon
@@ -52,7 +51,7 @@ useEffect(()=>{
             iconClass={css.profileIcon}
           />
 
-          <span className={css.profileText}> Log in/Sign up</span>
+          <span className={css.profileText}> Увійти</span>
         </button>
       )}
 

@@ -69,51 +69,50 @@ function Signup({ setModalComponent, setElementToShow }) {
       >
         <h2 className={formCss.title}>Реєстрація</h2>
 
-        <InputGroup
-          inputName='name'
-          type='text'
-          labelText="Ім'я"
-          placeholder='Ivan Kozak'
-          register={register}
-          trigger={trigger}
-          errors={errors}
-        />
-
-        <InputGroup
-          inputName='email'
-          type='email'
-          placeholder='Ivan27kz@gmail.com'
-          labelText='Email*'
-          register={register}
-          trigger={trigger}
-          errors={errors}
-        />
-
-        <InputGroup
-          inputName='newPassword'
-          type='password'
-          labelText='Пароль*'
-          placeholder='Adkhff20$'
-          register={register}
-          trigger={trigger}
-          errors={errors}
-        />
-
-        <InputGroup
-          inputName='passwordConfirm'
-          type='password'
-          labelText='Підтвердіть пароль*'
-          placeholder='Adkhff20$'
-          register={register}
-          trigger={trigger}
-          errors={errors}
-        />
+        <div className={formCss.fields}>
+          <InputGroup
+            inputName='name'
+            type='text'
+            labelText="Ім'я"
+            placeholder='Ivan Kozak'
+            register={register}
+            trigger={trigger}
+            errors={errors}
+          />
+          <InputGroup
+            inputName='email'
+            type='email'
+            placeholder='Ivan27kz@gmail.com'
+            labelText='Email*'
+            register={register}
+            trigger={trigger}
+            errors={errors}
+          />
+          <InputGroup
+            inputName='newPassword'
+            type='password'
+            labelText='Пароль*'
+            placeholder='Adkhff20$'
+            register={register}
+            trigger={trigger}
+            errors={errors}
+          />
+          <InputGroup
+            inputName='passwordConfirm'
+            type='password'
+            labelText='Підтвердіть пароль*'
+            placeholder='Adkhff20$'
+            register={register}
+            trigger={trigger}
+            errors={errors}
+          />
+        </div>
 
         <button
           className={formCss.button + ' ' + formCss.submit}
           type='submit'
         >
-          Продовжити
+          Зареєструватися
         </button>
 
         <button
@@ -124,7 +123,7 @@ function Signup({ setModalComponent, setElementToShow }) {
             css.toLoginLink
           )}
         >
-          Повернутися до log in
+          До log in
         </button>
       </form>
 

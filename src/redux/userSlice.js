@@ -88,3 +88,9 @@ export const  handleLogin = (name, token, refresh) => dispatch => {
 
   dispatch(slice.actions.login({ name, token }));
 }
+
+export const handleLogout = () => dispatch => {
+  document.cookie = 'refresh=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;'
+  localStorage.removeItem('userName')
+  dispatch(slice.actions.logout())
+}
