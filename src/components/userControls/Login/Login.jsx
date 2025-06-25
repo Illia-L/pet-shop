@@ -36,7 +36,7 @@ function Login({ setModalComponent }) {
   return (
     <>
       <Form
-        title='Вхід до акаунту'
+        title='Log in'
         isLoading={isLoading}
         handleSubmit={handleSubmit(onSubmit)}
         setModalComponent={setModalComponent}
@@ -53,6 +53,7 @@ function Login({ setModalComponent }) {
           inputName='password'
           type='password'
           labelText='Пароль*'
+          placeholder='Adkhff20$'
           register={register}
         />
 
@@ -71,7 +72,7 @@ function Login({ setModalComponent }) {
           className={formCss.button + ' ' + formCss.submit}
           type='submit'
         >
-          Увійти в акаунт
+          Продовжити
         </button>
 
         <button

@@ -82,7 +82,7 @@ export default function AppBar() {
           >
             <Icon
               id='icon-cart-outlined'
-              width={23}
+              width={20}
               height={42}
               iconClass={css.iconCart}
             />

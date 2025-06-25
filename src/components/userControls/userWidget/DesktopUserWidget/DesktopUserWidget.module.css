@@ -1,0 +1,38 @@
+.linkCabinet {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.profileIcon {
+  width: 20px;
+  height: 20px;
+}
+
+.buttons {
+  display: flex;
+  gap: 16px;
+}
+
+.button {
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #f6f6f6;
+}
+
+@media (min-width: 1440px) {
+  .profileIcon {
+    width: 24px;
+    height: 24px;
+  }
+
+  .buttons {
+    gap: 20px;
+  }
+
+  .button {
+    font-size: 20px;
+  }
+}

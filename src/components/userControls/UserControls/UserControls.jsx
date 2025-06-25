@@ -1,6 +1,3 @@
-import { NavLink } from 'react-router-dom';
-import css from './UserControls.module.css';
-import Icon from '../../reusable-global/Icon/Icon';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import Modal from '../reusable/Modal/Modal';
@@ -8,6 +5,7 @@ import Login from '../Login/Login';
 import SignupBlock from '../signupBlock/SignupBlock/SignupBlock';
 import Error500 from '../../Error500/Error500';
 import { closeAuthView } from '../../../redux/userSlice';
+import UserWidget from '../userWidget/UserWidget/UserWidget';
 
 function UserControls() {
   const [modalComponent, setModalComponent] = useState(false);
@@ -18,42 +16,16 @@ function UserControls() {
     return () => dispatch(closeAuthView());
   }, [dispatch]);
 
-useEffect(()=>{
-  if(status === '500') setModalComponent('500')
-},[status])
+  useEffect(() => {
+    if (status === '500') setModalComponent('500');
+  }, [status]);
 
   return (
     <>
-      {userName ? (
-        <NavLink
-          to='account'
-          className={css.linkCabinet}
-        >
-          <Icon
-            id='icon-profile'
-            width={22}
-            height={42}
-            iconClass={css.profileIcon}
-          />
-
-          <span className={css.profileText}> {userName}</span>
-        </NavLink>
-      ) : (
-        <button
-          className={css.linkCabinet}
-          type='button'
-          onClick={() => setModalComponent('login')}
-        >
-          <Icon
-            id='icon-profile'
-            width={22}
-            height={42}
-            iconClass={css.profileIcon}
-          />
-
-          <span className={css.profileText}> Увійти</span>
-        </button>
-      )}
+      <UserWidget
+        userName={userName}
+        setModalComponent={setModalComponent}
+      />
 
       <Modal
         isOpen={modalComponent === 'login'}

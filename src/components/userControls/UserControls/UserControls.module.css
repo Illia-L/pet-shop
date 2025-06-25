@@ -1,7 +1,3 @@
-.profileText {
-  display: none;
-}
-
 .modalOverlay {
   position: fixed;
   z-index: 10;
@@ -29,20 +25,6 @@
 }
 
 @media (min-width: 768px) {
-  .linkCabinet {
-    display: flex;
-    gap: 6px;
-  }
-
-  .profileIcon {
-    width: 12px;
-    height: 33px;
-  }
-
-  .profileText {
-    display: block;
-  }
-
   .modalOverlay {
     display: flex;
     align-items: center;
@@ -76,16 +58,5 @@
 
   .modalContentBeforeClose {
     transform: scale(0.95);
-  }
-}
-
-@media (min-width: 1440px) {
-  .linkCabinet {
-    gap: 10px;
-  }
-
-  .profileIcon {
-    width: 20px;
-    height: 60px;
   }
 }

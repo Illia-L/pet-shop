@@ -112,7 +112,7 @@ function Signup({ setModalComponent, setElementToShow }) {
           className={formCss.button + ' ' + formCss.submit}
           type='submit'
         >
-          Зареєструватися
+          Продовжити
         </button>
 
         <button
@@ -123,7 +123,7 @@ function Signup({ setModalComponent, setElementToShow }) {
             css.toLoginLink
           )}
         >
-          До log in
+          Повернутися до log in
         </button>
       </form>
 
