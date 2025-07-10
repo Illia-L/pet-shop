@@ -50,6 +50,15 @@
     font-weight: 600;
     color: #f6f6f6;
     background-color: #fe7a29;
+    transition: background-color 200ms ease-in-out
+  }
+
+  .submitTablet:hover {
+    background-color: #FF914C;
+  }
+
+  .submitTablet:active {
+    background-color: #E7681A;
   }
 }
 

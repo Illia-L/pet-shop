@@ -8,6 +8,7 @@ import { useEffect, useState } from 'react';
 import Form from '../reusable/Form/Form';
 import * as api from '../../../api';
 import InputGroup from '../reusable/InputGroup/InputGroup';
+import clsx from 'clsx';
 
 function Login({ setModalComponent }) {
   const [isError, setIsError] = useState(false);
@@ -76,7 +77,7 @@ function Login({ setModalComponent }) {
         </button>
 
         <button
-          className={formCss.button + ' ' + css.signup}
+          className={clsx(formCss.button, formCss.buttonSecondary, css.signup)}
           type='button'
           onClick={() => setModalComponent('signup')}
         >

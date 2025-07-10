@@ -83,11 +83,28 @@
   text-align: center;
   color: #f6f6f6;
   background-color: #fe7a29;
+  transition: background-color 200ms ease-in-out;
+}
+
+.button:hover {
+  background-color: #ff914c;
+}
+
+.button:active {
+  background-color: #e7681a;
 }
 
 .buttonSecondary {
   color: #fe7a29;
   background-color: #fff;
+}
+
+.buttonSecondary:hover {
+  background-color: #FE7A2933;
+}
+
+.buttonSecondary:active {
+  background-color: #E7681A66;
 }
 
 .submit {
