@@ -9,10 +9,21 @@ import Form from '../reusable/Form/Form';
 import * as api from '../../../api';
 import InputGroup from '../reusable/InputGroup/InputGroup';
 import clsx from 'clsx';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
+
+const validationSchema = yup.object({
+  email: yup.string().required('Email is required'),
+  password: yup.string().required('password is required'),
+});
 
 function Login({ setModalComponent }) {
   const [isError, setIsError] = useState(false);
-  const { register, handleSubmit } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { isSubmitted, errors },
+  } = useForm({ resolver: yupResolver(validationSchema) });
   const dispatch = useDispatch();
   const user = useSelector(state => state.user);
   const isLoading = user.status === 'loading';
@@ -48,6 +59,8 @@ function Login({ setModalComponent }) {
           labelText='Email*'
           placeholder='example@email.com'
           register={register}
+          errors={errors}
+          isFormSubmitted={isSubmitted}
         />
 
         <InputGroup
@@ -56,6 +69,8 @@ function Login({ setModalComponent }) {
           labelText='Пароль*'
           placeholder='Adkhff20$'
           register={register}
+          errors={errors}
+          isFormSubmitted={isSubmitted}
         />
 
         <p className={css.validationMessage}>

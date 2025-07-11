@@ -7,6 +7,7 @@ function Form({ title, isLoading, handleSubmit, setModalComponent, children }) {
       <form
         className={formCss.form}
         onSubmit={handleSubmit}
+        noValidate
       >
         <h2 className={formCss.title}>{title}</h2>
 

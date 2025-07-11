@@ -7,6 +7,7 @@ import { useState } from 'react';
 import Error500 from '../../../Error500/Error500';
 import * as yup from 'yup';
 import {
+  name,
   email,
   newPassword,
   passwordConfirm,
@@ -16,6 +17,7 @@ import InputGroup from '../../reusable/InputGroup/InputGroup';
 import clsx from 'clsx';
 
 const validationSchema = yup.object({
+  name,
   email,
   newPassword,
   passwordConfirm,
@@ -29,7 +31,7 @@ function Signup({ setModalComponent, setElementToShow }) {
     setError,
     reset,
     trigger,
-    formState: { errors },
+    formState: { errors, isSubmitted },
   } = useForm({
     defaultValues: {
       name: '',
@@ -78,6 +80,7 @@ function Signup({ setModalComponent, setElementToShow }) {
             register={register}
             trigger={trigger}
             errors={errors}
+            isFormSubmitted={isSubmitted}
           />
           <InputGroup
             inputName='email'
@@ -87,6 +90,7 @@ function Signup({ setModalComponent, setElementToShow }) {
             register={register}
             trigger={trigger}
             errors={errors}
+            isFormSubmitted={isSubmitted}
           />
           <InputGroup
             inputName='newPassword'
@@ -96,6 +100,7 @@ function Signup({ setModalComponent, setElementToShow }) {
             register={register}
             trigger={trigger}
             errors={errors}
+            isFormSubmitted={isSubmitted}
           />
           <InputGroup
             inputName='passwordConfirm'
@@ -105,6 +110,7 @@ function Signup({ setModalComponent, setElementToShow }) {
             register={register}
             trigger={trigger}
             errors={errors}
+            isFormSubmitted={isSubmitted}
           />
         </div>
 

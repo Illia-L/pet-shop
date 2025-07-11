@@ -3,8 +3,21 @@ import formCss from '../../css/form.module.css';
 import css from '../Form/Form.module.css';
 import { useId } from 'react';
 
-function InputGroup({inputName, type='text', labelText='', placeholder='', register, errors={} }) {
-  const imputId = useId()
+function InputGroup({
+  inputName,
+  type = 'text',
+  labelText = '',
+  placeholder = '',
+  register,
+  errors = {},
+  isFormSubmitted,
+}) {
+  const imputId = useId();
+
+  console.log({ isFormSubmitted, errors });
+
+  const isValid = isFormSubmitted && !errors[inputName];
+  const isInvalid = !!errors[inputName];
 
   return (
     <div className={formCss.inputGroup}>
@@ -16,7 +29,11 @@ function InputGroup({inputName, type='text', labelText='', placeholder='', regis
       </label>
 
       <input
-        className={formCss.input}
+        className={clsx(
+          formCss.input,
+          isValid && formCss.inputValid,
+          isInvalid && formCss.inputInvalid
+        )}
         type={type}
         id={imputId}
         {...register(inputName)}
@@ -24,9 +41,7 @@ function InputGroup({inputName, type='text', labelText='', placeholder='', regis
         placeholder={placeholder}
       />
       <div className={clsx(css.messageBox, formCss.fail)}>
-        {errors[inputName] ? (
-          <p>{errors[inputName].message}</p>
-        ) : <span>&nbsp;</span>}
+        {isInvalid ? <p>{errors[inputName].message}</p> : <span>&nbsp;</span>}
       </div>
     </div>
   );

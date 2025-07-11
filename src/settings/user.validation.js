@@ -1,9 +1,18 @@
 import * as yup from 'yup';
 
+export const name = yup
+  .string()
+  .required("Ім'я обов'язково для заповнення")
+  .min(3, "Ім'я має бути не коротшим за 3 символи")
+  .max(50, "Ім'я має бути не довшим за 50 символів");
+
 export const email = yup
   .string()
   .required("Пошта обов'язкова для заповенння")
-  .matches(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/, 'Введіть дійсну електронну пошту')
+  .matches(
+    /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+    'Введіть дійсну електронну пошту'
+  );
 
 export const newPassword = yup
   .string()
